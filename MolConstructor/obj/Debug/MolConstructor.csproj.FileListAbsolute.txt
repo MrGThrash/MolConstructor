@@ -1,0 +1,83 @@
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.resources
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.Properties.Resources.resources
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.GenerateResource.cache
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CoreCompileInputs.cache
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe.config
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\bin\Debug\MolConstructor.pdb
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.exe
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.pdb
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\bin\Debug\ru-RU\MolConstructor.resources.dll
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.ru-RU.resources
+C:\Users\Рустам\source\repos\MolConstructor\MolConstructor\obj\Debug\ru-RU\MolConstructor.resources.dll
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe.config
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\bin\Debug\MolConstructor.pdb
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.Properties.Resources.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.GenerateResource.cache
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CoreCompileInputs.cache
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.exe
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.pdb
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.ConstructControl.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.InfoForm.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.AnalysisControl.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.EditControl.resources
+C:\Users\Рустам\Documents\Visual Studio 2017\Projects\MolConstructor\MolConstructor\obj\Debug\MolConstructor.UserControls.VisualControl.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe.config
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.pdb
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.TypesForm.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.ConstructControl.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.EditControl.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.InfoForm.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.Properties.Resources.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.UserControls.VisualControl.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.GenerateResource.cache
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.exe
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.pdb
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.xml
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.xml
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.xml
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CopyComplete
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.dll.config
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.dll.config
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe.config
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\MolConstructor.pdb
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.TypesForm.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.ConstructControl.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.EditControl.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.InfoForm.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.Properties.Resources.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.UserControls.VisualControl.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.GenerateResource.cache
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CopyComplete
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.exe
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.pdb
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.AnalysisControls.resources
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.AnalysisControls.resources
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.xml
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.xml
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.dll
+C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.dll
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.xml
+C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csprojAssemblyReference.cache
