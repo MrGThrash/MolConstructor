@@ -74,6 +74,19 @@
             this.tbDirectoryPath = new System.Windows.Forms.TextBox();
             this.btnChoosePath = new System.Windows.Forms.Button();
             this.dgvDataFromFolder = new System.Windows.Forms.DataGridView();
+            this.StepTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ysize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MeanRadiusXY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GyrRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLong2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HEad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -88,19 +101,6 @@
             this.bgWorkerLarina = new System.ComponentModel.BackgroundWorker();
             this.btnShowInfo = new System.Windows.Forms.Button();
             this.bgWorker2Dorder = new System.ComponentModel.BackgroundWorker();
-            this.StepTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Xsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ysize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MeanRadiusXY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zsize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GyrRad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLong2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HEad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbOptions.SuspendLayout();
             this.gbShiftValues.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataFromFolder)).BeginInit();
@@ -592,6 +592,71 @@
             this.dgvDataFromFolder.Size = new System.Drawing.Size(723, 307);
             this.dgvDataFromFolder.TabIndex = 34;
             // 
+            // StepTime
+            // 
+            this.StepTime.HeaderText = "Время, шаги";
+            this.StepTime.Name = "StepTime";
+            // 
+            // Xsize
+            // 
+            this.Xsize.HeaderText = "Размер по X";
+            this.Xsize.Name = "Xsize";
+            // 
+            // Ysize
+            // 
+            this.Ysize.HeaderText = "Размер по Y";
+            this.Ysize.Name = "Ysize";
+            // 
+            // MeanRadiusXY
+            // 
+            this.MeanRadiusXY.HeaderText = "Средний г/д радиус по XY";
+            this.MeanRadiusXY.Name = "MeanRadiusXY";
+            // 
+            // Zsize
+            // 
+            this.Zsize.HeaderText = "Размер по Z";
+            this.Zsize.Name = "Zsize";
+            // 
+            // GyrRad
+            // 
+            this.GyrRad.HeaderText = "Радиус инерции";
+            this.GyrRad.Name = "GyrRad";
+            // 
+            // ColumnLong2
+            // 
+            this.ColumnLong2.HeaderText = "Асферичность абс.";
+            this.ColumnLong2.Name = "ColumnLong2";
+            // 
+            // HEad1
+            // 
+            this.HEad1.HeaderText = "Асферичность относ.";
+            this.HEad1.Name = "HEad1";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Пустая колонка";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Пустая колонка";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Пустая колонка";
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Пустая колонка";
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Пустая колонка";
+            this.Column4.Name = "Column4";
+            // 
             // ep
             // 
             this.ep.ContainerControl = this;
@@ -695,71 +760,6 @@
             this.bgWorker2Dorder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker2Dorder_DoWork);
             this.bgWorker2Dorder.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker2Dorder_ProgressChanged);
             this.bgWorker2Dorder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker2Dorder_RunWorkerCompleted);
-            // 
-            // StepTime
-            // 
-            this.StepTime.HeaderText = "Время, шаги";
-            this.StepTime.Name = "StepTime";
-            // 
-            // Xsize
-            // 
-            this.Xsize.HeaderText = "Размер по X";
-            this.Xsize.Name = "Xsize";
-            // 
-            // Ysize
-            // 
-            this.Ysize.HeaderText = "Размер по Y";
-            this.Ysize.Name = "Ysize";
-            // 
-            // MeanRadiusXY
-            // 
-            this.MeanRadiusXY.HeaderText = "Средний г/д радиус по XY";
-            this.MeanRadiusXY.Name = "MeanRadiusXY";
-            // 
-            // Zsize
-            // 
-            this.Zsize.HeaderText = "Размер по Z";
-            this.Zsize.Name = "Zsize";
-            // 
-            // GyrRad
-            // 
-            this.GyrRad.HeaderText = "Радиус инерции";
-            this.GyrRad.Name = "GyrRad";
-            // 
-            // ColumnLong2
-            // 
-            this.ColumnLong2.HeaderText = "Асферичность абс.";
-            this.ColumnLong2.Name = "ColumnLong2";
-            // 
-            // HEad1
-            // 
-            this.HEad1.HeaderText = "Асферичность относ.";
-            this.HEad1.Name = "HEad1";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Пустая колонка";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Пустая колонка";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Пустая колонка";
-            this.Column3.Name = "Column3";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Пустая колонка";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Пустая колонка";
-            this.Column4.Name = "Column4";
             // 
             // AnalysisControls
             // 

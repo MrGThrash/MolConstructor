@@ -292,6 +292,17 @@ namespace MolConstructor
             var compComs = new List<double[]>();
 
             int polBeads = (int)(maxNum * polyPerc);
+
+            var wallbeads = 0;
+            if (hasWalls && wallsType == 1)
+            {
+                AddWalls(system);
+
+                wallbeads = system.Count;
+                system.Clear();
+            }
+
+
             int mainChainAmount = (int)(polBeads * (1.0 - molTwoPerc) / molecule.Count);
             if (molTwo.Count == 0 && polyPerc.Equals(1.0))
             {
@@ -363,10 +374,10 @@ namespace MolConstructor
 
             if (polyPerc.Equals(1.0))
             {
-                int residPol = this.maxNum - system.Count;
+                int residPol = this.maxNum - system.Count - wallbeads;
                 if (residPol > 0)
-                {
-                    for (int i = 0; i < residPol; i++)
+                {           
+                        for (int i = 0; i < residPol; i++)
                     {
                         if (residPol >= molTwo.Count)
                         {
@@ -387,13 +398,13 @@ namespace MolConstructor
                 {
                     int excess = system.Count - maxNum;
 
-                    for (int i = maxNum + excess - 1; i > maxNum - 1; i--)
+                    for (int i = maxNum + excess - 1; i > maxNum - 1-wallbeads; i--)
                     {
                         system.RemoveAt(i);
                     }
 
-                    totalBonds.RemoveAll(x => x[0] >= maxNum || x[1] > maxNum);
-                    totalAngles.RemoveAll(x => x[1] >= maxNum || x[2] > maxNum);
+                    totalBonds.RemoveAll(x => x[0] >= maxNum -wallbeads || x[1] > maxNum);
+                    totalAngles.RemoveAll(x => x[1] >=  maxNum -wallbeads || x[2] > maxNum);
                 }
             }
             else

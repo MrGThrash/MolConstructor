@@ -165,7 +165,7 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[1].HeaderText = "G(r)";
                         dgvDataFromFolder.Columns[2].HeaderText = "RgXY";
                         dgvDataFromFolder.Columns[3].HeaderText = "RgZ";
-                        dgvDataFromFolder.Columns[4].HeaderText = "Ψ6";
+                        dgvDataFromFolder.Columns[4].HeaderText = "Ψj";
                         dgvDataFromFolder.Columns[5].HeaderText = "Вороной online";
                         dgvDataFromFolder.Columns[6].HeaderText = "  ";
                         dgvDataFromFolder.Columns[7].HeaderText = "  ";
@@ -219,7 +219,7 @@ namespace MolConstructor
                     }
             }
             label2.Visible = (cmbTypeOfResults.SelectedIndex != 0 && cmbTypeOfResults.SelectedIndex != 1
-                                   && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
+                               && cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
             tbTimeStep.Visible = (cmbTypeOfResults.SelectedIndex > 3
                                   && cmbTypeOfResults.SelectedIndex != 5 && cmbTypeOfResults.SelectedIndex != 6
                                   && cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 11 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
@@ -232,6 +232,16 @@ namespace MolConstructor
             if (cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13) { label5.Text = "Длина цепи"; }
             else if (cmbTypeOfResults.SelectedIndex == 10) { label5.Text = "Число молекул"; }
             else { label5.Text = "Начальное число бидов субстр."; }
+
+            if (cmbTypeOfResults.SelectedIndex == 10) 
+            { label2.Text = "Тип порядка Ψj";
+              tbTimeStep.Text = "6";
+            }
+            else 
+            { 
+                label2.Text = "Шаг по времени";
+                tbTimeStep.Text = "100";
+            }
 
             label13.Visible = (cmbTypeOfResults.SelectedIndex >= 3 && cmbTypeOfResults.SelectedIndex <= 5 ||
                                 cmbTypeOfResults.SelectedIndex == 7) ? true : false;
@@ -445,7 +455,7 @@ namespace MolConstructor
 
                 else if (index == 10)
                 {
-                    bgWorker2Dorder.RunWorkerAsync(new object[] { cmbFormat.SelectedIndex, neededFiles, epsilon,
+                    bgWorker2Dorder.RunWorkerAsync(new object[] { cmbFormat.SelectedIndex, neededFiles, epsilon, Convert.ToInt32(tbTimeStep.Text),
                                                                   Convert.ToInt32(tbChainLength.Text), chbAccSepMols.Checked,
                                                                   cmbTypeOfResults.SelectedIndex });
                 }
@@ -2135,9 +2145,10 @@ namespace MolConstructor
             var format = (int)args[0];
             var filenames = (string[])args[1];
             var epsilon = (double)args[2];
-            var molNum = (int)args[3];
-            var isDyn = (bool)args[4];
-            var index = (int)args[5];
+            var orderType = (int)args[3];
+            var molNum = (int)args[4];
+            var isDyn = (bool)args[5];
+            var index = (int)args[6];
 
             var obtainedData = new List<double[]>();
             var psis = new List<double>();
@@ -2172,7 +2183,7 @@ namespace MolConstructor
                     //Add images
                     add2DPeriodImages(sizes, molCenters);
 
-                    psis.Add(Methods.GetPsi6Param(molNum, Math.Min(sizes[0], sizes[1]), molCenters));
+                    psis.Add(Methods.GetPsiXParam(orderType, molNum, Math.Min(sizes[0], sizes[1]), molCenters));
                     Rgs.Add(molSizes);
 
                     if (!isDyn)

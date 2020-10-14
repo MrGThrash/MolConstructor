@@ -324,7 +324,7 @@ namespace MolConstructor
             return 0.0;
         }
 
-        public static double GetPsi6Param(int particles, double radius, List<MolData> points)
+        public static double GetPsiXParam(int orderType, int particles, double radius, List<MolData> points)
         {
             var psi6 = 0.0;
             var psiReal = 0.0;
@@ -351,10 +351,10 @@ namespace MolConstructor
                 neighbors = neighbors.OrderBy(x => GetDistance(points[i].XCoord, points[i].YCoord, 0.0,
                                                 x.XCoord, x.YCoord, 0.0)).ToList();
 
-                // leave only 6 neighbors
-                if (neighbors.Count > 6)
+                // leave only X neighbors depending on the OrderType
+                if (neighbors.Count > orderType)
                 {
-                    for (int j = neighbors.Count - 1; j > 5; j--)
+                    for (int j = neighbors.Count - 1; j > orderType-1; j--)
                     {
                         neighbors.RemoveAt(j);
                     }
@@ -368,8 +368,8 @@ namespace MolConstructor
                     var tan = (points[i].YCoord - c.YCoord) / (points[i].XCoord - c.XCoord);
                     var atan = Math.Atan(tan);
 
-                    psiTempReal += Math.Cos(6.0 * atan);
-                    psiTempImp += Math.Sin(6.0 * atan);
+                    psiTempReal += Math.Cos(orderType * atan);
+                    psiTempImp += Math.Sin(orderType * atan);
                 }
 
                 psiReal += psiTempReal / neighbors.Count;
