@@ -102,8 +102,9 @@ namespace MolConstructor
                         //dgvDataFromFolder.Columns[6].HeaderText = "Доля хвостов в пределах геля";
                         dgvDataFromFolder.Columns[5].HeaderText = "Полимер C";
                         dgvDataFromFolder.Columns[6].HeaderText = "Полимер O";
-                        dgvDataFromFolder.Columns[7].HeaderText = "Доля блоков A";
-                        dgvDataFromFolder.Columns[8].HeaderText = "Доля блоков B";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Полимер N";
+                        dgvDataFromFolder.Columns[8].HeaderText = "Доля блоков A";
+                        dgvDataFromFolder.Columns[9].HeaderText = "Доля блоков B";
                         break;
                     }
                 case 6:
@@ -1239,7 +1240,7 @@ namespace MolConstructor
                             radius = Methods.GetHydroRadius2D(file) / 3.0;
                         }
 
-                        int polCcount, polOcount, solvARoundCount, solvAcount, solvBRoundCount, solvBcount;
+                        int polCcount, polOcount, polNcount, solvARoundCount, solvAcount, solvBRoundCount, solvBcount;
                         //int solvCRoundCount, solvCcount;
                         int totalRoundCount, totalCount;
                         double[] segmentsA = new double[1];
@@ -1256,6 +1257,7 @@ namespace MolConstructor
                             // clear all values before the next step
                             polCcount = 0;
                             polOcount = 0;
+                            polNcount = 0;
                             solvARoundCount = 0;
                             solvAcount = 0;
                             solvBRoundCount = 0;
@@ -1326,6 +1328,10 @@ namespace MolConstructor
                                             }
                                         }
                                     }
+                                    if (c[3] == 1.040 /*c[3] == 1.05*/)
+                                    {
+                                        polNcount++;
+                                    }
                                     if (c[3] == 1.020) { solvBRoundCount++; }
                                     //if (c[3] == 1.040) { solvCRoundCount++; }
                                     if (c[3] == 1.030) { solvARoundCount++; }
@@ -1352,7 +1358,7 @@ namespace MolConstructor
                                 totalRoundCount = totalCount;
                             }
 
-                            double[] row = new double[7 + segmentLength * 2];
+                            double[] row = new double[8 + segmentLength * 2];
 
                             row[0] = i * 2 * epsilon;
                             row[1] = (double)solvAcount / (double)totalCount;
@@ -1363,6 +1369,7 @@ namespace MolConstructor
                             //row[6] = (double)solvCRoundCount / (double)totalRoundCount;            
                             row[5] = (double)polCcount / (double)totalRoundCount;
                             row[6] = (double)polOcount / (double)totalRoundCount;
+                            row[7] = (double)polNcount / (double)totalRoundCount;
 
 
                             if (hasBonds)
@@ -1371,11 +1378,11 @@ namespace MolConstructor
                                 {
                                     if (polCcount > 0)
                                     {
-                                        row[7 + p] = segmentsA[p] / (double)totalRoundCount;
+                                        row[8 + p] = segmentsA[p] / (double)totalRoundCount;
                                     }
                                     if (polOcount > 0)
                                     {
-                                        row[7 + p + segmentLength] = segmentsB[p] / (double)totalRoundCount;
+                                        row[8 + p + segmentLength] = segmentsB[p] / (double)totalRoundCount;
                                     }
                                 }
                             }
@@ -3345,9 +3352,9 @@ namespace MolConstructor
                             string blocksA = "";
                             string blocksB = "";
 
-                            if (c.Length > 7)
+                            if (c.Length > 8)
                             {
-                                var segments = (c.Length - 7) / 2;
+                                var segments = (c.Length - 8) / 2;
 
                                 for (int i = 0; i < segments; i++)
                                 {
@@ -3357,21 +3364,22 @@ namespace MolConstructor
                                         blocksA += "-";
                                         blocksB += "-";
                                     }
-                                    blocksA += c[7 + i].ToString();
-                                    blocksB += c[7 + i + segments].ToString();
+                                    blocksA += c[8 + i].ToString();
+                                    blocksB += c[8 + i + segments].ToString();
                                 }
 
                                 dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                           c[2].ToString(), c[3].ToString(),
                                                           c[4].ToString(), c[5].ToString(),
-                                                          c[6].ToString(), blocksA, blocksB);
+                                                          c[6].ToString(), c[7].ToString(),
+                                                          blocksA, blocksB);
                             }
                             else
                             {
                                 dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                        c[2].ToString(), c[3].ToString(),
                                                        c[4].ToString(), c[5].ToString(),
-                                                       c[6].ToString()/*, c[7].ToString(), c[8].ToString()*/);
+                                                       c[6].ToString(), c[7].ToString() /*c[8].ToString()*/);
                             }
                         }
                         else if (index == 6)
