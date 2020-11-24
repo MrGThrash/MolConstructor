@@ -830,8 +830,18 @@ namespace MolConstructor
                     data[j + molOneLength * i][4] = (double)(i + 1);
                     if (isDb)
                     {
-                        int aType = data[j + molOneLength * i][3].Equals(1.0) ? 1 : (data[j + molOneLength * i][3].Equals(1.04) ? 1 : 0);
-                        data[j + molOneLength * i][3] = aType == 0 ? 1.0 + (double)finalType / 100.0 : -1.0;
+                        if (data[j + molOneLength * i][3].Equals(1.0))
+                        {
+                            data[j + molOneLength * i][3] = 1.0 + (double)finalType / 100.0;
+                            if (finalType > 9)
+                                data[j + molOneLength * i][3] = (double)(finalType + 1);
+                        }
+                        else if (data[j + molOneLength * i][3].Equals(1.01))
+                        {
+                                data[j + molOneLength * i][3] = (double)(finalType + 1 + molcount);
+                        }
+                        //int aType = data[j + molOneLength * i][3].Equals(1.0) ? 1 : (data[j + molOneLength * i][3].Equals(1.04) ? 1 : 0);
+                        //data[j + molOneLength * i][3] = aType == 0 ? 1.0 + (double)finalType / 100.0 : -1.0;
                     }
                     else
                     {
