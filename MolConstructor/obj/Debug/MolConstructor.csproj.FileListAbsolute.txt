@@ -81,3 +81,32 @@ C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstruc
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.xml
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.xml
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csprojAssemblyReference.cache
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.dll.config
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe.config
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\MolConstructor.exe
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\MolConstructor.pdb
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.Math.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.dll
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.Math.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Dynamic.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\bin\Debug\Microsoft.Scripting.Metadata.xml
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.TypesForm.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.AnalysisControls.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.ConstructControl.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.EditControl.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.InfoForm.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.MainForm.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.Properties.Resources.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.UserControls.VisualControl.resources
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.GenerateResource.cache
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CoreCompileInputs.cache
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csproj.CopyComplete
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.exe
+C:\Users\obi-v\Desktop\SCIENCE\Rustam prog\MolConstructor\MolConstructor\obj\Debug\MolConstructor.pdb
