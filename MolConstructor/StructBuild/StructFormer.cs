@@ -120,7 +120,7 @@ namespace MolConstructor
                 if (molNumber > 1)
                 {
                     int counter = 0;
-                    double radius = Math.Max(xDiam, yDiam)*0.8;
+                    double radius = Math.Max(xDiam, yDiam) * 0.8;
 
                     if (molNumber >= 15) { radius *= 0.5; }
                     if (molNumber >= 100) { radius *= 0.2; }
@@ -140,6 +140,23 @@ namespace MolConstructor
                         double yCoord = random.Next(Math.Min((int)yDiam, (int)(ySize - yDiam / 2.0)), Math.Max((int)yDiam, (int)(ySize - yDiam / 2.0)));
 
                         var interMol = moveMolecule(molecule, xCoord - xSize / 2.0 - xDiam / 2.0, yCoord - ySize / 2.0 - yDiam / 2.0, interCord - zDiam / 2.0 + shift);
+
+                        #region разделение молекул, чтобы сдвинуть в разные стороны
+                        /*
+
+                        //divide: half to +shift, half to -shift
+                        List<double[]> interMol = new List<double[]>();
+                        if (counter < molNumber /2)
+                        {
+                            interMol = moveMolecule(molecule, xCoord - xSize / 2.0 - xDiam / 2.0, yCoord - ySize / 2.0 - yDiam / 2.0, interCord - zDiam / 2.0 + shift);
+                        }
+
+                        if (counter >= molNumber/2)
+                        {
+                            interMol = moveMolecule(molecule, xCoord - xSize / 2.0 - xDiam / 2.0, yCoord - ySize / 2.0 - yDiam / 2.0, interCord - zDiam / 2.0 - shift);
+                        }
+                        */
+                        #endregion
 
                         foreach (var c in system)
                         {
@@ -170,7 +187,7 @@ namespace MolConstructor
                             counter++;
                         }
                     }
-                    while (counter < molNumber);
+                    while (counter < molNumber); 
                 }
                 else
                 {
