@@ -975,7 +975,7 @@ namespace MolConstructor
                     if (lines[i] == "ITEM: NUMBER OF ATOMS")
                     molcount = Convert.ToInt32(lines[i + 1]);
                 if (lines[i] == "ITEM: BOX BOUNDS pp pp pp" || lines[i] == "ITEM: BOX BOUNDS ff pp pp" || lines[i] == "ITEM: BOX BOUNDS pp ff pp" || lines[i] == "ITEM: BOX BOUNDS pp pp ff"
-                    || lines[i] == "ITEM: BOX BOUNDS ff ff pp" || lines[i] == "ITEM: BOX BOUNDS pp ff ff" || lines[i] == "ITEM: BOX BOUNDS ff ff ff")
+                    || lines[i] == "ITEM: BOX BOUNDS ff ff pp" || lines[i] == "ITEM: BOX BOUNDS pp ff ff" || lines[i] == "ITEM: BOX BOUNDS ff pp ff" || lines[i] == "ITEM: BOX BOUNDS ff ff ff")
                 {
                     for (int j = 0; j < 3; j++)
                     {
