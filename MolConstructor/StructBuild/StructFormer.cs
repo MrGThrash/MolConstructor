@@ -143,7 +143,7 @@ namespace MolConstructor
 
                         foreach (var c in system)
                         {
-                            if (Methods.GetDistance(xCoord - xSize / 2.0, yCoord - ySize / 2.0, 0.0, c.XCoord, c.YCoord, 0.0) <= radius)
+                            if (Methods.GetDistance3D(xCoord - xSize / 2.0, yCoord - ySize / 2.0, 0.0, c.XCoord, c.YCoord, 0.0) <= radius)
                             {
                                 collide = true;
                                 break;
@@ -229,7 +229,7 @@ namespace MolConstructor
             List<MolData> system = new List<MolData>();
             double[] diameter = Methods.GetDiameter(molecule);
 
-            double collidingCoef = 0.8;
+            double collidingCoef = 0.9;
 
             if (diameter[0] / xSize > 0.3 || diameter[1] / ySize > 0.3 || diameter[2] / zSize > 0.3)
             {
@@ -251,7 +251,7 @@ namespace MolConstructor
             return system;
         }
 
-        public void PrepareCatalysysSystem(double substrPerc, double catalPerc, List<MolData> syst)
+        public void PrepareCatalysicSystem(double substrPerc, double catalPerc, List<MolData> syst)
         {
             List<MolData> waterPhase = syst.Where((x => x.AtomType.Equals(1.03))).ToList();
             List<MolData> oilPhase = syst.Where((x => x.AtomType.Equals(1.02))).ToList();
@@ -928,7 +928,17 @@ namespace MolConstructor
                 molInd = system.Max(x => x.MolIndex);
             }
 
-            double radius = Math.Max(zDiam, Math.Max(xDiam, yDiam)) * collidingCoef;
+            bool asymmetric = false;
+
+            double maxDiam = Math.Max(zDiam, Math.Max(xDiam, yDiam));
+            double minDiam = Math.Min(zDiam, Math.Min(xDiam, yDiam));
+            double radius = maxDiam * collidingCoef;
+
+            if (maxDiam/minDiam > 3)
+            {
+                asymmetric = true;
+            }
+            
             Random rnd = new Random();
 
             Timer timer = new Timer();
@@ -964,10 +974,33 @@ namespace MolConstructor
                     {
                         foreach (var c in system)
                         {
-                            if (Methods.GetDistance(xCoord - xSize / 2.0, yCoord - ySize / 2.0, zCoord - zSize / 2.0,
-                                                         c.XCoord, c.YCoord, c.ZCoord) <= radius)
+
+                            if (asymmetric)
                             {
-                                collide = true;
+                                if (xDiam == maxDiam)
+                                {
+                                    collide = (Methods.GetDistance2D(yCoord - ySize / 2.0, zCoord - zSize / 2.0, c.YCoord, c.ZCoord)
+                                        <= Math.Max(yDiam, zDiam) * collidingCoef);
+                                }
+                                else if (yDiam == maxDiam)
+                                {
+                                    collide = (Methods.GetDistance2D(xCoord - xSize / 2.0, zCoord - zSize / 2.0, c.XCoord, c.ZCoord)
+                                        <= Math.Max(xDiam, zDiam) * collidingCoef);
+                                }
+                                else
+                                {
+                                    collide = (Methods.GetDistance2D(xCoord - xSize / 2.0, yCoord - ySize / 2.0, c.XCoord, c.YCoord)
+                                        <= Math.Max(xDiam, yDiam) * collidingCoef);
+                                }
+                            }
+                            else
+                            {
+                                collide = (Methods.GetDistance3D(xCoord - xSize / 2.0, yCoord - zSize / 2.0, zCoord - zSize / 2.0,
+                                            c.XCoord, c.YCoord, c.ZCoord) <= radius * collidingCoef);
+                            }
+
+                            if (collide)
+                            {
                                 break;
                             }
                         }
@@ -1488,7 +1521,7 @@ namespace MolConstructor
                     zCoord = (double)rnd.Next((int)zborders[0], (int)zborders[1]);
 
                     // Провека не попадает ли в частицу
-                    if (coms.Where(x => Methods.GetDistance(x[0], x[1], x[2], xCoord, yCoord, zCoord) < 1.2).ToList().Count == 0)
+                    if (coms.Where(x => Methods.GetDistance3D(x[0], x[1], x[2], xCoord, yCoord, zCoord) < 1.2).ToList().Count == 0)
                     {
                         counter++;
                         molInd++;
@@ -1509,9 +1542,9 @@ namespace MolConstructor
                     double xCoordNext = (double)rnd.Next((int)(xCoord - 2.0 * step), Math.Min((int)(xCoord + 2.0 * step), (int)xSize)) + (double)rndDec.Next(-100, 100) / 100.0;
                     double yCoordNext = (double)rnd.Next((int)(yCoord - 2.0 * step), Math.Min((int)(yCoord + 2.0 * step), (int)ySize)) + (double)rndDec.Next(-100, 100) / 100.0;
                     double zCoordNext = (double)rnd.Next((int)minZ, Math.Min((int)(zCoord + 2.0 * step), (int)height));
-                    double distance = Methods.GetDistance(xCoordNext, yCoordNext, zCoordNext, xCoord, yCoord, zCoord);
+                    double distance = Methods.GetDistance3D(xCoordNext, yCoordNext, zCoordNext, xCoord, yCoord, zCoord);
 
-                    if (distance >= step && distance <= 2.5 * step && coms.Where((x => Methods.GetDistance(x[0], x[1], x[2], xCoordNext, yCoordNext, zCoordNext) <= 1.2)).ToList().Count == 0)
+                    if (distance >= step && distance <= 2.5 * step && coms.Where((x => Methods.GetDistance3D(x[0], x[1], x[2], xCoordNext, yCoordNext, zCoordNext) <= 1.2)).ToList().Count == 0)
                     {
                         xCoord = xCoordNext;
                         yCoord = yCoordNext;
@@ -1644,7 +1677,7 @@ namespace MolConstructor
 
                     foreach (var c in system)
                     {
-                        if (Methods.GetDistance(xCoord - xSize / 2.0, yCoord - ySize / 2.0, zCoord - zSize / 2.0, c.XCoord, c.YCoord, c.ZCoord) <= radius)
+                        if (Methods.GetDistance3D(xCoord - xSize / 2.0, yCoord - ySize / 2.0, zCoord - zSize / 2.0, c.XCoord, c.YCoord, c.ZCoord) <= radius)
                         {
                             collide = true;
                             break;

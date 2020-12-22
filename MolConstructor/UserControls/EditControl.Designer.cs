@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tControlEdit = new System.Windows.Forms.TabControl();
             this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbAngleType = new System.Windows.Forms.TextBox();
+            this.chbCreateAngles = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbHighlightType = new System.Windows.Forms.TextBox();
             this.chbHighlightCrossLinks = new System.Windows.Forms.CheckBox();
@@ -122,9 +125,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
-            this.chbCreateAngles = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tbAngleType = new System.Windows.Forms.TextBox();
             this.tControlEdit.SuspendLayout();
             this.tabPage13.SuspendLayout();
             this.gbShift.SuspendLayout();
@@ -190,6 +190,37 @@
             this.tabPage13.Size = new System.Drawing.Size(741, 577);
             this.tabPage13.TabIndex = 0;
             this.tabPage13.Text = "Смещение и вырезка";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(621, 307);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 16);
+            this.label13.TabIndex = 140;
+            this.label13.Text = "Тип";
+            this.label13.Visible = false;
+            // 
+            // tbAngleType
+            // 
+            this.tbAngleType.Location = new System.Drawing.Point(610, 326);
+            this.tbAngleType.Name = "tbAngleType";
+            this.tbAngleType.Size = new System.Drawing.Size(59, 23);
+            this.tbAngleType.TabIndex = 139;
+            this.tbAngleType.Text = "5";
+            this.tbAngleType.Visible = false;
+            // 
+            // chbCreateAngles
+            // 
+            this.chbCreateAngles.AutoSize = true;
+            this.chbCreateAngles.Enabled = false;
+            this.chbCreateAngles.Location = new System.Drawing.Point(467, 329);
+            this.chbCreateAngles.Name = "chbCreateAngles";
+            this.chbCreateAngles.Size = new System.Drawing.Size(116, 20);
+            this.chbCreateAngles.TabIndex = 138;
+            this.chbCreateAngles.Text = "Создать углы";
+            this.chbCreateAngles.UseVisualStyleBackColor = true;
+            this.chbCreateAngles.CheckedChanged += new System.EventHandler(this.chbCreateAngles_CheckedChanged);
             // 
             // label11
             // 
@@ -309,6 +340,7 @@
             this.btnClearEdit.TabIndex = 124;
             this.btnClearEdit.Text = "Очистить все";
             this.btnClearEdit.UseVisualStyleBackColor = true;
+            this.btnClearEdit.Visible = false;
             this.btnClearEdit.Click += new System.EventHandler(this.btnClearEdit_Click);
             // 
             // label34
@@ -1079,37 +1111,6 @@
             // ep
             // 
             this.ep.ContainerControl = this;
-            // 
-            // chbCreateAngles
-            // 
-            this.chbCreateAngles.AutoSize = true;
-            this.chbCreateAngles.Enabled = false;
-            this.chbCreateAngles.Location = new System.Drawing.Point(467, 329);
-            this.chbCreateAngles.Name = "chbCreateAngles";
-            this.chbCreateAngles.Size = new System.Drawing.Size(116, 20);
-            this.chbCreateAngles.TabIndex = 138;
-            this.chbCreateAngles.Text = "Создать углы";
-            this.chbCreateAngles.UseVisualStyleBackColor = true;
-            this.chbCreateAngles.CheckedChanged += new System.EventHandler(this.chbCreateAngles_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(621, 307);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(30, 16);
-            this.label13.TabIndex = 140;
-            this.label13.Text = "Тип";
-            this.label13.Visible = false;
-            // 
-            // tbAngleType
-            // 
-            this.tbAngleType.Location = new System.Drawing.Point(610, 326);
-            this.tbAngleType.Name = "tbAngleType";
-            this.tbAngleType.Size = new System.Drawing.Size(59, 23);
-            this.tbAngleType.TabIndex = 139;
-            this.tbAngleType.Text = "5";
-            this.tbAngleType.Visible = false;
             // 
             // EditControl
             // 

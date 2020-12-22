@@ -218,7 +218,7 @@ namespace MolConstructor
                     {
                         double substrPerc = replaceValue(tbSubstrPerc.Text) / 100.0;
                         double catalPerc = replaceValue(tbCatalPerc.Text) / 100.0;
-                        structFormer.PrepareCatalysysSystem(substrPerc, catalPerc, MolComposition);
+                        structFormer.PrepareCatalysicSystem(substrPerc, catalPerc, MolComposition);
                         tbCatRes.Text = MolComposition.Where(x => x.AtomType.Equals(1.05)).ToList().Count.ToString();
                         tbSubstrRes.Text = MolComposition.Where(x => x.AtomType.Equals(1.06)).ToList().Count.ToString();
                     }

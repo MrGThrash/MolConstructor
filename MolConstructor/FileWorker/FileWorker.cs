@@ -801,6 +801,8 @@ namespace MolConstructor
                     // Read atoms
                     if (sList[0].Equals("Atoms"))
                     {
+                        List<double[]> atomList = new List<double[]>();
+
                         do
                         {
                             int ind = Math.Min(i + 1 + counter, lines.Length - 1);
@@ -809,38 +811,56 @@ namespace MolConstructor
 
                             if (sList.Count >= 6)
                             {
-                                var row = new double[5];
-                                int startLine = 3;
+                                var row = new double[6];
+                                int startElem = 3;
+
+                                row[0] = Convert.ToInt32(sList[0]);
 
                                 if (sList[2].Length == 7)
                                 {
-                                    startLine = 2;
-                                    row[3] = AtomTypes[Convert.ToInt32(sList[1])];
+                                    startElem = 2;
+                                    row[4] = AtomTypes[Convert.ToInt32(sList[1])];
 
                                     if (sList.Count == 7)
                                     {
-                                        row[4] = replaceValue(sList[6]);
+                                        row[5] = replaceValue(sList[6]);
                                     }
                                     else
                                     {
-                                        row[4] = replaceValue(sList[5]);
+                                        row[5] = replaceValue(sList[5]);
                                     }
                                 }
                                 else
                                 {
-                                    row[3] = AtomTypes[Convert.ToInt32(sList[2])];
-                                    row[4] = replaceValue(sList[1]);
-                                    if (sList.Count == 7) { startLine = 4; }
+                                    row[4] = AtomTypes[Convert.ToInt32(sList[2])];
+                                    row[5] = replaceValue(sList[1]);
+                                    if (sList.Count == 7) { startElem = 4; }
                                 }
 
                                 for (int j = 0; j < 3; j++)
                                 {
-                                    row[j] = replaceValue(sList[startLine + j]) - sizes[j][0];
+                                    row[j+1] = replaceValue(sList[startElem + j]) - sizes[j][0];
                                 }
-                                data.Add(row);
+                                atomList.Add(row);
                             }
                         }
-                        while (data.Count < molcount);
+                        while (atomList.Count < molcount);
+
+                        atomList = atomList.OrderBy(x => x[0]).ToList();
+                      
+                        foreach (var c in atomList)
+                        {
+                            try
+                            {
+                                data.Add(new double[] { c[1], c[2], c[3], c[4], c[5]});
+                            }
+                            catch
+                            {
+                                var error = c[0];
+
+                                throw new Exception("ошибка в элементе " + error.ToString());
+                            }
+                        }
                     }
 
                     // Read bonds and angles
@@ -954,7 +974,8 @@ namespace MolConstructor
                 }
                     if (lines[i] == "ITEM: NUMBER OF ATOMS")
                     molcount = Convert.ToInt32(lines[i + 1]);
-                if (lines[i] == "ITEM: BOX BOUNDS pp pp pp" || lines[i] == "ITEM: BOX BOUNDS ff pp pp" || lines[i] == "ITEM: BOX BOUNDS pp ff pp" || lines[i] == "ITEM: BOX BOUNDS pp pp ff")
+                if (lines[i] == "ITEM: BOX BOUNDS pp pp pp" || lines[i] == "ITEM: BOX BOUNDS ff pp pp" || lines[i] == "ITEM: BOX BOUNDS pp ff pp" || lines[i] == "ITEM: BOX BOUNDS pp pp ff"
+                    || lines[i] == "ITEM: BOX BOUNDS ff ff pp" || lines[i] == "ITEM: BOX BOUNDS pp ff ff" || lines[i] == "ITEM: BOX BOUNDS ff ff ff")
                 {
                     for (int j = 0; j < 3; j++)
                     {
@@ -996,6 +1017,7 @@ namespace MolConstructor
                         atomList.Add(row);
                     }
                     atomList = atomList.OrderBy(x => x[0]).ToList();
+
                     foreach (var c in atomList)
                     {
                         try

@@ -700,7 +700,7 @@ namespace MolConstructor
 
                                     for (int f = 0; f < file.Count; f++)
                                     {
-                                        if (Methods.GetDistance(file[f][0], file[f][1], file[f][2], cm[0], cm[1], cm[2]) <= realHydroDiam)
+                                        if (Methods.GetDistance3D(file[f][0], file[f][1], file[f][2], cm[0], cm[1], cm[2]) <= realHydroDiam)
                                         {
                                             particleCount++;
                                             if (file[f][3].Equals(1.00) || file[f][3].Equals(1.01) || file[f][3].Equals(1.04))
@@ -745,7 +745,7 @@ namespace MolConstructor
                                 {
                                     var centerMass = Methods.GetCenterMassWithPBC(sizes, file);
 
-                                    dataRow[1] = Methods.GetDistance(obtainedData[i - 1][6], obtainedData[i - 1][7],
+                                    dataRow[1] = Methods.GetDistance3D(obtainedData[i - 1][6], obtainedData[i - 1][7],
                                                                           obtainedData[i - 1][8], centerMass[0],
                                                                          centerMass[1], centerMass[2]);
                                     dataRow[2] = dataRow[1] + obtainedData[i - 1][2];
@@ -1295,7 +1295,7 @@ namespace MolConstructor
                             foreach (var c in layer)
                             {
 
-                                double distance = Methods.GetDistance(c[Math.Abs(coord - 1)], c[coord2], 0.0,
+                                double distance = Methods.GetDistance3D(c[Math.Abs(coord - 1)], c[coord2], 0.0,
                                                                            centerMass[Math.Abs(coord - 1)],
                                                                            centerMass[coord2], 0.0);
 
@@ -1651,7 +1651,7 @@ namespace MolConstructor
 
                                 if (Math.Abs(solvA - solvB) > 100)
                                 {
-                                    double centercoord = solvA / (solvA + solvB) * sizes[2];
+                                    double centercoord = (double)solvA / (double)(solvA + solvB) * sizes[2];
 
                                     if (solvA < solvB)
                                     {
@@ -1726,9 +1726,9 @@ namespace MolConstructor
 
                             if (byCylinder)
                             {
-                                layer = file.Where(x => Methods.GetDistance(x[0], x[1], 0.0,
+                                layer = file.Where(x => Methods.GetDistance3D(x[0], x[1], 0.0,
                                                         centerMass[0], centerMass[1], 0.0) > (i * 2 - 1) * epsilon &&
-                                                        Methods.GetDistance(x[0], x[1], 0.0,
+                                                        Methods.GetDistance3D(x[0], x[1], 0.0,
                                                         centerMass[0], centerMass[1], 0.0) <= (i * 2 + 1) * epsilon &&
                                                         x[2] >= lowLim && x[2] <= upperLim
                                                         && x[3] != 1.080).ToList();
@@ -2971,7 +2971,7 @@ namespace MolConstructor
 
                             if (partOne[3] != 1.08)
                             {
-                                var dist = Math.Round(Methods.GetDistance(partOne[0], partOne[1], partOne[2], partTwo[0], partTwo[1], partTwo[2]), 2);
+                                var dist = Math.Round(Methods.GetDistance3D(partOne[0], partOne[1], partOne[2], partTwo[0], partTwo[1], partTwo[2]), 2);
 
                                 if (dist > 2.5)
                                 {
@@ -2981,7 +2981,7 @@ namespace MolConstructor
                                                                centerPoint, file);
                                         partOne = file[c[0] - 1];
                                         partTwo = file[c[1] - 1];
-                                        dist = Math.Round(Methods.GetDistance(partOne[0], partOne[1], partOne[2], partTwo[0], partTwo[1], partTwo[2]), 2);
+                                        dist = Math.Round(Methods.GetDistance3D(partOne[0], partOne[1], partOne[2], partTwo[0], partTwo[1], partTwo[2]), 2);
                                     } while (dist > 2.5);
                                 }
                                 {
@@ -3175,7 +3175,7 @@ namespace MolConstructor
 
                         if (ends.Count == 2)
                         {
-                            endToEnd = Methods.GetDistance(ends[0][0], ends[0][1], ends[0][2],
+                            endToEnd = Methods.GetDistance3D(ends[0][0], ends[0][1], ends[0][2],
                                                                  ends[1][0], ends[1][1], ends[1][2]);
                         }
 
@@ -3192,7 +3192,7 @@ namespace MolConstructor
                             for (int p = 0; p < backbone.Count -1; p++)
                             {
                                 if (p != j)
-                                    dists.Add(new double[] { Methods.GetDistance(backbone[j][0], backbone[j][1], backbone[j][2],
+                                    dists.Add(new double[] { Methods.GetDistance3D(backbone[j][0], backbone[j][1], backbone[j][2],
                                                           backbone[p][0], backbone[p][1], backbone[p][2]), j, p });
                             }
                             dists = dists.OrderBy(x => x[0]).ToList();

@@ -275,9 +275,19 @@ namespace MolConstructor
             return centerMass[axInd];
         }
 
-        public static double GetDistance(double xOne, double yOne, double zOne, double xTwo, double yTwo, double zTwo)
+        public static double GetDistance3D(double xOne, double yOne, double zOne, double xTwo, double yTwo, double zTwo)
         {
             return Math.Round(Math.Sqrt(Math.Pow(xOne - xTwo, 2.0) + Math.Pow(yOne - yTwo, 2.0) + Math.Pow(zOne - zTwo, 2.0)), 3);
+        }
+
+        public static double GetDistance2D(double xOne, double yOne, double xTwo, double yTwo)
+        {
+            return Math.Round(Math.Sqrt(Math.Pow(xOne - xTwo, 2.0) + Math.Pow(yOne - yTwo, 2.0)), 3);
+        }
+
+        public static double GetDistance1D(double firstPoint, double secondPoint)
+        {
+            return Math.Round(firstPoint - secondPoint, 3);
         }
 
         public static double GetHeight(List<double[]> data)
@@ -338,7 +348,7 @@ namespace MolConstructor
                 {
                     if (points[j].Index != points[i].Index)
                     {
-                        var dist = GetDistance(points[i].XCoord, points[i].YCoord, 0.0,
+                        var dist = GetDistance3D(points[i].XCoord, points[i].YCoord, 0.0,
                                                 points[j].XCoord, points[j].YCoord, 0.0);
 
                         if (dist < radius)
@@ -348,7 +358,7 @@ namespace MolConstructor
                     }
                 }
                 // sort by distance
-                neighbors = neighbors.OrderBy(x => GetDistance(points[i].XCoord, points[i].YCoord, 0.0,
+                neighbors = neighbors.OrderBy(x => GetDistance3D(points[i].XCoord, points[i].YCoord, 0.0,
                                                 x.XCoord, x.YCoord, 0.0)).ToList();
 
                 // leave only X neighbors depending on the OrderType
@@ -403,7 +413,7 @@ namespace MolConstructor
                     {
                         if (c.Index != points[i].Index)
                         {
-                            var dist = GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            var dist = GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                                    points[i].XCoord, points[i].YCoord, points[i].ZCoord);
                             if (dist > (step * j) && dist <= (step * (j + 1)))
                             {
@@ -480,7 +490,7 @@ namespace MolConstructor
 
                     foreach (var c in initCoreBeads)
                     {
-                        if (GetDistance(c.XCoord, c.YCoord, c.ZCoord, currBead.XCoord, currBead.YCoord, currBead.ZCoord) <= radius)
+                        if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord, currBead.XCoord, currBead.YCoord, currBead.ZCoord) <= radius)
                         {
                             core.Add(c);
                             newBeads.Add(c);
@@ -488,7 +498,7 @@ namespace MolConstructor
 
                         if (currBead.XCoord > (sizes[0] / 2.0 + centerPoint[0]) - radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord - (sizes[0] / 2.0 + centerPoint[0]), currBead.YCoord, currBead.ZCoord) <= radius)
                             {
                                 core.Add(c);
@@ -498,7 +508,7 @@ namespace MolConstructor
 
                         if (currBead.XCoord < (sizes[0] / 2.0 - centerPoint[0]) + radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord + (sizes[0] / 2.0 + centerPoint[0]), currBead.YCoord, currBead.ZCoord) <= radius)
                             {
                                 core.Add(c);
@@ -508,7 +518,7 @@ namespace MolConstructor
 
                         if (currBead.YCoord > (sizes[1] / 2.0 + centerPoint[1]) - radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord, currBead.YCoord - (sizes[1] / 2.0 + centerPoint[1]), currBead.ZCoord) <= radius)
                             {
                                 core.Add(c);
@@ -518,7 +528,7 @@ namespace MolConstructor
 
                         if (currBead.YCoord < (sizes[1] / 2.0 - centerPoint[1]) + radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord, currBead.YCoord + (sizes[1] / 2.0 + centerPoint[1]), currBead.ZCoord) <= radius)
                             {
                                 core.Add(c);
@@ -528,7 +538,7 @@ namespace MolConstructor
 
                         if (currBead.ZCoord > (sizes[2] / 2.0 + centerPoint[2]) - radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord, currBead.YCoord, currBead.ZCoord - (sizes[2] / 2.0 + centerPoint[2])) <= radius)
                             {
                                 core.Add(c);
@@ -538,7 +548,7 @@ namespace MolConstructor
 
                         if (currBead.ZCoord < (sizes[2] / 2.0 - centerPoint[2]) + radius)
                         {
-                            if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                            if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                             currBead.XCoord, currBead.YCoord, currBead.ZCoord + (sizes[2] / 2.0 + centerPoint[2])) <= radius)
                             {
                                 core.Add(c);
@@ -606,14 +616,14 @@ namespace MolConstructor
             foreach (var c in initCoreBeads)
                 {
                  
-                if (GetDistance(c.XCoord, c.YCoord, c.ZCoord, currBead.XCoord, currBead.YCoord, currBead.ZCoord) <= radius)
+                if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord, currBead.XCoord, currBead.YCoord, currBead.ZCoord) <= radius)
                 {
                     newBeads.Add(c);
                 }
 
                 if (currBead.XCoord > (sizes[0]/2.0 + centerPoint[0])- radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord, 
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord, 
                                     currBead.XCoord - (sizes[0] / 2.0 + centerPoint[0]), currBead.YCoord, currBead.ZCoord) <= radius)
                     {
                         newBeads.Add(c);
@@ -622,7 +632,7 @@ namespace MolConstructor
 
                 if (currBead.XCoord < (sizes[0] / 2.0 - centerPoint[0]) + radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                     currBead.XCoord + (sizes[0] / 2.0 + centerPoint[0]), currBead.YCoord, currBead.ZCoord) <= radius)
                     {
                         newBeads.Add(c);
@@ -631,7 +641,7 @@ namespace MolConstructor
 
                 if (currBead.YCoord > (sizes[1] / 2.0 + centerPoint[1]) - radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                     currBead.XCoord, currBead.YCoord - (sizes[1] / 2.0 + centerPoint[1]), currBead.ZCoord) <= radius)
                     {
                         newBeads.Add(c);
@@ -640,7 +650,7 @@ namespace MolConstructor
 
                 if (currBead.YCoord < (sizes[1] / 2.0 - centerPoint[1]) + radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                     currBead.XCoord, currBead.YCoord + (sizes[1] / 2.0 + centerPoint[1]), currBead.ZCoord) <= radius)
                     {
                         newBeads.Add(c);
@@ -649,7 +659,7 @@ namespace MolConstructor
 
                 if (currBead.ZCoord > (sizes[2] / 2.0 + centerPoint[2]) - radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                     currBead.XCoord, currBead.YCoord, currBead.ZCoord - (sizes[2] / 2.0 + centerPoint[2])) <= radius)
                     {
                         newBeads.Add(c);
@@ -658,7 +668,7 @@ namespace MolConstructor
 
                 if (currBead.ZCoord < (sizes[2] / 2.0 - centerPoint[2]) + radius)
                 {
-                    if (GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    if (GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                     currBead.XCoord, currBead.YCoord, currBead.ZCoord + (sizes[2] / 2.0 + centerPoint[2])) <= radius)
                     {
                         newBeads.Add(c);

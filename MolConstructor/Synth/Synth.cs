@@ -1727,9 +1727,9 @@ namespace MolConstructor
 
                 foreach (var c in substrate)
                 {
-                    var neighbors = bounding.Where(x => Methods.GetDistance(c.XCoord, c.YCoord, c.ZCoord,
+                    var neighbors = bounding.Where(x => Methods.GetDistance3D(c.XCoord, c.YCoord, c.ZCoord,
                                                        x.XCoord, x.YCoord, x.ZCoord) <= 1.0).OrderBy(x =>
-                                                       Methods.GetDistance(0.0, 0.0, c.ZCoord,
+                                                       Methods.GetDistance3D(0.0, 0.0, c.ZCoord,
                                                        0.0, 0.0, x.ZCoord)).ToList();
                     if (neighbors.Count > 0)
                     {
