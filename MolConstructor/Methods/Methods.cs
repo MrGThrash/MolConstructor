@@ -31,6 +31,8 @@ namespace MolConstructor
                            x[3] == 1.04 ||
                            x[3] == 1.05).ToList();
 
+            //var pol = data.Where(x => x[3] == 1.00).ToList();
+
             double[] centerMass = GetCenterMass(data);
             double diagX = 0.0;
             double diagY = 0.0;
@@ -48,6 +50,14 @@ namespace MolConstructor
                 elemXZ += (c[0] - centerMass[0]) * (c[2] - centerMass[2]);
                 elemYZ += (c[1] - centerMass[1]) * (c[2] - centerMass[2]);
             }
+
+
+            diagX /= pol.Count;
+            diagY /= pol.Count;
+            diagZ /= pol.Count;
+            elemXY /= pol.Count;
+            elemXZ /= pol.Count;
+            elemYZ /= pol.Count;
 
             var gyrRad = diagX + diagY + diagZ;
 
@@ -467,7 +477,7 @@ namespace MolConstructor
             return diff;
         }
         #endregion
-
+        
         #region Methods with recursion
         // Finds the cluster using the radius search
         public static void GetOneAggregate(List<MolData> core, bool hasBonds, double beadType, double radius, double[] sizes,
@@ -482,7 +492,6 @@ namespace MolConstructor
                 newBeads.Add(initCoreBeads[0]);
                 initCoreBeads.Remove(initCoreBeads[0]);
             }
-
 
             do
             {
@@ -555,11 +564,10 @@ namespace MolConstructor
                                 newBeads.Add(c);
                             }
                         }
-
                     }
 
-                    // Accounting bonds
-                    if (hasBonds)
+                // Accounting bonds
+                if (hasBonds)
                     {
                          foreach (var c in currBead.Bonds)
                             {
@@ -575,12 +583,14 @@ namespace MolConstructor
 
                     newBeads.Remove(currBead);
 
-                    // Remove the beads from initial
-                    foreach (var c in newBeads)
-                    {
-                        initCoreBeads.Remove(c);
-                    }
-               
+
+                // Remove the beads from initial
+                foreach (var c in newBeads)
+                {
+                    initCoreBeads.Remove(c);
+                }
+
+
             } while (newBeads.Count > 0);
 
 
@@ -608,9 +618,12 @@ namespace MolConstructor
                                                MolData currBead, List<MolData> core, List<MolData> initCoreBeads)
         {
 
+            if (initCoreBeads.Contains(currBead))
+            {
             core.Add(currBead);
             initCoreBeads.Remove(currBead);
-         
+            }
+
             var newBeads = new List<MolData>();
 
             foreach (var c in initCoreBeads)
@@ -676,6 +689,11 @@ namespace MolConstructor
                 }
                 
             }
+            foreach (var c in newBeads)
+            {
+                core.Add(c);
+                initCoreBeads.Remove(c);
+            }
 
             // Accounting bonds
             if (hasBonds)
@@ -699,14 +717,13 @@ namespace MolConstructor
 
             if (newBeads.Count != 0)
             {
-
                 foreach (var c in newBeads)
                 {
-                    if (!core.Contains(c))
-                    {
+                    //if (!core.Contains(c))
+                    //{
                         currBead = c;
                         GetOneAggregate_Recursion(hasBonds, beadType, radius, sizes, centerPoint, currBead, core, initCoreBeads);
-                    }
+                    //}
                 }     
             }
             else

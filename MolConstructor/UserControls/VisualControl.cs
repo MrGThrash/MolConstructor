@@ -211,10 +211,16 @@ namespace MolConstructor.UserControls
                         centerPoint = MolData.GetCenterPoint(sizes, file);
                     }
 
+                    //var bil = file.Where(x => x[3] == 1.01 || x[3] == 1.04).ToList();
+
+                    //bil = file.Where(x => x[0] >= 0 && x[0] <= 30 && x[1] >= 0 && x[1] >= 30).ToList();
+
+                    //var cm = Methods.GetAxCenterMass(bil, 2);
+                    var cm = 50.0;
 
                     doAutoCenter(withZCenter, 5, sizes, centerPoint, file);
 
-                    var strct = MolData.ShiftAll(false, 0, false, 3, sizes, new double[] { 0, 0, 0 }, centerPoint, file);
+                    var strct = MolData.ShiftAll(false, 0, false, 3, sizes, new double[] { 0, 0, 50-cm }, centerPoint, file);
 
                     if (format == "xyzr")
                     {

@@ -466,6 +466,16 @@ namespace MolConstructor
             {
                 maxNum = data.Count;
             }
+
+
+            //var cm = Methods.GetCenterMass(data);
+
+            //foreach (var c in data)
+            //{
+            //    if (Methods.GetDistance3D(cm[0], c[0], cm[1], c[1], cm[2], c[2]) >= 16.5)
+            //        c[3] = 1.02;
+            //}
+
             for (int i = 0; (double)i < maxNum; i++)
             {
                 var newAtom = new MolData(data[i][3], i + 1, Convert.ToInt32(data[i][4]), data[i][0], data[i][1], data[i][2]);

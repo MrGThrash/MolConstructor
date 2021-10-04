@@ -472,10 +472,10 @@ namespace MolConstructor
             AddOneGraft(0, 0, 0, 0, 45.0, 0, 1.00);
 
             //For Papadakis
-            //foreach (var c in molecule)
-            //{
-            //    c.AtomType = 1.04;
-            //}
+            foreach (var c in molecule)
+            {
+                c.AtomType = 1.04;
+            }
 
             // Main cycle for 
             for (int i = 0; i <= 4; i++)
@@ -712,13 +712,13 @@ namespace MolConstructor
             //    }
             //    if (graftAmount == 10)
             //    {
-            //        positions.Add(new double[] { 7 + 12 * i, 90.0, 0.0 });
+            //        positions.Add(new double[] { 2 + 2 * i, 90.0, 0.0 });
             //    }
             //    if (graftAmount == 12)
             //    {
             //        positions.Add(new double[] { 6 + 10 * i, 90.0, 0.0 });
             //    }
-            //    if (graftAmount == 15)
+            //    if (graftAmount == 50)
             //    {
             //        positions.Add(new double[] { 5 + 8 * i, 90.0, 0.0 });
             //    }
@@ -726,17 +726,17 @@ namespace MolConstructor
             //    {
             //        positions.Add(new double[] { 4 + 6 * i, 90.0, 0.0 });
             //    }
-            //    if (graftAmount == 30)
+            //    if (graftAmount == 100)
             //    {
             //        positions.Add(new double[] { 3 + 4 * i, 90.0, 0.0 });
             //    }
-            //    if (graftAmount == 60)
+            //    if (graftAmount == 401)
             //    {
-            //        positions.Add(new double[] { 2 + 2 * i, 90.0, 0.0 });
+            //        positions.Add(new double[] { 1 + 1 * i, 90.0, 0.0 });
             //    }
-
             //}
             //return positions;
+
 
 
             // For Robin
@@ -789,13 +789,13 @@ namespace MolConstructor
             //                                new double[] { 31, 90.0, 0.0 },
             //                                new double[] { 39, 90.0, 0.0 }};
 
-                //if (chainLength == 46)
-                //{
-                //    positions[0][0] = 8;
-                //    positions[1][0] = 16;
-                //    positions[2][0] = 24;
-                //    positions[3][0] = 32;
-                //}
+            //if (chainLength == 46)
+            //{
+            //    positions[0][0] = 8;
+            //    positions[1][0] = 16;
+            //    positions[2][0] = 24;
+            //    positions[3][0] = 32;
+            //}
 
             //    if (chainLength == 50)
             //    {
@@ -805,7 +805,7 @@ namespace MolConstructor
             //        positions[3][0] = 34;
             //        positions[4][0] = 43;
             //    }
-               
+
 
             //    return positions;
             //}
@@ -816,7 +816,7 @@ namespace MolConstructor
             //    positions.Add(new double[] { 8, 90.0, 0.0 });
             //    positions.Add(new double[] { 15, 90.0, 0.0 });
             //    positions.Add(new double[] { 22, 90.0, 0.0 });
-               
+
             //    return positions;
             //}
 
@@ -1437,7 +1437,7 @@ namespace MolConstructor
         {
             for (int i = 0; i < backboneLength; i++)
             {
-                molecule.Add(new MolData(1.04, molecule.Count + 1, xInit + i, yInit, zInit));
+                molecule.Add(new MolData(1.04, molecule.Count + 1, 1, xInit + i, yInit, zInit));
 
                 if (i > 0)
                 {
@@ -1645,7 +1645,7 @@ namespace MolConstructor
                             bonds.Add(new int[] { prevMolBeads * (chainNum - 1) + coef * j + 1, sChainInd });
                         }
 
-                        molecule.Add(new MolData(type, molecule.Count + 1, xCoord, yCoord, beadZCoord));
+                        molecule.Add(new MolData(type, molecule.Count + 1, k + 1, xCoord, yCoord, beadZCoord));
 
                         if (sideChainType == 3)
                         {

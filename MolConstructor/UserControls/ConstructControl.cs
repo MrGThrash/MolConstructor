@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -134,7 +132,7 @@ namespace MolConstructor
             }
             else
             {
-                chbSeparatedSolvents.Checked = false;
+                //chbSeparatedSolvents.Checked = false;
                 chbSeparatedSolvents.Enabled = false;
             }
         }
@@ -888,8 +886,7 @@ namespace MolConstructor
                     {
                         funcLength = Convert.ToInt32(tbFuncChainLength.Text);
                     }
-                    
-
+                   
 
                     var funcSynth = new FuncSynth(chbBoundExisting.Checked,chbFuncWithChains.Checked, funcLength, subsType, funcType,
                                                   replaceValue(tbBeadFuncSubsFrac.Text)/100.0, InputFuncMol, InitFuncBonds);

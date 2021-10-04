@@ -120,11 +120,13 @@ namespace MolConstructor
                 if (molNumber > 1)
                 {
                     int counter = 0;
-                    double radius = Math.Max(xDiam, yDiam)*0.8;
+                    double radius = Math.Max(xDiam, yDiam);
 
-                    if (molNumber >= 15) { radius *= 0.5; }
-                    if (molNumber >= 100) { radius *= 0.2; }
+                    if (molNumber >= 15) { radius *= 0.7; }
+                    if (molNumber >= 100) { radius *= 0.3; }
                     if (crossEnabled) { radius = 0.0; }
+
+                    var cMasses = new List<double[]>();
 
                     Timer timer = new Timer();
                     timer.Interval = 90000.0;
@@ -140,10 +142,11 @@ namespace MolConstructor
                         double yCoord = random.Next(Math.Min((int)yDiam, (int)(ySize - yDiam / 2.0)), Math.Max((int)yDiam, (int)(ySize - yDiam / 2.0)));
 
                         var interMol = moveMolecule(molecule, xCoord - xSize / 2.0 - xDiam / 2.0, yCoord - ySize / 2.0 - yDiam / 2.0, interCord - zDiam / 2.0 + shift);
+                        var cMass = Methods.GetCenterMass(interMol);
 
-                        foreach (var c in system)
+                        foreach (var c in cMasses)
                         {
-                            if (Methods.GetDistance3D(xCoord - xSize / 2.0, yCoord - ySize / 2.0, 0.0, c.XCoord, c.YCoord, 0.0) <= radius)
+                            if (Methods.GetDistance2D(cMass[0], cMass[1], c[0], c[1]) <= radius)
                             {
                                 collide = true;
                                 break;
@@ -156,6 +159,8 @@ namespace MolConstructor
                             {
                                 system.Add(new MolData(c[3], system.Count + 1, molInd, c[0], c[1], c[2]));
                             }
+
+                            cMasses.Add(cMass);
 
                             if (doubleSurf)
                             {
@@ -178,7 +183,14 @@ namespace MolConstructor
                     if ((uint)molNumber > 0U)
                     {
                         foreach (var c in interMol)
-                            system.Add(new MolData(c[3], system.Count + 1, 1, c[0], c[1], c[2]));
+                        {
+                            int molIndex = 1;
+                            if (c.Count() >= 5 && c[4] != 0)
+                            {
+                                molIndex = (int)c[4];
+                            }
+                                system.Add(new MolData(c[3], system.Count + 1, molIndex, c[0], c[1], c[2]));
+                        }
                     }
                 }
                 if (isHomoPol)
@@ -205,7 +217,7 @@ namespace MolConstructor
         public List<MolData> ComposeRandomStructure(bool twoOils, List<int[]> bonds)
         {
             List<MolData> system = new List<MolData>();
-            double collidingCoef = 0.75;
+            double collidingCoef = 0.9;
             if (crossEnabled)
             {
                 collidingCoef = 0.0;
@@ -229,9 +241,9 @@ namespace MolConstructor
             List<MolData> system = new List<MolData>();
             double[] diameter = Methods.GetDiameter(molecule);
 
-            double collidingCoef = 0.9;
+            double collidingCoef = 1.0;
 
-            if (diameter[0] / xSize > 0.3 || diameter[1] / ySize > 0.3 || diameter[2] / zSize > 0.3)
+            if (diameter[0] / xSize > 0.4 || diameter[1] / ySize > 0.4 || diameter[2] / zSize > 0.4)
             {
                 collidingCoef = 0.3;
             }
@@ -1029,11 +1041,15 @@ namespace MolConstructor
                 var interMol = moveMolecule(mol, -xDiam / 2.0, -yDiam / 2.0, -zSize * percentage / 2.0);
                 molInd++;
 
-                foreach (var c in interMol)
-                {
-                    system.Add(new MolData(c[3], system.Count + 1, molInd,
-                                           c[0], c[1], c[2]));
-                }
+                    foreach (var c in interMol)
+                    {
+                        int molIndex = 1;
+                        if (c.Count() >= 5 && c[4] != 0)
+                        {
+                            molIndex = (int)c[4];
+                        }
+                        system.Add(new MolData(c[3], system.Count + 1, molIndex, c[0], c[1], c[2]));
+                    }
 
                 //var randMol = MolData.ConvertToMolData(mol, true, bonds);
 
@@ -1093,8 +1109,10 @@ namespace MolConstructor
                                         || x.AtomType.Equals(1.06)).ToList().Count;
 
             // starting molIndex
-            molInd = system.Max(x => x.MolIndex);
-
+            if (system.Count > 0)
+            {
+                molInd = system.Max(x => x.MolIndex);
+            }
             // walls stuff
             int wallCount = 0;
             if (hasWalls && wallsType == 1)
@@ -1915,7 +1933,7 @@ namespace MolConstructor
         /// <summary>
         /// Molecule shift along the Cartesian axes
         /// </summary>
-        private List<double[]> moveMolecule(double[] rotattions, List<double[]> moveMol, double xCoord, double yCoord, double zCoord)
+        private List<double[]> moveMolecule(double[] rotations, List<double[]> moveMol, double xCoord, double yCoord, double zCoord)
         {
         
             double xDiff = moveMol.Min(x => x[0]) - xCoord;

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MolConstructor
@@ -218,6 +219,18 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[7].HeaderText = "  ";
                         break;
                     }
+                case 15:
+                    {
+                        dgvDataFromFolder.Columns[0].HeaderText = "Время";
+                        dgvDataFromFolder.Columns[1].HeaderText = "Число контактов";
+                        dgvDataFromFolder.Columns[2].HeaderText = "Число контактирующих частиц";
+                        dgvDataFromFolder.Columns[3].HeaderText = "Доля контактов от всех частиц";
+                        dgvDataFromFolder.Columns[4].HeaderText = "  ";
+                        dgvDataFromFolder.Columns[5].HeaderText = "  ";
+                        dgvDataFromFolder.Columns[6].HeaderText = "  ";
+                        dgvDataFromFolder.Columns[7].HeaderText = "  ";
+                        break;
+                    }
             }
             label2.Visible = (cmbTypeOfResults.SelectedIndex != 0 && cmbTypeOfResults.SelectedIndex != 1
                                && cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
@@ -226,12 +239,15 @@ namespace MolConstructor
                                   && cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 11 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
 
             label5.Visible = (cmbTypeOfResults.SelectedIndex != 2 && cmbTypeOfResults.SelectedIndex != 4 && cmbTypeOfResults.SelectedIndex != 8 &&
-                                    cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
+                                    cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13 && cmbTypeOfResults.SelectedIndex != 15) ? false : true;
             tbChainLength.Visible = (cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 4 && cmbTypeOfResults.SelectedIndex != 2 &&
-                                     cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
+                                     cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 13 && cmbTypeOfResults.SelectedIndex != 15) ? false : true;
 
-            if (cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13) { label5.Text = "Длина цепи"; }
+            if (cmbTypeOfResults.SelectedIndex != 10 && 
+                cmbTypeOfResults.SelectedIndex != 13 && 
+                cmbTypeOfResults.SelectedIndex != 15) { label5.Text = "Длина цепи"; }
             else if (cmbTypeOfResults.SelectedIndex == 10) { label5.Text = "Число молекул"; }
+            else if (cmbTypeOfResults.SelectedIndex == 10) { label5.Text = "Тип бидов №1"; }
             else { label5.Text = "Начальное число бидов субстр."; }
 
             if (cmbTypeOfResults.SelectedIndex == 10) 
@@ -255,6 +271,7 @@ namespace MolConstructor
             if (cmbTypeOfResults.SelectedIndex == 8) { label7.Text = "Тип бидов ядер"; }
             if (cmbTypeOfResults.SelectedIndex == 13) { label7.Text = "Тип бидов продукта"; }
             if (cmbTypeOfResults.SelectedIndex == 14) { label7.Text = "Тип бидов каркаса"; }
+            if (cmbTypeOfResults.SelectedIndex == 15) { label7.Text = "Тип бидов №2"; }
             if (cmbTypeOfResults.SelectedIndex != 8)  { lblStep.Text = "Шаг по координате";}
             else
             {
@@ -384,7 +401,7 @@ namespace MolConstructor
                     fileNames[i] = files.ElementAt(i);
             }
 
-            if (index < 3 || index == 11)
+            if (index < 3 || index == 11 || index == 15)
             {
 
                 double[] shifts = new double[3];
@@ -717,6 +734,66 @@ namespace MolConstructor
                                     dataRow[5] = Math.Round(dataRow[3] / dataRow[4], 3);
 
                                 }
+                                if (calcType == 15)
+                                {
+                                    dataRow[0] = Convert.ToDouble(FileWorker.GetTimeStep(files[i]));
+
+                                    var typeOne = replaceValue(tbChainLength.Text);
+                                    var typeTwo = replaceValue(tbCoreBead.Text);
+
+                                    var pol = file.Where(x => x[3] == typeOne).ToList();
+                                    var rest = file.Where(x => x[3] == typeTwo).ToList();
+
+                                    var cm = Methods.GetCenterMass(pol);
+                                    var HydroRad = Methods.GetHydroRadius2D(pol);
+
+                                    rest = rest.Where(x => Methods.GetDistance2D(x[0], x[1], cm[0], cm[1]) <= HydroRad * 2.0).ToList();
+
+                                    int contactNum = 0;
+                                    int contactingNum = 0;
+
+                                    var contacted = new List<double[]>();
+
+                                    foreach (var c in pol)
+                                    {
+                                        var hasContact = false;
+                                        foreach (var p in rest)
+                                        {
+                                            if (Methods.GetDistance3D(c[0], c[1], c[2], p[0], p[1], p[2]) <= epsilon * 2)
+                                            {
+                                                contactNum++;
+                                                if (!hasContact)
+                                                {
+                                                    hasContact = true;
+                                                    contactingNum++;
+                                                    contacted.Add(c);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    var path = Path.GetDirectoryName(files[i]);
+
+                                    var dataC = MolData.ConvertToMolData(contacted, false, null);
+
+                                    FileWorker.SaveLammpstrj(false, path + "\\Contacts\\cont-" + ((int)dataRow[0]).ToString() + ".lammpstrj", 1, sizes, 3, dataC);
+                                    foreach (var c in contacted)
+                                    {
+                                        pol.Remove(c);
+                                    }
+
+                                    foreach (var c in pol)
+                                    {
+                                        c[3] = 1.04;
+                                    }
+
+                                    dataC = MolData.ConvertToMolData(pol, false, null);
+                                    FileWorker.SaveLammpstrj(false, path + "\\Leftovers\\left-" + ((int)dataRow[0]).ToString() + ".lammpstrj", 1, sizes, 3, dataC);
+
+                                    dataRow[1] = contactNum;
+                                    dataRow[2] = contactingNum;
+                                    dataRow[3] = Math.Round(((double)contactingNum / pol.Count), 2);
+                                }
                                 else
                                 {
                                     dataRow[0] = step * i;
@@ -727,7 +804,7 @@ namespace MolConstructor
                                     dataRow[5] = Methods.GetHydroDiameter(file);
 
                                     var shapes = Methods.GetShapeCharacteristics(file);
-                                    
+
                                     dataRow[6] = shapes[0];
                                     dataRow[7] = shapes[1];
                                 }
@@ -2600,13 +2677,13 @@ namespace MolConstructor
 
                         do
                         {
-                            
-                            // initial agg determination
-                            //var currbead = initCoreBeads[0];
-                            //    Methods.GetOneAggregate_Recursion(hasBonds,beadType,radius,sizes,centerPoint,currbead,core, initCoreBeads);
 
-                            Methods.GetOneAggregate(core, hasBonds, beadType, radius, sizes, centerPoint, initCoreBeads);
-                           
+                            // initial agg determination
+                            var currbead = initCoreBeads[0];
+                            Methods.GetOneAggregate_Recursion(hasBonds, beadType, radius, sizes, centerPoint, currbead, core, initCoreBeads);
+
+                            // Methods.GetOneAggregate(core, hasBonds, beadType, radius, sizes, centerPoint, initCoreBeads);
+
                             totalCounter++;
 
                             // after the initial agg is determined it then transfers to the finaBeads List
@@ -3455,7 +3532,7 @@ namespace MolConstructor
                             dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString());
                         }
                         }
-                        else if (index == 12)
+                        else if (index == 12 || index == 15)
                         {
                             dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                        c[2].ToString(), c[3].ToString());

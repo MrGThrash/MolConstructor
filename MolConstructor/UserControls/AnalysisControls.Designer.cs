@@ -327,7 +327,7 @@
             this.tbChainLength.TabIndex = 50;
             this.tbChainLength.Text = "40";
             this.tbChainLength.Visible = false;
-            this.tbChainLength.TextChanged += new System.EventHandler(this.TextBox_TextChangedInt);
+            this.tbChainLength.TextChanged += new System.EventHandler(this.TextBox_TextChangedFloat);
             // 
             // label5
             // 
@@ -385,7 +385,8 @@
             "Плотность микрогеля",
             "Распределение длин связей",
             "Скорость катализа",
-            "Контурная длина "});
+            "Контурная длина",
+            "Число контактов"});
             this.cmbTypeOfResults.Location = new System.Drawing.Point(567, 78);
             this.cmbTypeOfResults.Name = "cmbTypeOfResults";
             this.cmbTypeOfResults.Size = new System.Drawing.Size(167, 24);

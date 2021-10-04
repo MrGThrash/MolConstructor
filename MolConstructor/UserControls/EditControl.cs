@@ -170,74 +170,89 @@ namespace MolConstructor
                                                   CenterPoint_Edit, InputCut);
 
 
-            // For Robin
-            //    {
-            //        double xSize = replaceValue(tbX_Page1.Text);
-            //        double ySize = replaceValue(tbY_Page1.Text);
-            //        double zSize = replaceValue(tbZ_Page1.Text);
 
-            //        int maxNum = (int)xSize * (int)ySize * (int)zSize * 3;
-
-            //        int watercount = (maxNum-EditedComposition.Count)/ 2;
-            //        int molInd = EditedComposition.Max(x => x.MolIndex);
-
-            //        Random rnd = new Random();
-            //        Random rndDec = new Random();
-            //        int counter = 0;
-            //        do
-            //        {
-
-            //            double xCoord = (double)rnd.Next(0, (int)xSize - 1) + rndDec.NextDouble();
-            //            double yCoord = (double)rnd.Next(0, (int)ySize - 1) + rndDec.NextDouble();
-            //            double zCoord = (double)rnd.Next(0, 75) + rndDec.NextDouble();
-
-            //                molInd++;
-            //                counter++;
-            //                EditedComposition.Add(new MolData(1.03, EditedComposition.Count + 1, molInd, xCoord, yCoord, zCoord));
-
-            //        }
-            //        while (counter < watercount);
-
-
-            //    counter = 0;
-            //    do
-            //    {
-            //            double xCoord = (double)rnd.Next(1, (int)xSize - 1) + rndDec.NextDouble();
-            //            double yCoord = (double)rnd.Next(1, (int)ySize - 1) + rndDec.NextDouble();
-            //            double zCoord = (double)rnd.Next(105, 179) + rndDec.NextDouble();
-
-
-            //            if (true)
-            //        {
-            //            molInd++;
-            //            counter++;
-            //            EditedComposition.Add(new MolData(1.02, EditedComposition.Count + 1, molInd, xCoord , yCoord , zCoord ));
-            //        }
-
-            //    }
-            //    while (counter < watercount);
-            //}
-
-            //Gavrilov-Rudyak
-            //foreach (var c in EditedComposition)
+            //for (int i = 0; i < EditedComposition.Count; i++)
             //{
-            //    if (c.AtomType == 1.02)
+            //    if (i >= 1700)
             //    {
-            //        c.AtomType = 1.00;
+            //        if (EditedComposition[i].AtomType == 1.00)
+            //        {
+            //            EditedComposition[i].AtomType = 1.01;
+            //        }
             //    }
-            //    if (c.AtomType == 1.03)
-            //    {
-            //        c.AtomType = 1.00;
-            //    }
-            //    if (c.AtomType == 1.04)
-            //    {
-            //        c.AtomType = 1.01;
-            //    }
-            //    if (c.AtomType == 1.06)
-            //        c.AtomType = 1.01;
             //}
 
-            if (chbHighlightCrossLinks.Checked)
+                // For Robin
+                //    {
+                //        double xSize = replaceValue(tbX_Page1.Text);
+                //        double ySize = replaceValue(tbY_Page1.Text);
+                //        double zSize = replaceValue(tbZ_Page1.Text);
+
+                //        int maxNum = (int)xSize * (int)ySize * (int)zSize * 3;
+
+                //        int watercount = (maxNum-EditedComposition.Count)/ 2;
+                //        int molInd = EditedComposition.Max(x => x.MolIndex);
+
+                //        Random rnd = new Random();
+                //        Random rndDec = new Random();
+                //        int counter = 0;
+                //        do
+                //        {
+
+                //            double xCoord = (double)rnd.Next(0, (int)xSize - 1) + rndDec.NextDouble();
+                //            double yCoord = (double)rnd.Next(0, (int)ySize - 1) + rndDec.NextDouble();
+                //            double zCoord = (double)rnd.Next(0, 75) + rndDec.NextDouble();
+
+                //                molInd++;
+                //                counter++;
+                //                EditedComposition.Add(new MolData(1.03, EditedComposition.Count + 1, molInd, xCoord, yCoord, zCoord));
+
+                //        }
+                //        while (counter < watercount);
+
+
+                //    counter = 0;
+                //    do
+                //    {
+                //            double xCoord = (double)rnd.Next(1, (int)xSize - 1) + rndDec.NextDouble();
+                //            double yCoord = (double)rnd.Next(1, (int)ySize - 1) + rndDec.NextDouble();
+                //            double zCoord = (double)rnd.Next(105, 179) + rndDec.NextDouble();
+
+
+                //            if (true)
+                //        {
+                //            molInd++;
+                //            counter++;
+                //            EditedComposition.Add(new MolData(1.02, EditedComposition.Count + 1, molInd, xCoord , yCoord , zCoord ));
+                //        }
+
+                //    }
+                //    while (counter < watercount);
+                //}
+
+                //Gavrilov-Rudyak
+                // 1,4- regular monomers, 3 - initiator, the rest are the crosslinkers
+                //foreach (var c in EditedComposition)
+                //{
+                //    if (c.AtomType == 1.02)
+                //    {
+                //        c.AtomType = 1.00;
+                //    }
+                //    if (c.AtomType == 1.03)
+                //    {
+                //        c.AtomType = 1.00;
+                //    }
+                //    if (c.AtomType == 1.04)
+                //    {
+                //        c.AtomType = 1.01;
+                //    }
+                //    if (c.AtomType == 1.06)
+                //    {
+                //        c.AtomType = 1.01;
+                //    }
+                //}
+
+                if (chbHighlightCrossLinks.Checked)
             {
                 var type = FileWorker.AtomTypes[Convert.ToInt32(tbHighlightType.Text)];
 

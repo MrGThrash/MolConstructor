@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MolConstructor
 {
@@ -23,7 +24,8 @@ namespace MolConstructor
           {8, 1.07},
           {9, 1.08},
           {10,1.09},
-          {11,1.10}
+          {11,1.10},
+          {12,1.11}
         };
 
         public static Dictionary<string, double> AtomTypes_MOL =
@@ -110,6 +112,25 @@ namespace MolConstructor
             if (triplet[0] == 1.01 && triplet[1] == 1.01 && triplet[2] == 1.01 || triplet[0] == 1.0 && triplet[1] == 1.01 && triplet[2] == 1.01 || triplet[0] == 1.01 && triplet[1] == 1.01 && triplet[2] == 1.0)
                 return 2;
             return triplet[0] == 1.01 && triplet[1] == 1.0 && triplet[2] == 1.01 || triplet[0] == 1.0 && triplet[1] == 1.01 && triplet[2] == 1.0 ? 3 : 4;
+        }
+
+        public static string GetTimeStep (string filename)
+        {
+            var fName = filename.Split('\\');
+            
+            string splitPattern = @"[^\d]";
+
+            // Split approach: split on the pattern and exclude the match, hence the reverse logic of 
+            // matching on anything that is NOT a digit 
+            string[] results = Regex.Split(fName[fName.Count()-1], splitPattern);
+
+            StringBuilder timeStep = new StringBuilder();
+
+            foreach (string s in results)
+            {
+                timeStep.Append(s);
+            }
+            return timeStep.ToString();
         }
 
         public static void Save_XYZ(string fileName, bool inBox, double[] sizes, List<MolData> atoms)
