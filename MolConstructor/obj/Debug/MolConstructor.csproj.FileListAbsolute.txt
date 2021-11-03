@@ -81,4 +81,3 @@ C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstruc
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.xml
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\bin\Debug\Accord.Math.Core.xml
 C:\Users\HerrDeutcheThrash\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csprojAssemblyReference.cache
-C:\Users\Рустам\Dropbox\Программа\MolConstructor\MolConstructor\obj\Debug\MolConstructor.csprojAssemblyReference.cache

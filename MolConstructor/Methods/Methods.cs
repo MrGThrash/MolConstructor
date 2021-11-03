@@ -74,7 +74,7 @@ namespace MolConstructor
 
             var shapeOblatness = (3.0 * eigens[0] - gyrRad) * (3.0 * eigens[1] - gyrRad) * (3.0 * eigens[2] - gyrRad) / Math.Pow(gyrRad, 3);
 
-            return new double[] { asphericity, shapeOblatness };
+            return new double[] { asphericity, shapeOblatness, eigens[0], eigens[1], eigens[2] };
         }
 
 

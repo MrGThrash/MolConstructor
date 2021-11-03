@@ -167,10 +167,11 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[1].HeaderText = "G(r)";
                         dgvDataFromFolder.Columns[2].HeaderText = "RgXY";
                         dgvDataFromFolder.Columns[3].HeaderText = "RgZ";
-                        dgvDataFromFolder.Columns[4].HeaderText = "Ψj";
-                        dgvDataFromFolder.Columns[5].HeaderText = "Вороной online";
-                        dgvDataFromFolder.Columns[6].HeaderText = "  ";
-                        dgvDataFromFolder.Columns[7].HeaderText = "  ";
+                        dgvDataFromFolder.Columns[4].HeaderText = "λXY";
+                        dgvDataFromFolder.Columns[5].HeaderText = "λZ";
+                        dgvDataFromFolder.Columns[6].HeaderText = "Асферичность";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Ψj";
+                        dgvDataFromFolder.Columns[8].HeaderText = "Вороной online";
                         break;
                     }
                 case 11:
@@ -2237,10 +2238,17 @@ namespace MolConstructor
             var obtainedData = new List<double[]>();
             var psis = new List<double>();
             var Rgs = new List<double[]>();
+            var Shape = new List<double[]>();
             var RgXY = 0.0;
             var RgZ = 0.0;
             var RgXYErr = 0.0;
             var RgZErr = 0.0;
+            var LambdaXY = 0.0;
+            var LambdaZ = 0.0;
+            var LambdaXYErr = 0.0;
+            var LambdaZErr = 0.0;
+            var Asph = 0.0;
+            var AsphErr = 0.0;
             var psi6 = 0.0;
             var psiErr = 0.0;
 
@@ -2257,8 +2265,9 @@ namespace MolConstructor
                     readTableFile(format, filenames[k], out file, out sizes);
 
                     var molSizes = new double [2];
+                    var Gyrs = new double[3];
 
-                    var molCenters = getVoronoiBase(molNum, sizes, file, out molSizes, out voronSites);  
+                    var molCenters = getVoronoiBase(molNum, sizes, file, out molSizes, out Gyrs, out voronSites);  
 
                     //var filnmae = filenames[k].TrimEnd(".lammpstrj".ToCharArray());
                     //filnmae += "-cms.lammpstrj";
@@ -2269,6 +2278,8 @@ namespace MolConstructor
 
                     psis.Add(Methods.GetPsiXParam(orderType, molNum, Math.Min(sizes[0], sizes[1]), molCenters));
                     Rgs.Add(molSizes);
+                    Shape.Add(Gyrs);
+
 
                     if (!isDyn)
                     {
@@ -2312,7 +2323,9 @@ namespace MolConstructor
             {
                 for (int i = 0; i < psis.Count; i++)
                 {
-                    obtainedData.Add(new double[] { Math.Round(Rgs[i][0],3), Math.Round(Rgs[i][1], 3), Math.Round(psis[i],3)});
+                    obtainedData.Add(new double[] { Math.Round(Rgs[i][0],3), Math.Round(Rgs[i][1], 3), 
+                                                    Math.Round(Shape[i][0], 3), Math.Round(Shape[i][1], 3), Math.Round(Shape[i][2], 3),
+                                                    Math.Round(psis[i],3)});
                 }
             }
             else
@@ -2328,25 +2341,40 @@ namespace MolConstructor
                     psi6 += psis[i];
                     RgXY += Rgs[i][0];
                     RgZ += Rgs[i][1];
+                    LambdaXY += Shape[i][0];
+                    LambdaZ += Shape[i][1];
+                    Asph += Shape[i][2];
 
                 }
                 psi6 /= filenames.Length;
                 RgXY /= filenames.Length;
                 RgZ /= filenames.Length;
+                LambdaXY /= filenames.Length;
+                LambdaZ /= filenames.Length;
+                Asph /= filenames.Length;
 
                 for (int i = 0; i < filenames.Length; i++)
                 {
                     psiErr += Math.Pow(psis[i] - psi6, 2);
                     RgXYErr += Math.Pow(Rgs[i][0] - RgXY, 2);
                     RgZErr += Math.Pow(Rgs[i][1] - RgZ, 2);
+                    LambdaXYErr += Math.Pow(Shape[i][0] - LambdaXY, 2);
+                    LambdaZErr += Math.Pow(Shape[i][1] - LambdaZ, 2);
+                    AsphErr += Math.Pow(Shape[i][2] - Asph, 2);
                 }
 
                 psiErr = Math.Sqrt(psiErr / (filenames.Length - 1));
                 RgXYErr = Math.Sqrt(RgXYErr / (filenames.Length - 1));
                 RgZErr = Math.Sqrt(RgZErr / (filenames.Length - 1));
+                LambdaXYErr = Math.Sqrt(LambdaXYErr / (filenames.Length - 1));
+                LambdaZErr = Math.Sqrt(LambdaZErr / (filenames.Length - 1));
+                AsphErr = Math.Sqrt(AsphErr / (filenames.Length - 1));
+
             }
 
                 e.Result = new object[] { obtainedData, index, Math.Round(RgXY, 3), Math.Round(RgXYErr, 3), Math.Round(RgZ, 3), Math.Round(RgZErr, 3),
+                                         Math.Round(LambdaXY, 3), Math.Round(LambdaXYErr, 3), Math.Round(LambdaZ, 3), Math.Round(LambdaZErr, 3),
+                                         Math.Round(Asph, 3), Math.Round(AsphErr, 3),
                                          Math.Round(psi6,3), Math.Round(psiErr, 3), voronSites, isDyn };
         }
 
@@ -2360,7 +2388,7 @@ namespace MolConstructor
             RunWorkerCompleted(sender, e);
         }
 
-        private List<MolData> getVoronoiBase(int molNum, double[] sizes, List<double[]> data, out double[] molSizes, out string sites)
+        private List<MolData> getVoronoiBase(int molNum, double[] sizes, List<double[]> data, out double[] molSizes, out double[] Gyrs, out string sites)
         {
             var voron = new List<MolData>();
 
@@ -2378,6 +2406,7 @@ namespace MolConstructor
 
             var molDiam = 0.0;
             molSizes = new double[2] { 0.0, 0.0 };
+            Gyrs = new double[3] { 0.0, 0.0, 0.0 };
 
             int counter = 0;
 
@@ -2395,7 +2424,13 @@ namespace MolConstructor
                 {
                     molDiam += diam.Max();
                     molSizes[0] += Methods.GetHydroRadius2D(mol);
-                    counter++;
+
+                    var shape = Methods.GetShapeCharacteristics(mol);
+                    Gyrs[0] += Math.Sqrt(shape[2] + shape[3]);
+                    Gyrs[1] += Math.Sqrt(shape[4]);
+                    Gyrs[2] += shape[0];
+
+                   counter++;
                     var cm = Methods.GetCenterMass(mol);
                     points.Add(new double[] { cm[0], cm[1] });
                 }
@@ -2418,15 +2453,19 @@ namespace MolConstructor
                 }
             }
             molSizes[1] /= molNum;
-           
+            Gyrs[1] /= molNum;
+            Gyrs[2] /= molNum;
+
             if (molDiam == 0.0)
             {
                 molDiam = molSizes[1];
+
             }
             else
             {
                 molDiam /= counter;
                 molSizes[0] /= counter;
+                Gyrs[0] /= counter;
             }
 
             // Get rid of periodicity
@@ -2491,6 +2530,10 @@ namespace MolConstructor
                 if (molSizes[0] == 0)
                 {
                     molSizes[0] += Methods.GetHydroRadius2D(normMol);
+                    var shape = Methods.GetShapeCharacteristics(normMol);
+                    Gyrs[0] += Math.Sqrt(shape[2] + shape[3]);
+                    Gyrs[1] += Math.Sqrt(shape[4]);
+                    Gyrs[2] += shape[0];
                 }
 
                 points.Add(new double[] { cm[0], cm[1] });
@@ -3522,7 +3565,7 @@ namespace MolConstructor
                     }
                         else if (index == 10)
                         {
-                          var isDyn = (bool)args[9];
+                          var isDyn = (bool)args[15];
                         if (isDyn)
                         {
                             dgvDataFromFolder.Rows.Add("", "", c[0].ToString(), c[1].ToString(), c[2].ToString());
@@ -3552,7 +3595,7 @@ namespace MolConstructor
 
                 if (index == 10)
                 {
-                    var isDyn = (bool)args[9];
+                    var isDyn = (bool)args[15];
 
                     if (!isDyn)
                     {
@@ -3562,7 +3605,13 @@ namespace MolConstructor
                         dgvDataFromFolder.Rows[1].Cells[3].Value = args[5];
                         dgvDataFromFolder.Rows[0].Cells[4].Value = args[6];
                         dgvDataFromFolder.Rows[1].Cells[4].Value = args[7];
-                        dgvDataFromFolder.Rows[0].Cells[5].Value = (string)args[8];
+                        dgvDataFromFolder.Rows[0].Cells[5].Value = args[8];
+                        dgvDataFromFolder.Rows[1].Cells[5].Value = args[9];
+                        dgvDataFromFolder.Rows[0].Cells[6].Value = args[10];
+                        dgvDataFromFolder.Rows[1].Cells[6].Value = args[11];
+                        dgvDataFromFolder.Rows[0].Cells[7].Value = args[12];
+                        dgvDataFromFolder.Rows[1].Cells[7].Value = args[13];
+                        dgvDataFromFolder.Rows[0].Cells[8].Value = (string)args[14];
                     }
                 }
             }
