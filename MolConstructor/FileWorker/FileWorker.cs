@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace MolConstructor
 {
@@ -25,11 +26,19 @@ namespace MolConstructor
           {9, 1.08},
           {10,1.09},
           {11,1.10},
-          {12,1.11}
+          {12,1.11},
+          {13,1.12},
+          {14,1.13},
+          {15,1.14},
+          {16,1.15},
+          {17,1.16},
+          {18,1.17},
+          {19,1.18},
+          {20,1.19}
         };
 
         public static Dictionary<string, double> AtomTypes_MOL =
-    new Dictionary<string, double>()
+            new Dictionary<string, double>()
 {
          {"C",1.00},
          {"O",1.01},
@@ -114,15 +123,15 @@ namespace MolConstructor
             return triplet[0] == 1.01 && triplet[1] == 1.0 && triplet[2] == 1.01 || triplet[0] == 1.0 && triplet[1] == 1.01 && triplet[2] == 1.0 ? 3 : 4;
         }
 
-        public static string GetTimeStep (string filename)
+        public static string GetTimeStep(string filename)
         {
             var fName = filename.Split('\\');
-            
+
             string splitPattern = @"[^\d]";
 
             // Split approach: split on the pattern and exclude the match, hence the reverse logic of 
             // matching on anything that is NOT a digit 
-            string[] results = Regex.Split(fName[fName.Count()-1], splitPattern);
+            string[] results = Regex.Split(fName[fName.Count() - 1], splitPattern);
 
             StringBuilder timeStep = new StringBuilder();
 
@@ -218,7 +227,7 @@ namespace MolConstructor
                 }
                 streamWriter.WriteLine(string.Format("{0,8}{1,8}{2,8}{3,8}", atomCount, bonds.Count, allChains, density));
                 streamWriter.WriteLine(string.Format("{0,20}{1,20}{2,20}", ToFortranFormat(sizes[0], "0.000000000000"), "0.232177136833D-52", "0.258027476660D-53"));
-                streamWriter.WriteLine(string.Format("{0,20}{1,20}{2,20}","0.232177136833D-52", ToFortranFormat(sizes[1], "0.000000000000"), "-0.111689668373D-52"));
+                streamWriter.WriteLine(string.Format("{0,20}{1,20}{2,20}", "0.232177136833D-52", ToFortranFormat(sizes[1], "0.000000000000"), "-0.111689668373D-52"));
                 streamWriter.WriteLine(string.Format("{0,20}{1,20}{2,20}", "0.387041214990D-53", "-0.167534502560D-52", ToFortranFormat(sizes[2], "0.000000000000")));
                 bool xyPositive = true;
                 bool onlyZpositive = true;
@@ -316,23 +325,74 @@ namespace MolConstructor
         {
             string directoryName = Path.GetDirectoryName(fileName);
             if (!Directory.Exists(directoryName))
+            {
                 Directory.CreateDirectory(directoryName);
+            }
             using (StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.GetEncoding(1251), 65536))
             {
+                //streamWriter.WriteLine("NumberOfMolecules	4785");
+
+                //int counter = 0;
+                //for (int i = 0; i < 6; i++)
+                //{
+                //    for (int j = 0; j < 6; j++)
+                //    {
+                //        if (counter < 145)
+                //        {
+                //            for (int k = 0; k < 6; k++)
+                //            {
+                //                if (counter < 145)
+                //                {
+                //                    streamWriter.WriteLine("G2-model-40-4.upd.dat" + string.Format("{0,10}{1,10}{2,10}", 30 * i, 30 * j, 30 * k));
+                //                    counter++;
+                //                }
+                //                else
+                //                    break;
+                //            }
+                //        }
+                //        else
+                //            break;
+                //    }
+                //}
+
+                //counter = 0;
+                //for (int i = 0; i < 20; i++)
+                //{
+                //    for (int j = 0; j < 20; j++)
+                //    {
+                //        if (counter < 4640)
+                //        {
+                //            for (int k = 0; k < 20; k++)
+                //            {
+                //                if (counter < 4640)
+                //                {
+                //                    streamWriter.WriteLine("Spacer.upd.dat" + string.Format("{0,10}{1,10}{2,10}", 3 * i, 3 * j, 3 * k));
+                //                    counter++;
+                //                }
+                //                else
+                //                    break;
+                //            }
+                //        }
+                //        else
+                //            break;
+                //    }
+                //}
+
+
                 int atomCount = (int)(density * sizes[0] * sizes[1] * sizes[2]);
                 if (structure.Count < Math.Abs(atomCount) || density == 0.0)
                     atomCount = structure.Count;
                 streamWriter.WriteLine("#Model");
                 streamWriter.WriteLine();
                 streamWriter.WriteLine(string.Format("{0,10}{1,10}", atomCount, "atoms"));
-                streamWriter.WriteLine(string.Format("{0,10}{1,10}",bonds.Count, "bonds"));
+                streamWriter.WriteLine(string.Format("{0,10}{1,10}", bonds.Count, "bonds"));
                 streamWriter.WriteLine(string.Format("{0,10}{1,11}", angles.Count, "angles"));
                 streamWriter.WriteLine();
                 streamWriter.WriteLine(string.Format("{0,10}{1,15}", atomTypes, "atom types"));
                 streamWriter.WriteLine(string.Format("{0,10}{1,15}", bondTypes, "bond types"));
                 streamWriter.WriteLine(string.Format("{0,10}{1,16}", angleTypes, "angle types"));
                 streamWriter.WriteLine();
-                streamWriter.WriteLine(string.Format("{0,4}{1,6}{2,4}{3,4}", 0, Math.Round(sizes[0],2), "xlo", "xhi"));
+                streamWriter.WriteLine(string.Format("{0,4}{1,6}{2,4}{3,4}", 0, Math.Round(sizes[0], 2), "xlo", "xhi"));
                 streamWriter.WriteLine(string.Format("{0,4}{1,6}{2,4}{3,4}", 0, Math.Round(sizes[1], 2), "ylo", "yhi"));
                 streamWriter.WriteLine(string.Format("{0,4}{1,6}{2,4}{3,4}", 0, Math.Round(sizes[2], 2), "zlo", "zhi"));
                 streamWriter.WriteLine();
@@ -375,9 +435,9 @@ namespace MolConstructor
                         structure[i].MolIndex = aType;
                     }
                     string format = "{0,10}{1,10}{2,10}{3,10}{4,10}{5,10}";
-                    streamWriter.WriteLine(string.Format(format, (i + 1), structure[i].MolIndex, aType, 
-                                           xCoord.ToString("0.000", CultureInfo.InvariantCulture), 
-                                           yCoord.ToString("0.000", CultureInfo.InvariantCulture), 
+                    streamWriter.WriteLine(string.Format(format, (i + 1), structure[i].MolIndex, aType,
+                                           xCoord.ToString("0.000", CultureInfo.InvariantCulture),
+                                           yCoord.ToString("0.000", CultureInfo.InvariantCulture),
                                            zCoord.ToString("0.000", CultureInfo.InvariantCulture)));
                 }
                 if ((uint)bonds.Count > 0U)
@@ -395,8 +455,8 @@ namespace MolConstructor
                         else
                             bondType = GetBondType(new double[2]
                             {
-                             structure[bonds[i][0] - 1].AtomType,
-                             structure[bonds[i][1] - 1].AtomType
+                                 structure[bonds[i][0] - 1].AtomType,
+                                 structure[bonds[i][1] - 1].AtomType
                             });
                         if (bondType == 0)
                         {
@@ -419,9 +479,9 @@ namespace MolConstructor
                     else
                         angleType = GetAngleType(new double[3]
                         {
-                         structure[angles[i][0] - 1].AtomType,
-                         structure[angles[i][1] - 1].AtomType,
-                         structure[angles[i][2] - 1].AtomType
+                             structure[angles[i][0] - 1].AtomType,
+                             structure[angles[i][1] - 1].AtomType,
+                             structure[angles[i][2] - 1].AtomType
                         });
                     streamWriter.WriteLine("{0,10}{1,10}{2,10}{3,10}{4,10}", (i + 1), angleType, angles[i][0], angles[i][1], angles[i][2]);
                 }
@@ -473,9 +533,9 @@ namespace MolConstructor
                     streamWriter.WriteLine("ITEM: NUMBER OF ATOMS");
                     streamWriter.WriteLine(atomCount);
                     streamWriter.WriteLine("ITEM: BOX BOUNDS pp pp pp");
-                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[0],2)));
-                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[1],2)));
-                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[2],2)));
+                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[0], 2)));
+                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[1], 2)));
+                    streamWriter.WriteLine(string.Format("{0,1}{1,6}", 0, Math.Round(sizes[2], 2)));
                     streamWriter.WriteLine("ITEM: ATOMS id type xs ys zs");
 
                     for (int i = 0; i < atomCount; i++)
@@ -501,113 +561,6 @@ namespace MolConstructor
                     streamWriter.Flush();
                 }
             }
-        }
-
-        private static string CreateOneLine_XYZ(double x, double y, double z, double type)
-        {
-            return String.Format(
-                   "{0,9}{1,9}{2,9}{3,9}",
-                   x.ToString("0.000", CultureInfo.InvariantCulture),
-                   y.ToString("0.000", CultureInfo.InvariantCulture),
-                   z.ToString("0.000", CultureInfo.InvariantCulture),
-                   type.ToString("0.000", CultureInfo.InvariantCulture)
-               );
-        }
-
-        private static void AddBoxCoords(double xSize, double ySize, double zSize, StreamWriter sw)
-        {
-            string lineXY0 = CreateOneLine_XYZ(-xSize / 2.0, -ySize / 2.0, 0, 1.080);
-            string lineXYZ = CreateOneLine_XYZ(-xSize / 2.0, -ySize / 2.0, zSize, 1.080);
-            string lineXy0 = CreateOneLine_XYZ(-xSize / 2.0, ySize / 2.0, 0, 1.080);
-            string lineXyZ = CreateOneLine_XYZ(-xSize / 2.0, ySize / 2.0, zSize, 1.080);
-            string linexY0 = CreateOneLine_XYZ(xSize / 2.0, -ySize / 2.0, 0, 1.080);
-            string linexYZ = CreateOneLine_XYZ(xSize / 2.0, -ySize / 2.0, zSize, 1.080);
-            string linexy0 = CreateOneLine_XYZ(xSize / 2.0, ySize / 2.0, 0, 1.080);
-            string linexyZ = CreateOneLine_XYZ(xSize / 2.0, ySize / 2.0, zSize, 1.080);
-            sw.WriteLine(lineXY0);
-            sw.WriteLine(lineXYZ);
-            sw.WriteLine(lineXy0);
-            sw.WriteLine(lineXyZ);
-            sw.WriteLine(linexY0);
-            sw.WriteLine(linexYZ);
-            sw.WriteLine(linexy0);
-            sw.WriteLine(linexyZ);
-        }
-
-        private static string CreateOneLine_MOL(FileWorker.Condition cond, int number, int otherNumber, double x, double y, double z, string type)
-        {
-            string str1 = null;
-            string str2 = number.ToString();
-            switch (cond)
-            {
-                case Condition.Coord:
-                    if (number > 99999)
-                        str2 = "*****";
-                    str1 = string.Format("{0,-6}{1,5}{2,3}{3,12}{4,12}{5,8}{6,8}", "HETATM", str2, type, number, 
-                                x.ToString("0.000", CultureInfo.InvariantCulture), 
-                                y.ToString("0.000", CultureInfo.InvariantCulture), 
-                                z.ToString("0.000", CultureInfo.InvariantCulture));
-                    break;
-                case Condition.Connection:
-                    str1 = string.Format("{0,-6}{1,6}{2,6}", "CONECT", str2, otherNumber.ToString());
-                    break;
-            }
-            return str1;
-        }
-
-        private static string CreateOneLine_DAT(Condition cond, int number, int otherNumber, int type, double x, double y, double z)
-        {
-            string str = null;
-            switch (cond)
-            {
-                case Condition.Coord:
-                    str = string.Format("{0,4}{1,14}{2,14}{3,14}", type, 
-                                        ToFortranFormat(x, "0.00000"), 
-                                        ToFortranFormat(y, "0.00000"), 
-                                        ToFortranFormat(z, "0.00000"));
-                    break;
-                case Condition.Velocity:
-                    str = string.Format("{0,23}{0,23}{0,23}", "0.100000000000000D+00");
-                    break;
-                case Condition.Connection:
-                    str = string.Format("{0,8}{1,8}", number, otherNumber);
-                    break;
-                case Condition.Angle:
-                    str = string.Format("{0,8}{1,8}{2,8}", number, otherNumber, type);
-                    break;
-            }
-            return str;
-        }
-
-        private static string CreateOneLine_Lammptrj(int number, double x, double y, double z, int type)
-        {
-            return string.Format("{0,6}{1,4}{2,9}{3,9}{4,9}", 
-                                 number, type, 
-                                 x.ToString("0.0000", CultureInfo.InvariantCulture), 
-                                 y.ToString("0.0000", CultureInfo.InvariantCulture), 
-                                 z.ToString("0.0000", CultureInfo.InvariantCulture));
-        }
-
-        private static string ToFortranFormat(double a, string format)
-        {
-            int order = 0;
-            do
-            {
-                if ((uint)(int)a % 10U > 0U)
-                {
-                    a /= 10.0;
-                    order++;
-                }
-                else if ((int)a % 10 == 0 && (uint)(int)a > 0U)
-                {
-                    a /= 10.0;
-                    order++;
-                }
-                else
-                    break;
-            }
-            while ((int)a % 10 != 0 && (uint)(int)a > 0U);
-            return string.Format("{0}D+{1}", a.ToString(format,CultureInfo.InvariantCulture), order.ToString("00"));
         }
 
         public static List<int[]> LoadBonds(string bondspath, int format)
@@ -648,8 +601,8 @@ namespace MolConstructor
             else
             {
                 var files = Directory.GetFiles(bondspath, "*.txt").OrderBy(f => f).ToList();
-          
-                double xSize = 0.0, ySize = 0.0, zSize = 0.0;         
+
+                double xSize = 0.0, ySize = 0.0, zSize = 0.0;
                 foreach (var fl in files)
                 {
                     try
@@ -716,7 +669,7 @@ namespace MolConstructor
             var data = new List<double[]>();
             for (int i = 0; i < lines.Length; i++)
             {
-               var sList = readLine(lines[i]);
+                var sList = readLine(lines[i]);
                 if (sList.Count == 11)
                 {
                     for (int index2 = 0; index2 < Convert.ToInt32(sList[0]); ++index2)
@@ -801,7 +754,7 @@ namespace MolConstructor
                 {
                     if (sList[2] == "xlo")
                     {
-                        sizes.Add(new double[2] {replaceValue(sList[0]), replaceValue(sList[1])});
+                        sizes.Add(new double[2] { replaceValue(sList[0]), replaceValue(sList[1]) });
                         xSize = sizes[0][1] - sizes[0][0];
                     }
                     if (sList[2] == "ylo")
@@ -860,7 +813,7 @@ namespace MolConstructor
 
                                 for (int j = 0; j < 3; j++)
                                 {
-                                    row[j+1] = replaceValue(sList[startElem + j]) - sizes[j][0];
+                                    row[j + 1] = replaceValue(sList[startElem + j]) - sizes[j][0];
                                 }
                                 atomList.Add(row);
                             }
@@ -868,12 +821,12 @@ namespace MolConstructor
                         while (atomList.Count < molcount);
 
                         atomList = atomList.OrderBy(x => x[0]).ToList();
-                      
+
                         foreach (var c in atomList)
                         {
                             try
                             {
-                                data.Add(new double[] { c[1], c[2], c[3], c[4], c[5]});
+                                data.Add(new double[] { c[1], c[2], c[3], c[4], c[5] });
                             }
                             catch
                             {
@@ -977,7 +930,6 @@ namespace MolConstructor
         //    return LoadLammpstrjLines(fileName,)
         //}
 
-
         public static List<double[]> LoadLammpstrjLines(string fileName, out int snapNum, out double[] sizes)
         {
             var lines = readLammpstrjFile(fileName);
@@ -986,14 +938,14 @@ namespace MolConstructor
             int molcount = 0;
 
             snapNum = 0;
-            
+
             for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i] == "ITEM: TIMESTEP")
                 {
                     snapNum = Convert.ToInt32(lines[i + 1]);
                 }
-                    if (lines[i] == "ITEM: NUMBER OF ATOMS")
+                if (lines[i] == "ITEM: NUMBER OF ATOMS")
                     molcount = Convert.ToInt32(lines[i + 1]);
                 if (lines[i] == "ITEM: BOX BOUNDS pp pp pp" || lines[i] == "ITEM: BOX BOUNDS ff pp pp" || lines[i] == "ITEM: BOX BOUNDS pp ff pp" || lines[i] == "ITEM: BOX BOUNDS pp pp ff"
                     || lines[i] == "ITEM: BOX BOUNDS ff ff pp" || lines[i] == "ITEM: BOX BOUNDS pp ff ff" || lines[i] == "ITEM: BOX BOUNDS ff pp ff" || lines[i] == "ITEM: BOX BOUNDS ff ff ff")
@@ -1030,6 +982,7 @@ namespace MolConstructor
                                     break;
                                 default:
                                     row[k] = Math.Round(replaceValue(sList[k]) * sizes[k - 2], 3);
+                                    //row[k] = Math.Round(replaceValue(sList[k+1]), 3);
                                     if (row[k] < 0.0)
                                         row[k] = 0.0;
                                     break;
@@ -1056,7 +1009,6 @@ namespace MolConstructor
             }
             return data;
         }
-
         public static List<double[]> LoadMol2Lines(string fileName, List<int[]> bonds)
         {
             var lines = File.ReadAllLines(fileName);
@@ -1070,10 +1022,10 @@ namespace MolConstructor
                 if (lines[i] == "structure1")
                 {
                     var sList = readLine(lines[i + 1]);
-                    molcount = Convert.ToInt32(sList[0]); 
+                    molcount = Convert.ToInt32(sList[0]);
                     bondscount = Convert.ToInt32(sList[1]);
                 }
-                if (lines[i] == "@<TRIPOS>ATOM" )
+                if (lines[i] == "@<TRIPOS>ATOM")
                 {
                     List<double[]> atomList = new List<double[]>();
                     for (int j = 0; j < molcount; j++)
@@ -1117,7 +1069,7 @@ namespace MolConstructor
                         {
                             var error = c[0];
 
-                            throw new Exception("ошибка в элементе " + error.ToString()+". Причина ошибки:\n"+
+                            throw new Exception("ошибка в элементе " + error.ToString() + ". Причина ошибки:\n" +
                                                 ex.ToString());
                         }
                     }
@@ -1168,10 +1120,285 @@ namespace MolConstructor
                 //    }
 
                 //}
-            }        
+            }
             return data;
         }
 
+        // Returns a list of particle types of a particular category (Polymers, Solvents, Walls)
+        // The types are written in the file Types-table.txt
+        public static List<double> GetTableTypes(string category)
+        {
+            var types = new List<double>();
+
+            string directoryName = Application.ExecutablePath;
+
+            if (!File.Exists(tableFile))
+            {
+                DialogResult dialogResult = MessageBox.Show(null,
+               "В папке c программой нет файла с типами частиц!\n" +
+               "Создать файл?",
+               "Внимание!",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Create basic mapping file
+                    createDefaultTableTypesFile(directoryName);
+                }
+                else
+                {
+                    MessageBox.Show(null,
+                                "Типы частиц не заданы!",
+                                "Ошибка!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+           
+            var lines = File.ReadAllLines(tableFile);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (category == "Polymer")
+                {
+                    if (lines[i].Equals("Polymer Types:"))
+                    {
+                        for (int j = i + 1; j < lines.Length; j++)
+                        {
+                            if (lines[j].Equals("Solvent Types:"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                //types.Add(replaceValue(lines[j]));
+                                types.Add(AtomTypes[Convert.ToInt32(lines[j])]);
+                            }
+                        }
+                    }
+                }
+                else if (category == "Solvent")
+                {
+                    if (lines[i].Equals("Solvent Types:"))
+                    {
+                        for (int j = i + 1; j < lines.Length; j++)
+                        {
+                            if (lines[j].Equals("Wall Types:"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                //types.Add(replaceValue(lines[j]));
+                                types.Add(AtomTypes[Convert.ToInt32(lines[j])]);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (lines[i].Equals("Wall Types:"))
+                    {
+                        for (int j = i + 1; j < lines.Length; j++)
+                        {
+
+                            if (lines[j].Equals("Pairs:"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                types.Add(AtomTypes[Convert.ToInt32(lines[j])]);
+                                //types.Add(replaceValue(lines[j]));
+                            }
+                        }
+                    }
+                }
+            }
+
+            return types;
+        }
+
+        public static List<double[]> GetTablePairs()
+        {
+            var pairs = new List<double[]>();
+
+            string directoryName = Application.ExecutablePath;
+
+            if (!File.Exists(tableFile))
+            {
+                DialogResult dialogResult = MessageBox.Show(null,
+               "В папке c программой нет файла с типами частиц!\n" +
+               "Создать файл?",
+               "Внимание!",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Create basic mapping file
+                    createDefaultTableTypesFile(directoryName);
+                }
+                else
+                {
+                    MessageBox.Show(null,
+                                "Типы частиц не заданы!",
+                                "Ошибка!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+
+            var lines = File.ReadAllLines(tableFile);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Equals("Pairs:"))
+                {
+                    for (int j = i + 1; j < lines.Length; j++)
+                    {
+                        var line = readLine(lines[j]);
+
+                        pairs.Add(new double[] { AtomTypes[Convert.ToInt32(line[0])], AtomTypes[Convert.ToInt32(line[1])] });
+                    }
+                }
+            }
+            return pairs;
+        }
+
+        private static void createDefaultTableTypesFile(string directoryName)
+        {
+            var polymTypes = new double[] { 1.00, 1.01, 1.04, 1.05 };
+            var solvTypes = new double[] { 1.02, 1.03, 1.06, 1.07, 1.08 };
+            var wallTypes = new double[] { 1.09, 1.10 };
+
+            using (FileStream fileStream = new FileStream(tableFile, FileMode.Create, FileAccess.Write))
+            {
+                using (StreamWriter streamWriter = new StreamWriter(fileStream))
+                {
+                    streamWriter.WriteLine("Polymer Types:");
+                    foreach (var c in polymTypes)
+                    {
+                        streamWriter.WriteLine(string.Format("{0,4}", c.ToString("0.00", CultureInfo.InvariantCulture)));
+                    }
+                    streamWriter.WriteLine("Solvent Types:");
+                    foreach (var c in solvTypes)
+                    {
+                        streamWriter.WriteLine(string.Format("{0,4}", c.ToString("0.00", CultureInfo.InvariantCulture)));
+                    }
+                    streamWriter.WriteLine("Wall Types:");
+                    foreach (var c in wallTypes)
+                    {
+                        streamWriter.WriteLine(string.Format("{0,4}", c.ToString("0.00", CultureInfo.InvariantCulture)));
+                    }
+                    streamWriter.Flush();
+                }
+            }
+        }
+
+        private static string tableFile = "Types-table.txt";
+        private static string CreateOneLine_XYZ(double x, double y, double z, double type)
+            {
+                return String.Format(
+                       "{0,9}{1,9}{2,9}{3,9}",
+                       x.ToString("0.000", CultureInfo.InvariantCulture),
+                       y.ToString("0.000", CultureInfo.InvariantCulture),
+                       z.ToString("0.000", CultureInfo.InvariantCulture),
+                       type.ToString("0.000", CultureInfo.InvariantCulture)
+                   );
+            }
+        private static void AddBoxCoords(double xSize, double ySize, double zSize, StreamWriter sw)
+            {
+                string lineXY0 = CreateOneLine_XYZ(-xSize / 2.0, -ySize / 2.0, 0, 1.080);
+                string lineXYZ = CreateOneLine_XYZ(-xSize / 2.0, -ySize / 2.0, zSize, 1.080);
+                string lineXy0 = CreateOneLine_XYZ(-xSize / 2.0, ySize / 2.0, 0, 1.080);
+                string lineXyZ = CreateOneLine_XYZ(-xSize / 2.0, ySize / 2.0, zSize, 1.080);
+                string linexY0 = CreateOneLine_XYZ(xSize / 2.0, -ySize / 2.0, 0, 1.080);
+                string linexYZ = CreateOneLine_XYZ(xSize / 2.0, -ySize / 2.0, zSize, 1.080);
+                string linexy0 = CreateOneLine_XYZ(xSize / 2.0, ySize / 2.0, 0, 1.080);
+                string linexyZ = CreateOneLine_XYZ(xSize / 2.0, ySize / 2.0, zSize, 1.080);
+                sw.WriteLine(lineXY0);
+                sw.WriteLine(lineXYZ);
+                sw.WriteLine(lineXy0);
+                sw.WriteLine(lineXyZ);
+                sw.WriteLine(linexY0);
+                sw.WriteLine(linexYZ);
+                sw.WriteLine(linexy0);
+                sw.WriteLine(linexyZ);
+            }
+        private static string CreateOneLine_MOL(FileWorker.Condition cond, int number, int otherNumber, double x, double y, double z, string type)
+            {
+                string str1 = null;
+                string str2 = number.ToString();
+                switch (cond)
+                {
+                    case Condition.Coord:
+                        if (number > 99999)
+                            str2 = "*****";
+                        str1 = string.Format("{0,-6}{1,5}{2,3}{3,12}{4,12}{5,8}{6,8}", "HETATM", str2, type, number,
+                                    x.ToString("0.000", CultureInfo.InvariantCulture),
+                                    y.ToString("0.000", CultureInfo.InvariantCulture),
+                                    z.ToString("0.000", CultureInfo.InvariantCulture));
+                        break;
+                    case Condition.Connection:
+                        str1 = string.Format("{0,-6}{1,6}{2,6}", "CONECT", str2, otherNumber.ToString());
+                        break;
+                }
+                return str1;
+            }
+        private static string CreateOneLine_DAT(Condition cond, int number, int otherNumber, int type, double x, double y, double z)
+            {
+                string str = null;
+                switch (cond)
+                {
+                    case Condition.Coord:
+                        str = string.Format("{0,4}{1,14}{2,14}{3,14}", type,
+                                            ToFortranFormat(x, "0.00000"),
+                                            ToFortranFormat(y, "0.00000"),
+                                            ToFortranFormat(z, "0.00000"));
+                        break;
+                    case Condition.Velocity:
+                        str = string.Format("{0,23}{0,23}{0,23}", "0.100000000000000D+00");
+                        break;
+                    case Condition.Connection:
+                        str = string.Format("{0,8}{1,8}", number, otherNumber);
+                        break;
+                    case Condition.Angle:
+                        str = string.Format("{0,8}{1,8}{2,8}", number, otherNumber, type);
+                        break;
+                }
+                return str;
+            }
+        private static string CreateOneLine_Lammptrj(int number, double x, double y, double z, int type)
+            {
+                return string.Format("{0,6}{1,4}{2,9}{3,9}{4,9}",
+                                     number, type,
+                                     x.ToString("0.0000", CultureInfo.InvariantCulture),
+                                     y.ToString("0.0000", CultureInfo.InvariantCulture),
+                                     z.ToString("0.0000", CultureInfo.InvariantCulture));
+            }
+        private static string ToFortranFormat(double a, string format)
+            {
+                int order = 0;
+                do
+                {
+                    if ((uint)(int)a % 10U > 0U)
+                    {
+                        a /= 10.0;
+                        order++;
+                    }
+                    else if ((int)a % 10 == 0 && (uint)(int)a > 0U)
+                    {
+                        a /= 10.0;
+                        order++;
+                    }
+                    else
+                        break;
+                }
+                while ((int)a % 10 != 0 && (uint)(int)a > 0U);
+                return string.Format("{0}D+{1}", a.ToString(format, CultureInfo.InvariantCulture), order.ToString("00"));
+            }
         private static string[] readLammpstrjFile(string fileName)
         {
             using (StreamReader file = new StreamReader(fileName))
@@ -1198,10 +1425,9 @@ namespace MolConstructor
                 return lines;
             }
         }
-
         private static List<string> readLine(string line)
         {
-            string[] strs = line.Split(new char[] { ' ', '\t'});
+            string[] strs = line.Split(new char[] { ' ', '\t' });
             var sList = new List<string>();
             foreach (var ss in strs)
             {
@@ -1210,7 +1436,6 @@ namespace MolConstructor
             }
             return sList;
         }
-
         private static List<string> molLine(string line)
         {
             string[] strs = line.Split(new char[] { ' ' });
@@ -1222,7 +1447,6 @@ namespace MolConstructor
             }
             return sList;
         }
-
         private static double replaceValue(string str)
         {
             str = !(NumberFormatInfo.CurrentInfo.NumberDecimalSeparator == ".") ? str.Replace(".", ",") : str.Replace(",", ".");
@@ -1230,7 +1454,6 @@ namespace MolConstructor
                 throw new ApplicationException("Имеются незаполненные поля! Убедитесь,что заданы все параметры расчета!");
             return Convert.ToDouble(str);
         }
-
         private enum Condition : byte
         {
             Coord,

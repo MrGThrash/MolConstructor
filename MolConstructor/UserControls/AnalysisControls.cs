@@ -44,6 +44,9 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[5].HeaderText = "Радиус инерции";
                         dgvDataFromFolder.Columns[6].HeaderText = "Асферичность δ";
                         dgvDataFromFolder.Columns[7].HeaderText = "Асферичность S";
+                        dgvDataFromFolder.Columns[8].HeaderText = "Центр масс X";
+                        dgvDataFromFolder.Columns[9].HeaderText = "Центр масс Y";
+                        dgvDataFromFolder.Columns[10].HeaderText = "Центр масс Z";
                         break;
                     }
                 case 1:
@@ -51,9 +54,12 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[0].HeaderText = "Число шагов";
                         dgvDataFromFolder.Columns[1].HeaderText = "Расстояние от пред. шага";
                         dgvDataFromFolder.Columns[2].HeaderText = "Суммарное расстояние";
-                        dgvDataFromFolder.Columns[3].HeaderText = "Квадрат от пред. шага";
-                        dgvDataFromFolder.Columns[4].HeaderText = "Квадрат сум. пути";
-                        dgvDataFromFolder.Columns[5].HeaderText = "Радиус инерции";
+                        dgvDataFromFolder.Columns[3].HeaderText = "Расстояние по оси х от пред. шага";
+                        dgvDataFromFolder.Columns[4].HeaderText = "Суммарное расстояние по оси Х";
+                        dgvDataFromFolder.Columns[5].HeaderText = "Квадрат от пред. шага";
+                        dgvDataFromFolder.Columns[6].HeaderText = "Квадрат сум. пути";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Квадрат сум. пути по оси Х";
+                        dgvDataFromFolder.Columns[8].HeaderText = "Радиус инерции";
                         break;
                     }
                 case 2:
@@ -101,9 +107,9 @@ namespace MolConstructor
                         //dgvDataFromFolder.Columns[8].HeaderText = "Полимер O";
                         //dgvDataFromFolder.Columns[5].HeaderText = "Доля хвостов вне геля";
                         //dgvDataFromFolder.Columns[6].HeaderText = "Доля хвостов в пределах геля";
-                        dgvDataFromFolder.Columns[5].HeaderText = "Полимер C";
-                        dgvDataFromFolder.Columns[6].HeaderText = "Полимер O";
-                        dgvDataFromFolder.Columns[7].HeaderText = "Полимер N";
+                        dgvDataFromFolder.Columns[5].HeaderText = "Тип 1";
+                        dgvDataFromFolder.Columns[6].HeaderText = "Тип 2";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Тип 5";
                         dgvDataFromFolder.Columns[8].HeaderText = "Доля блоков A";
                         dgvDataFromFolder.Columns[9].HeaderText = "Доля блоков B";
                         break;
@@ -111,18 +117,19 @@ namespace MolConstructor
                 case 6:
                     {
                         dgvDataFromFolder.Columns[0].HeaderText = "R";
-                        dgvDataFromFolder.Columns[1].HeaderText = "Полимер C";
+                        dgvDataFromFolder.Columns[1].HeaderText = "Тип 1";
                         dgvDataFromFolder.Columns[2].HeaderText = "Погрешность";
-                        dgvDataFromFolder.Columns[3].HeaderText = "Полимер O";
+                        dgvDataFromFolder.Columns[3].HeaderText = "Тип 2";
                         dgvDataFromFolder.Columns[4].HeaderText = "Погрешность";
-                        dgvDataFromFolder.Columns[5].HeaderText = "Полимер N";
+                        dgvDataFromFolder.Columns[5].HeaderText = "Тип 5";
                         dgvDataFromFolder.Columns[6].HeaderText = "Погрешность";
-                        dgvDataFromFolder.Columns[7].HeaderText = "Полимер P";
-                        dgvDataFromFolder.Columns[8].HeaderText = "Растворитель S";
-                        dgvDataFromFolder.Columns[9].HeaderText = "Растворитель CL";
-                        dgvDataFromFolder.Columns[10].HeaderText = "Растворитель W";
-                        dgvDataFromFolder.Columns[11].HeaderText = "Блоки A (для связей)";
-                        dgvDataFromFolder.Columns[12].HeaderText = "Блоки B (для связей)";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Тип 3";
+                        dgvDataFromFolder.Columns[8].HeaderText = "Тип 4";
+                        dgvDataFromFolder.Columns[9].HeaderText = "Тип 6";
+                        dgvDataFromFolder.Columns[10].HeaderText = "Тип 7";
+                        dgvDataFromFolder.Columns[11].HeaderText = "Тип 8";
+                        dgvDataFromFolder.Columns[12].HeaderText = "Блоки A (для связей)";
+                        dgvDataFromFolder.Columns[13].HeaderText = "Блоки B (для связей)";
                         break;
                     }
                 case 7:
@@ -152,13 +159,13 @@ namespace MolConstructor
                 case 9:
                     {
                         dgvDataFromFolder.Columns[0].HeaderText = "R";
-                        dgvDataFromFolder.Columns[1].HeaderText = "Полимер C";
+                        dgvDataFromFolder.Columns[1].HeaderText = "Тип 1";
                         dgvDataFromFolder.Columns[2].HeaderText = "Погрешность";
-                        dgvDataFromFolder.Columns[3].HeaderText = "Полимер O";
-                        dgvDataFromFolder.Columns[4].HeaderText = "Полимер N";
-                        dgvDataFromFolder.Columns[5].HeaderText = "Растворитель S";
-                        dgvDataFromFolder.Columns[6].HeaderText = "Растворитель CL";
-                        dgvDataFromFolder.Columns[7].HeaderText = "Растворитель W";
+                        dgvDataFromFolder.Columns[3].HeaderText = "Тип 2";
+                        dgvDataFromFolder.Columns[4].HeaderText = "Тип 5";
+                        dgvDataFromFolder.Columns[5].HeaderText = "Тип 4";
+                        dgvDataFromFolder.Columns[6].HeaderText = "Тип 7";
+                        dgvDataFromFolder.Columns[7].HeaderText = "Тип 3";
                         break;
                     }
                 case 10:
@@ -213,9 +220,9 @@ namespace MolConstructor
                         dgvDataFromFolder.Columns[0].HeaderText = "Расстояние между концами";
                         dgvDataFromFolder.Columns[1].HeaderText = "Квадрат расстояния";
                         dgvDataFromFolder.Columns[2].HeaderText = "Контурная длина";
-                        dgvDataFromFolder.Columns[3].HeaderText = "Средние значения";
-                        dgvDataFromFolder.Columns[4].HeaderText = "Погрешности";
-                        dgvDataFromFolder.Columns[5].HeaderText = "  ";
+                        dgvDataFromFolder.Columns[3].HeaderText = "Радиус инерции";
+                        dgvDataFromFolder.Columns[4].HeaderText = "Средние значения";
+                        dgvDataFromFolder.Columns[5].HeaderText = "Погрешности";
                         dgvDataFromFolder.Columns[6].HeaderText = "  ";
                         dgvDataFromFolder.Columns[7].HeaderText = "  ";
                         break;
@@ -240,14 +247,16 @@ namespace MolConstructor
                                   && cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 11 && cmbTypeOfResults.SelectedIndex != 13) ? false : true;
 
             label5.Visible = (cmbTypeOfResults.SelectedIndex != 2 && cmbTypeOfResults.SelectedIndex != 4 && cmbTypeOfResults.SelectedIndex != 8 &&
-                                    cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13 && cmbTypeOfResults.SelectedIndex != 15) ? false : true;
+                                    cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 13
+                                    && cmbTypeOfResults.SelectedIndex != 14 && cmbTypeOfResults.SelectedIndex != 15) ? false : true;
             tbChainLength.Visible = (cmbTypeOfResults.SelectedIndex != 10 && cmbTypeOfResults.SelectedIndex != 4 && cmbTypeOfResults.SelectedIndex != 2 &&
-                                     cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 13 && cmbTypeOfResults.SelectedIndex != 15) ? false : true;
+                                     cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 13 && cmbTypeOfResults.SelectedIndex != 14 &&
+                                     cmbTypeOfResults.SelectedIndex != 15) ? false : true;
 
-            if (cmbTypeOfResults.SelectedIndex != 10 && 
-                cmbTypeOfResults.SelectedIndex != 13 && 
+            if (cmbTypeOfResults.SelectedIndex != 10 &&
+                cmbTypeOfResults.SelectedIndex != 13 &&
                 cmbTypeOfResults.SelectedIndex != 15) { label5.Text = "Длина цепи"; }
-            else if (cmbTypeOfResults.SelectedIndex == 10) { label5.Text = "Число молекул"; }
+            else if (cmbTypeOfResults.SelectedIndex == 10 || cmbTypeOfResults.SelectedIndex == 14) { label5.Text = "Число молекул"; }
             else if (cmbTypeOfResults.SelectedIndex == 10) { label5.Text = "Тип бидов №1"; }
             else { label5.Text = "Начальное число бидов субстр."; }
 
@@ -278,8 +287,17 @@ namespace MolConstructor
             {
                 lblStep.Text = "Радиус поиска";
             }
-            if (cmbTypeOfResults.SelectedIndex == 10) { chbAccSepMols.Text = "Без усреднения"; }
-            else { chbAccSepMols.Text = "Отд. молекулы"; }
+
+            if (cmbTypeOfResults.SelectedIndex == 10)
+            {
+                chbByProb.Text = "Без усреднения";
+                chbAccSepMols.Text = "Сген. файлы ц.м.";
+            }
+            else
+            {
+                chbByProb.Text = "По вероятности";
+                chbAccSepMols.Text = "Отд. молекулы";
+            }
 
 
             label6.Enabled = (cmbTypeOfResults.SelectedIndex == 2) ? false : true;
@@ -291,7 +309,7 @@ namespace MolConstructor
             chbTwoPhaseDense.Visible = (cmbTypeOfResults.SelectedIndex != 6) ? false : true;
             cmbHalfes.Visible = (cmbTypeOfResults.SelectedIndex != 6 && cmbTypeOfResults.SelectedIndex != 7) ? false : true;
             chbHasBonds.Enabled = (cmbTypeOfResults.SelectedIndex != 5 && cmbTypeOfResults.SelectedIndex != 6 && cmbTypeOfResults.SelectedIndex != 8) ? false : true;
-            chbByProb.Enabled = (cmbTypeOfResults.SelectedIndex != 8) ? false : true;
+            chbByProb.Enabled = (cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 10) ? false : true;
             chbAccSepMols.Enabled = (cmbTypeOfResults.SelectedIndex != 8 && cmbTypeOfResults.SelectedIndex != 10) ? false : true;
             label4.Visible = (cmbTypeOfResults.SelectedIndex != 7) ? false : true;
             tbMGArea.Visible = (cmbTypeOfResults.SelectedIndex != 7) ? false : true;
@@ -475,7 +493,7 @@ namespace MolConstructor
                 else if (index == 10)
                 {
                     bgWorker2Dorder.RunWorkerAsync(new object[] { cmbFormat.SelectedIndex, neededFiles, epsilon, Convert.ToInt32(tbTimeStep.Text),
-                                                                  Convert.ToInt32(tbChainLength.Text), chbAccSepMols.Checked,
+                                                                  Convert.ToInt32(tbChainLength.Text),chbByProb.Checked, chbAccSepMols.Checked,
                                                                   cmbTypeOfResults.SelectedIndex });
                 }
 
@@ -493,7 +511,7 @@ namespace MolConstructor
                 else if (index == 14)
                 {
                     bgWorkerLarina.RunWorkerAsync(new object[] { cmbFormat.SelectedIndex, neededFiles,chbWithAutoCenter.Checked,chbAutoCenterZ.Checked,
-                                                                 beadType, cmbTypeOfResults.SelectedIndex });
+                                                                 beadType, Convert.ToInt32(tbChainLength.Text), cmbTypeOfResults.SelectedIndex });
                 }
 
                 else
@@ -668,6 +686,9 @@ namespace MolConstructor
             var calcType = (int)args[8];
 
             var obtainedData = new List<double[]>();
+
+            var polymerTypes = FileWorker.GetTableTypes("Polymer");
+
             if (calcType != 3)
             {
                 for (int i = 0; i < files.Length; i++)
@@ -680,6 +701,11 @@ namespace MolConstructor
                             double[] sizes = new double[3];
 
                             readTableFile(format, files[i], out file, out sizes);
+
+                            //foreach (var c in file)
+                            //{
+                            //    c[3] = 1.00;
+                            //}
 
                             var centerPoint = MolData.GetCenterPoint(sizes, file);
 
@@ -702,26 +728,30 @@ namespace MolConstructor
 
                                 double[] dataRow = new double[dgvDataFromFolder.Columns.Count];
 
+                                var pol = Methods.GetPolymers(file);
+
+                                var cm = Methods.GetCenterMassWithPBC(sizes, pol);
+
                                 if (calcType == 11)
                                 {
-                                    dataRow[0] = Methods.GetHydroDiameter(file);
+                                 
+                                    dataRow[0] = Methods.GetGyrRadius(pol);
 
-                                    //var realHydroDiam = Math.Sqrt(5.0 * Math.Pow(dataRow[0], 2) / 3.0);
-                                    var realHydroDiam =  dataRow[0]/(2.0 * epsilon);
+                                    var realHydroDiam = Math.Sqrt(5.0 * Math.Pow(dataRow[0], 2) / 3.0);
+                                    //var realHydroDiam =  dataRow[0]/(2.0 * epsilon);
 
                                     dataRow[1] = 4.0 * Math.PI * Math.Pow(realHydroDiam, 3) / 3.0;
-
-                                    var cm = Methods.GetCenterMass(file);
 
                                     int gelRadCount = 0;
                                     int particleCount = 0;
 
-                                    for (int f = 0; f < file.Count; f++)
+                                    for (int f = 0; f < pol.Count; f++)
                                     {
                                         if (Methods.GetDistance3D(file[f][0], file[f][1], file[f][2], cm[0], cm[1], cm[2]) <= realHydroDiam)
                                         {
                                             particleCount++;
-                                            if (file[f][3].Equals(1.00) || file[f][3].Equals(1.01) || file[f][3].Equals(1.04))
+
+                                            if (polymerTypes.Contains(file[f][3]))
                                             {
                                                 gelRadCount++;
                                             }
@@ -735,17 +765,17 @@ namespace MolConstructor
                                     dataRow[5] = Math.Round(dataRow[3] / dataRow[4], 3);
 
                                 }
-                                if (calcType == 15)
+                                else if (calcType == 15)
                                 {
                                     dataRow[0] = Convert.ToDouble(FileWorker.GetTimeStep(files[i]));
 
-                                    var typeOne = replaceValue(tbChainLength.Text);
-                                    var typeTwo = replaceValue(tbCoreBead.Text);
+                                    var typeOne = FileWorker.AtomTypes[(int)replaceValue(tbChainLength.Text)];
+                                    var typeTwo = FileWorker.AtomTypes[(int)replaceValue(tbCoreBead.Text)];
 
-                                    var pol = file.Where(x => x[3] == typeOne).ToList();
+                                    pol.Clear();
+                                    pol = file.Where(x => x[3] == typeOne).ToList();
                                     var rest = file.Where(x => x[3] == typeTwo).ToList();
 
-                                    var cm = Methods.GetCenterMass(pol);
                                     var HydroRad = Methods.GetHydroRadius2D(pol);
 
                                     rest = rest.Where(x => Methods.GetDistance2D(x[0], x[1], cm[0], cm[1]) <= HydroRad * 2.0).ToList();
@@ -798,52 +828,63 @@ namespace MolConstructor
                                 else
                                 {
                                     dataRow[0] = step * i;
-                                    dataRow[1] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(file, 0)), 3);
-                                    dataRow[2] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(file, 1)), 3);
-                                    dataRow[3] = Methods.GetHydroRadius2D(file);
-                                    dataRow[4] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(file, 2)), 3);
-                                    dataRow[5] = Methods.GetHydroDiameter(file);
+                                    dataRow[1] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(pol, 0)), 3);
+                                    dataRow[2] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(pol, 1)), 3);
+                                    dataRow[3] = Methods.GetHydroRadius2D(pol);
+                                    dataRow[4] = Math.Round(Math.Sqrt(Methods.GetAxInertSquareRadius(pol, 2)), 3);
+                                    dataRow[5] = Methods.GetGyrRadius(pol);
 
-                                    var shapes = Methods.GetShapeCharacteristics(file);
+                                    var shapes = Methods.GetShapeCharacteristics(pol);
 
                                     dataRow[6] = shapes[0];
                                     dataRow[7] = shapes[1];
+                                    dataRow[9] = cm[0];
+                                    dataRow[10] = cm[1];
+                                    dataRow[11] = cm[2];
                                 }
 
                                 obtainedData.Add(dataRow);
                             }
                             else
                             {
+                                var pol = Methods.GetPolymers(file);
+
                                 double[] dataRow = new double[dgvDataFromFolder.Columns.Count + 4];
 
                                 dataRow[0] = step * i;
-                                dataRow[5] = Methods.GetHydroDiameter(file);
+                                dataRow[5] = Methods.GetGyrRadius(pol);
+
+                                var centerMass = Methods.GetCenterMassWithPBC(sizes, pol);
+
+                                dataRow[9] = centerMass[0];
+                                dataRow[10] = centerMass[1];
+                                dataRow[11] = centerMass[2];
 
                                 if (i != 0)
                                 {
-                                    var centerMass = Methods.GetCenterMassWithPBC(sizes, file);
+                                    
 
-                                    dataRow[1] = Methods.GetDistance3D(obtainedData[i - 1][6], obtainedData[i - 1][7],
-                                                                          obtainedData[i - 1][8], centerMass[0],
+                                    dataRow[1] = Methods.GetDistance3DwithPBC(sizes, obtainedData[i - 1][9], obtainedData[i - 1][10],
+                                                                          obtainedData[i - 1][11], centerMass[0],
                                                                          centerMass[1], centerMass[2]);
                                     dataRow[2] = dataRow[1] + obtainedData[i - 1][2];
 
-                                    dataRow[3] = Math.Pow(dataRow[1], 2);
-                                    dataRow[4] = Math.Pow(dataRow[2], 2);
-                                    dataRow[6] = centerMass[0];
-                                    dataRow[7] = centerMass[1];
-                                    dataRow[8] = centerMass[2];
+                                    dataRow[3] = Methods.GetDistance3DwithPBC(sizes, obtainedData[i - 1][9], 0.0,
+                                                                          0.0, centerMass[0],
+                                                                         0.0, 0.0);
+                                    dataRow[4] = dataRow[3] + obtainedData[i - 1][4];
+
+                                    dataRow[5] = Math.Pow(dataRow[1], 2);
+                                    dataRow[6] = Math.Pow(dataRow[2], 2);
+                                    dataRow[7] = Math.Pow(dataRow[4], 2);
+
                                 }
                                 else
                                 {
                                     dataRow[1] = 0.0;
                                     dataRow[2] = 0.0;
-
-                                    var centerMass = Methods.GetCenterMassWithPBC(sizes, file);
-
-                                    dataRow[6] = centerMass[0];
-                                    dataRow[7] = centerMass[1];
-                                    dataRow[8] = centerMass[2];
+                                    dataRow[3] = 0.0;
+                                    dataRow[4] = 0.0;
 
                                 }
 
@@ -905,7 +946,7 @@ namespace MolConstructor
 
                                         var layer = file.Where(x => x[2] > (k * 2 - 1) * epsilon &&
                                                                     x[2] <= (k * 2 + 1) * epsilon &&
-                                                                    x[3] != 1.080).ToList();
+                                                                    x[3] != 1.08).ToList();
 
                                         totalcount += layer.Count;
                                         if (totalcount == 0)
@@ -1252,6 +1293,7 @@ namespace MolConstructor
 
             var bondsAndSegments = new List<MolData>();
             var segmentLength = 0;
+            var pairs = FileWorker.GetTablePairs();
 
             for (int k = 0, len = filenames.Length; k < len; k++)
             {
@@ -1264,6 +1306,9 @@ namespace MolConstructor
 
                         // reading the file
                         readTableFile(format, filenames[k], out file, out sizes);
+
+                        var pol = Methods.GetPolymers(file);
+                        
 
                         if (k == 0)
                         {
@@ -1282,6 +1327,7 @@ namespace MolConstructor
                                 }
                             }
                         }
+                        
 
                         // center structure if needed
                         if (withAutoCenter)
@@ -1302,8 +1348,8 @@ namespace MolConstructor
                         // determing the number of steps according to the epsilon
                         int steps = (int)(size / (2.0 * epsilon));
 
-                        double[] centerMass = Methods.GetCenterMass(file);
-                        double diameter = Methods.GetDiameter(file).Max();
+                        double[] centerMass = Methods.GetCenterMassWithPBC(sizes, pol);
+                        double diameter = Methods.GetDiameter(pol).Max();
 
                         double radius = diameter / 6.0;
                         int coord2 = Math.Abs(coord - 2);
@@ -1311,11 +1357,11 @@ namespace MolConstructor
                         if (coord < 2)
                         {
                             coord2 = 2;
-                            radius = Methods.GetDiameter(file)[2] / 4.0;
+                            radius = Methods.GetDiameter(pol)[2] / 4.0;
                         }
                         else
                         {
-                            radius = Methods.GetHydroRadius2D(file) / 3.0;
+                            radius = Methods.GetHydroRadius2D(pol) / 3.0;
                         }
 
                         int polCcount, polOcount, polNcount, solvARoundCount, solvAcount, solvBRoundCount, solvBcount;
@@ -1408,7 +1454,25 @@ namespace MolConstructor
                                     }
                                     if (c[3] == 1.040 /*c[3] == 1.05*/)
                                     {
+                                        if (pairs.Count !=0)
+                                        {
+                                            if (pairs[0][1] == 1.04)
+                                                polCcount++;
+                                            else
+                                                polNcount++;
+                                        }
+                                        else
                                         polNcount++;
+                                    }
+                                    if (c[3] == 1.050 /*c[3] == 1.05*/)
+                                    {
+                                        if (pairs.Count != 0)
+                                        {
+                                            if (pairs[1][1] == 1.05)
+                                                polOcount++;
+                                            else
+                                                polNcount++;
+                                        }
                                     }
                                     if (c[3] == 1.020) { solvBRoundCount++; }
                                     //if (c[3] == 1.040) { solvCRoundCount++; }
@@ -1664,6 +1728,9 @@ namespace MolConstructor
             double[] sizes = new double[3];
             double[] centerPoint = new double[3];
 
+            var polymerTypes = FileWorker.GetTableTypes("Polymer");
+            var solventTypes = FileWorker.GetTableTypes("Solvent");
+
             for (int k = 0, len = filenames.Length; k < len; k++)
             {
                 try
@@ -1673,6 +1740,8 @@ namespace MolConstructor
                         var file = new List<double[]>();
 
                         readTableFile(format, filenames[k], out file, out sizes);
+
+                        var pol = Methods.GetPolymers(file);
 
                         int steps = (int)(Math.Min(sizes[0], sizes[1]) / (4.0 * epsilon));
 
@@ -1703,19 +1772,37 @@ namespace MolConstructor
                             }
                         }
 
+                        //foreach (var c in file)
+                        //{
+                        //    c[3] = 1.00;
+                        //}
+
+
                         if (withAutoCenter)
                         {
                             doAutoCenter(withZCenter, autoCenterIter, sizes, centerPoint, file);
                         }
 
-                        double[] centerMass = Methods.GetCenterMass(file);
+                        double[] centerMass = Methods.GetCenterMass(pol);
 
-                        double[] heights = Methods.GetHeights(file);
+                        double[] heights = Methods.GetHeights(pol);
 
-                        var diameter = Methods.GetDiameter(file);
+                        var diameter = Methods.GetDiameter(pol);
 
                         double lowLim = 0.0;
                         double upperLim = 0.0;
+
+
+                        //var arb = file.Where(x => x[4] < 491040).ToList();
+
+                        //var molCenters = getCms(24, sizes, arb);
+
+                        //file.Clear();
+
+                        //foreach(var c in molCenters)
+                        //{
+                        //    file.Add(new double[] { c[0], c[1], c[2], 1.00 });
+                        //}
 
                         if (byCylinder)
                         {
@@ -1789,6 +1876,7 @@ namespace MolConstructor
                             int polPcount = 0;
                             int solvACount = 0;
                             int solvBCount = 0;
+                            int solvCCount = 0;
                             int waterCount = 0;
 
                             // either the total number of beads in the layer or the volume of the layer if byVolume is selected
@@ -1899,6 +1987,10 @@ namespace MolConstructor
                                 {
                                     polNcount++;
                                 }
+                                if (c[3] == 1.07)
+                                {
+                                    solvCCount++;
+                                }
                             }
 
                             if (divider == 0)
@@ -1906,12 +1998,13 @@ namespace MolConstructor
                                 divider = 1;
                             }
 
+                            //divider = 24;
 
-                            double[] row = new double[11 + filenames.Length * 3];
+                            double[] row = new double[12 + filenames.Length * 3];
 
                             if (hasBonds)
                             {
-                                row = new double[8 + segmentLength * 2];
+                                row = new double[9 + segmentLength * 2];
                             }
 
                             row[0] = i * 2 * epsilon;
@@ -1922,12 +2015,13 @@ namespace MolConstructor
                             row[5] = solvACount / divider;
                             row[6] = solvBCount / divider;
                             row[7] = waterCount / divider;
+                            row[8] = solvCCount / divider;
 
                             if (!hasBonds)
                             {
-                                row[8] = row[1];
-                                row[9] = row[2];
-                                row[10] = row[3];
+                                row[9] = row[1];
+                                row[10] = row[2];
+                                row[11] = row[3];
                             }
                             else
                             {
@@ -1935,11 +2029,11 @@ namespace MolConstructor
                                 {
                                     if (polCcount > 0)
                                     {
-                                        row[8 + p] = segmentsA[p] / divider;
+                                        row[9 + p] = segmentsA[p] / divider;
                                     }
                                     if (polOcount > 0)
                                     {
-                                        row[8 + p + segmentLength] = segmentsB[p] / divider;
+                                        row[9 + p + segmentLength] = segmentsB[p] / divider;
                                     }
                                 }
                             }
@@ -1950,23 +2044,23 @@ namespace MolConstructor
                             }
                             else
                             {
-                                for (int j = 1; j <= 7; j++)
+                                for (int j = 1; j <= 8; j++)
                                 {
                                     obtainedData[i][j] += row[j];
                                 }
 
                                 if (hasBonds)
                                 {
-                                    for (int j = 8; j < row.Length; j++)
+                                    for (int j = 9; j < row.Length; j++)
                                     {
                                         obtainedData[i][j] += row[j];
                                     }
                                 }
                                 else
                                 {
-                                    obtainedData[i][8 + k] = row[1];
-                                    obtainedData[i][8 + k + filenames.Length] = row[2];
-                                    obtainedData[i][8 + k + filenames.Length * 2] = row[3];
+                                    obtainedData[i][9 + k] = row[1];
+                                    obtainedData[i][9 + k + filenames.Length] = row[2];
+                                    obtainedData[i][9 + k + filenames.Length * 2] = row[3];
                                 }
 
                             }
@@ -2002,14 +2096,14 @@ namespace MolConstructor
 
             foreach (var c in obtainedData)
             {
-                for (int i = 1; i <= 7; i++)
+                for (int i = 1; i <= 8; i++)
                 {
                     c[i] = Math.Round(c[i] / (double)filenames.Length, 3);
                 }
 
                 if (hasBonds)
                 {
-                    for (int i = 8; i < c.Length; i++)
+                    for (int i = 9; i < c.Length; i++)
                     {
                         c[i] = Math.Round(c[i] / (double)filenames.Length, 3);
                     }
@@ -2020,7 +2114,7 @@ namespace MolConstructor
                     {
                         for (int f = 1; f <= 3; f++)
                         {
-                            c[c.Length - (4 - f)] += Math.Pow(c[f] - c[8 + i + (filenames.Length) * (f - 1)], 2);
+                            c[c.Length - (4 - f)] += Math.Pow(c[f] - c[9 + i + (filenames.Length) * (f - 1)], 2);
                         }
                     }
 
@@ -2225,7 +2319,7 @@ namespace MolConstructor
         private void bgWorker2Dorder_DoWork(object sender, DoWorkEventArgs e)
         {
 
-           var args = (object[])e.Argument;
+            var args = (object[])e.Argument;
 
             var format = (int)args[0];
             var filenames = (string[])args[1];
@@ -2233,7 +2327,8 @@ namespace MolConstructor
             var orderType = (int)args[3];
             var molNum = (int)args[4];
             var isDyn = (bool)args[5];
-            var index = (int)args[6];
+            var showCms = (bool)args[6];
+            var index = (int)args[7];
 
             var obtainedData = new List<double[]>();
             var psis = new List<double>();
@@ -2253,25 +2348,30 @@ namespace MolConstructor
             var psiErr = 0.0;
 
             var voronSites = "";
-            
+
+            double[] sizes = new double[3];
+            var distsMin = new List<double>();
 
             for (int k = 0; k < filenames.Length; k++)
             {
                 if (!bgWorker.CancellationPending)
                 {
                     var file = new List<double[]>();
-                    double[] sizes = new double[3];
 
                     readTableFile(format, filenames[k], out file, out sizes);
 
-                    var molSizes = new double [2];
+                    var molSizes = new double[2];
                     var Gyrs = new double[3];
 
-                    var molCenters = getVoronoiBase(molNum, sizes, file, out molSizes, out Gyrs, out voronSites);  
+                    var molCenters = getVoronoiBase2(molNum, sizes, file, out molSizes, out Gyrs, out voronSites);
 
-                    //var filnmae = filenames[k].TrimEnd(".lammpstrj".ToCharArray());
-                    //filnmae += "-cms.lammpstrj";
-                    //FileWorker.SaveLammpstrj(false, filnmae, 1, sizes, 3, molCenters);
+                    // Для отладки - сохраняет центры масс
+                    if (showCms)
+                    {
+                    var filname = filenames[k].TrimEnd(".lammpstrj".ToCharArray());
+                    filname += "-cms.lammpstrj";
+                    FileWorker.SaveLammpstrj(false, filname, 1, sizes, 3, molCenters);
+                    }
 
                     //Add images
                     add2DPeriodImages(sizes, molCenters);
@@ -2284,6 +2384,7 @@ namespace MolConstructor
                     if (!isDyn)
                     {
                         double density = molNum / (sizes[0] * sizes[1]);
+
 
                         var rdf = Methods.CalcRadialDistFunc(0, molNum, 2 * epsilon, Math.Min(sizes[0], sizes[1]), density, molCenters);
 
@@ -2300,6 +2401,27 @@ namespace MolConstructor
                             {
                                 obtainedData[i][1] += rdf[i][1];
                             }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < molNum; i++)
+                        {
+                            var dists = new List<double>();
+
+                            foreach (var c in molCenters)
+                            {
+                                if (c != molCenters[i])
+                                {
+                                    var dist = Methods.GetDistance2D(molCenters[i].XCoord, molCenters[i].YCoord, c.XCoord, c.YCoord);
+                                    if (dist != 0)
+                                    {
+                                        dists.Add(dist);
+                                    }
+                                }
+                            }
+
+                            distsMin.Add(dists.Min());
                         }
                     }
 
@@ -2321,20 +2443,67 @@ namespace MolConstructor
             }
             if (isDyn)
             {
+                var hist = new List<double[]>();
+                for (int i = 0; i <= Math.Max(sizes[0], sizes[1]); i++)
+                {
+                    hist.Add(new double[8]);
+                    hist[i][0] = i;
+                }
+                for (int i = 0; i <= Math.Max(sizes[0], sizes[1]); i++)
+                {
+                    foreach (var c in distsMin)
+                    {
+                        if (i == 0)
+                        {
+                            if (c <= 0.5)
+                            {
+                                hist[0][1]++;
+                            }
+                        }
+                        else
+                        {
+                            if (c > (i - 0.5) && c <= (i + 0.5))
+                            {
+                                hist[i][1]++;
+                            }
+                        }
+                    }
+                }
+
+                foreach (var c in hist)
+                {
+                    c[1] /= distsMin.Count;
+                    obtainedData.Add(c);
+                }
+
                 for (int i = 0; i < psis.Count; i++)
                 {
-                    obtainedData.Add(new double[] { Math.Round(Rgs[i][0],3), Math.Round(Rgs[i][1], 3), 
+                    if (psis.Count < obtainedData.Count)
+                    {
+                        obtainedData[i][2] = Math.Round(Rgs[i][0], 3);
+                        obtainedData[i][3] = Math.Round(Rgs[i][1], 3);
+                        obtainedData[i][4] = Math.Round(Shape[i][0], 3);
+                        obtainedData[i][5] = Math.Round(Shape[i][1], 3);
+                        obtainedData[i][6] = Math.Round(Shape[i][2], 3);
+                        obtainedData[i][7] = Math.Round(psis[i], 3);
+                    }
+                    else
+                    {
+                        obtainedData.Add(new double[] { Math.Round(Rgs[i][0],3), Math.Round(Rgs[i][1], 3),
                                                     Math.Round(Shape[i][0], 3), Math.Round(Shape[i][1], 3), Math.Round(Shape[i][2], 3),
                                                     Math.Round(psis[i],3)});
+
+                    }
                 }
+
             }
             else
             {
 
-                foreach (var c in obtainedData)
-                {
-                    c[1] /= filenames.Length;
-                }
+                //foreach (var c in obtainedData)
+                //{
+                //    c[1] /= filenames.Length;
+                //}
 
                 for (int i=0; i< psis.Count; i++)
                 {
@@ -2392,7 +2561,9 @@ namespace MolConstructor
         {
             var voron = new List<MolData>();
 
-            var polMass = (data.Where(x => x[3] == 1.00 || x[3] == 1.01 || x[3] == 1.04).ToList().Count()) / molNum;
+            var pol = Methods.GetPolymers(data);
+            var polMass = pol.Count/ molNum;
+
             //if (actualPol != molCount)
             //{
             //    MessageBox.Show("Ошибка: число молекул не совпадает с числом введенным. Всего молекул: " + ((int)actualPol).ToString(),
@@ -2412,6 +2583,17 @@ namespace MolConstructor
 
             var bordermols = new List<int[]>(); // list of molecules on the periodic border
 
+            var coef = 0.8; // условие того, что не попадаем на границу
+            if (Math.Max(sizes[0],sizes[1])/ Math.Min(sizes[0], sizes[1]) >= 2)
+            {
+                coef = 0.9;
+            }
+
+            if (Math.Max(sizes[0], sizes[1]) / Math.Min(sizes[0], sizes[1]) >= 3)
+            {
+                coef = 0.95;
+            }
+
             // get search radius
             for (int i = 0; i < molNum; i++)
             {
@@ -2420,7 +2602,7 @@ namespace MolConstructor
 
                 molSizes[1] += Math.Sqrt(Methods.GetAxInertSquareRadius(mol, 2));
 
-                if (diam[0] < 0.85 *sizes[0] && diam[1] < 0.85*sizes[1])
+                if (diam[0] < coef * sizes[0] && diam[1] < coef * sizes[1])
                 {
                     molDiam += diam.Max();
                     molSizes[0] += Methods.GetHydroRadius2D(mol);
@@ -2437,9 +2619,9 @@ namespace MolConstructor
                 else
                 {
                     int sign = 0; // 0 means that the molecule has periodicity by X axis
-                    if (diam[1] > 0.85 * sizes[1])
+                    if (diam[1] > coef * sizes[1])
                     {
-                        if (diam[0] > 0.85 * sizes[0])
+                        if (diam[0] > coef * sizes[0])
                         {
                             sign = 2; // the molecule in the corner
                         }
@@ -2579,12 +2761,195 @@ namespace MolConstructor
 
             return voron;
         }
+
+        private List<MolData> getVoronoiBase2 (int molNum, double[] sizes, List<double[]> data, out double[] molSizes, out double[] Gyrs, out string sites)
+        {
+            var voron = new List<MolData>();
+
+            var pol = Methods.GetPolymers(data);
+
+            var polMass = pol.Count / molNum;
+
+
+            var coef = 0.8; // условие того, что не попадаем на границу
+            if (Math.Max(sizes[0], sizes[1]) / Math.Min(sizes[0], sizes[1]) >= 2)
+            {
+                coef = 0.9;
+            }
+
+            if (Math.Max(sizes[0], sizes[1]) / Math.Min(sizes[0], sizes[1]) >= 3)
+            {
+                coef = 0.95;
+            }
+
+            var points = new List<double[]>();
+
+            var molDiam = 0.0;
+            molSizes = new double[2] { 0.0, 0.0 };
+            Gyrs = new double[3] { 0.0, 0.0, 0.0 };
+
+            int counter = 0;
+
+            // get search radius
+            for (int i = 0; i < molNum; i++)
+            {
+                var mol = data.Skip(i * polMass).Take(polMass).ToList();
+
+                var tetasX = new double[2];
+                var tetasY = new double[2];
+
+                for (int p = 0; p < mol.Count; p++)
+                {
+                    var tetaX = mol[p][0] / sizes[0] * 2 * Math.PI;
+                    var tetaY = mol[p][1] / sizes[1] * 2 * Math.PI;
+
+                    tetasX[0] += Math.Cos(tetaX);
+                    tetasX[1] += Math.Sin(tetaX);
+
+                    tetasY[0] += Math.Cos(tetaY);
+                    tetasY[1] += Math.Sin(tetaY);
+                }
+
+                tetasX[0] /= polMass;
+                tetasX[1] /= polMass;
+                tetasY[0] /= polMass;
+                tetasY[1] /= polMass;
+
+                var meantetaX = Math.Atan2(-tetasX[1], -tetasX[0]) + Math.PI;
+                var meantetaY = Math.Atan2(-tetasY[1], -tetasY[0]) + Math.PI;
+
+                var cmX = sizes[0] * meantetaX / (2 * Math.PI);
+                var cmY = sizes[1] * meantetaY / (2 * Math.PI);
+
+                points.Add(new double[] { cmX, cmY });
+
+                var diam = Methods.GetDiameter(mol);
+
+                molSizes[1] += Math.Sqrt(Methods.GetAxInertSquareRadius(mol, 2));
+
+                if (diam[0] < coef * sizes[0] && diam[1] < coef * sizes[1])
+                {
+                    molDiam += diam.Max();
+                    molSizes[0] += Methods.GetHydroRadius2D(mol);
+
+                    var shape = Methods.GetShapeCharacteristics(mol);
+                    Gyrs[0] += Math.Sqrt(shape[2] + shape[3]);
+                    Gyrs[1] += Math.Sqrt(shape[4]);
+                    Gyrs[2] += shape[0];
+
+                    counter++;
+
+                }
+            }  
+         
+                molDiam /= counter;
+                molSizes[0] /= counter;
+               molSizes[1] /= molNum;
+               Gyrs[0] /= counter;
+            Gyrs[1] /= molNum;
+            Gyrs[2] /= molNum;
+
+            // XY Images - explicit account of periodic conditions
+            for (int i = 0; i < molNum; i++)
+            {
+                points.Add(new double[] { points[i][0] - sizes[0], points[i][1] });
+                points.Add(new double[] { points[i][0] + sizes[0], points[i][1] });
+                points.Add(new double[] { points[i][0], points[i][1] - sizes[1] });
+                points.Add(new double[] { points[i][0], points[i][1] + sizes[1] });
+
+                points.Add(new double[] { points[i][0] - sizes[0], points[i][1] - sizes[1] });
+                points.Add(new double[] { points[i][0] + sizes[0], points[i][1] + sizes[1] });
+                points.Add(new double[] { points[i][0] + sizes[0], points[i][1] - sizes[1] });
+                points.Add(new double[] { points[i][0] - sizes[0], points[i][1] + sizes[1] });
+            }
+            for (int i = 0; i < molNum; i++)
+            {
+                voron.Add(new MolData(1.00, i + 1, points[i][0], points[i][1], sizes[2] / 3.0));
+            }
+
+            foreach (var c in voron)
+            {
+                if (c.XCoord < 0) { c.XCoord += sizes[0]; }
+                if (c.YCoord < 0) { c.YCoord += sizes[1]; }
+            }
+
+            sites = "{\"sites\":[";
+
+            foreach (var c in points)
+            {
+                // We orienting on alex beutel's coord system
+                var beut = (c[1] - sizes[1] / 2.0) * 10;
+                sites += (int)(c[0] * 10) + "," + (int)beut + ",";
+            }
+
+            sites = sites.Remove(sites.Length - 1);
+
+            sites += "],\"queries\":[]}";
+
+            return voron;
+        }
+
+        private List<double[]> getCms (int molNum, double[] sizes, List<double[]> data)
+        {
+            var voron = new List<MolData>();
+
+            var polMass = data.Count() / molNum;
+
+            var points = new List<double[]>();
+
+                  // get search radius
+            for (int i = 0; i < molNum; i++)
+            {
+                var mol = data.Skip(i * polMass).Take(polMass).ToList();
+
+                var tetasX = new double[2];
+                var tetasY = new double[2];
+                var tetasZ = new double[2];
+
+                for (int p = 0; p < mol.Count; p++)
+                {
+                    var tetaX = mol[p][0] / sizes[0] * 2 * Math.PI;
+                    var tetaY = mol[p][1] / sizes[1] * 2 * Math.PI;
+                    var tetaZ = mol[p][2] / sizes[2] * 2 * Math.PI;
+
+                    tetasX[0] += Math.Cos(tetaX);
+                    tetasX[1] += Math.Sin(tetaX);
+
+                    tetasY[0] += Math.Cos(tetaY);
+                    tetasY[1] += Math.Sin(tetaY);
+
+                    tetasZ[0] += Math.Cos(tetaZ);
+                    tetasZ[1] += Math.Sin(tetaZ);
+                }
+
+                tetasX[0] /= polMass;
+                tetasX[1] /= polMass;
+                tetasY[0] /= polMass;
+                tetasY[1] /= polMass;
+                tetasZ[0] /= polMass;
+                tetasZ[1] /= polMass;
+
+                var meantetaX = Math.Atan2(-tetasX[1], -tetasX[0]) + Math.PI;
+                var meantetaY = Math.Atan2(-tetasY[1], -tetasY[0]) + Math.PI;
+                var meantetaZ = Math.Atan2(-tetasZ[1], -tetasZ[0]) + Math.PI;
+
+                var cmX = sizes[0] * meantetaX / (2 * Math.PI);
+                var cmY = sizes[1] * meantetaY / (2 * Math.PI);
+                var cmZ = sizes[2] * meantetaZ / (2 * Math.PI);
+
+                points.Add(new double[] { cmX, cmY, cmZ });
+
+            }
+
+            return points;
+        }
+
         private void add2DPeriodImages(double[] sizes, List<MolData> points)
         {
            int cnt = points.Count;
            for (int i=0; i< cnt; i++)
             {
-                points.Add(new MolData(1.01, points.Count + 1, points[i].XCoord + sizes[0], points[i].XCoord, 0.0));
+                points.Add(new MolData(1.01, points.Count + 1, points[i].XCoord + sizes[0], points[i].YCoord, 0.0));
                 points.Add(new MolData(1.02, points.Count + 1, points[i].XCoord - sizes[0], points[i].YCoord, 0.0));
                 points.Add(new MolData(1.03, points.Count + 1, points[i].XCoord, points[i].YCoord + sizes[1], 0.0));
                 points.Add(new MolData(1.04, points.Count + 1, points[i].XCoord, points[i].YCoord - sizes[1], 0.0));
@@ -3260,7 +3625,8 @@ namespace MolConstructor
             var withAutoCenter = (bool)args[2];
             var withZCenter = (bool)args[3];
             var beadType = (double)args[4];
-            var index = (int)args[5];
+            var molNum = (int)args[5];
+            var index = (int)args[6];
 
             var obtainedData = new List<double[]>();
 
@@ -3282,84 +3648,136 @@ namespace MolConstructor
                             centerPoint = MolData.GetCenterPoint(sizes, file);
                         }
 
-                        if (withAutoCenter)
+                        var molLength = file.Count / molNum;
+
+                        for (int i = 0; i < molNum; i++)
                         {
-                            doAutoCenter(withZCenter, 4, sizes, centerPoint, file);
-                        }
+                            var mol = file.Skip(i * molLength).Take(molLength).ToList();
 
-                        var backbone = file.Where(x => x[3] == beadType || x[3] == 1.04).ToList();
-
-                        var ends = file.Where(x => x[3] == 1.04).OrderBy(x => x[4]).ToList();
-
-                        var endToEnd = 0.0;
-
-                        if (ends.Count == 2)
-                        {
-                            endToEnd = Methods.GetDistance3D(ends[0][0], ends[0][1], ends[0][2],
-                                                                 ends[1][0], ends[1][1], ends[1][2]);
-                        }
-
-                        var sum = 0.0;
-
-                        var pairs = new List<double[]>();
-                        var dists = new List<double[]>();
-
-
-                        for (int j = 0; j < backbone.Count - 1; j++)
-                        {
-                            dists.Clear();
-
-                            for (int p = 0; p < backbone.Count -1; p++)
+                            if (withAutoCenter)
                             {
-                                if (p != j)
-                                    dists.Add(new double[] { Methods.GetDistance3D(backbone[j][0], backbone[j][1], backbone[j][2],
-                                                          backbone[p][0], backbone[p][1], backbone[p][2]), j, p });
+                                doAutoCenter(withZCenter, 4, sizes, centerPoint, mol);
                             }
-                            dists = dists.OrderBy(x => x[0]).ToList();
 
-                            if (pairs.Count ==0)
-                            {
-                                pairs.Add(dists[0]);
-                            }
-                            else
-                            {
-                                bool added = false;
-                                foreach (var c in pairs)
+                            var diam = Methods.GetDiameter(mol);
+
+                            //if (diam[0] >= (sizes[0] - 2.0) || diam[1] >= (sizes[1] - 2.0) || diam[2] >= (sizes[2] - 2.0))
+                            //{
+                            //    continue;
+                            //}
+                            //else
+                            //{
+
+                                var backbone = mol.Where(x => x[3] == beadType || x[3] == 1.04).ToList();
+
+                                var ends = mol.Where(x => x[3] == 1.04).OrderBy(x => x[4]).ToList();
+
+                                var endToEnd = 0.0;
+
+                                if (ends.Count == 2)
                                 {
-                                    if (c[0].Equals(dists[0][0]) && c[2].Equals(dists[0][1]))
-                                    {
-                                        pairs.Add(dists[1]);
-                                        added = true;
-                                        break;
-                                    }
-                                }
-                                if (added)
-                                {
-                                    continue;
+                                    endToEnd = Methods.GetDistance3D(ends[0][0], ends[0][1], ends[0][2],
+                                                                         ends[1][0], ends[1][1], ends[1][2]);
                                 }
                                 else
                                 {
-                                    pairs.Add(dists[0]);
+                                    endToEnd = Methods.GetDistance3D(backbone[0][0], backbone[0][1], backbone[0][2],
+                                                                     backbone[backbone.Count - 1][0], backbone[backbone.Count - 1][1], backbone[backbone.Count - 1][2]);
                                 }
-                            
-                            }
 
-                                //sum += StructFormer.GetDistance(backbone[j][0], backbone[j][1], backbone[j][2],
-                                //                                backbone[j+1][0], backbone[j+1][1], backbone[j+1][2]);
-                            }
+                                var sum = 0.0;
 
-                        foreach (var c in pairs)
-                        {
-                            sum += c[0];
+                                var pairs = new List<double[]>();
+                                var dists = new List<double[]>();
+
+                                for (int j = 0; j <= backbone.Count - 1; j++)
+                                {
+                                    dists.Clear();
+
+                                    for (int p = 0; p <= backbone.Count - 1; p++)
+                                    {
+                                        if (p != j)
+                                            dists.Add(new double[] { Methods.GetDistance3D(backbone[j][0], backbone[j][1], backbone[j][2],
+                                                          backbone[p][0], backbone[p][1], backbone[p][2]), j+1, p+1 });
+                                    }
+                                    dists = dists.OrderBy(x => x[0]).ToList();
+
+                                    if (pairs.Count == 0)
+                                    {
+                                        pairs.Add(dists[0]);
+                                    }
+                                    else
+                                    {
+                                        bool added = false;
+                                        foreach (var c in pairs)
+                                        {
+                                            if (c[0].Equals(dists[0][0]) && c[2].Equals(dists[0][1]))
+                                            {
+                                                pairs.Add(dists[1]);
+                                                added = true;
+                                                break;
+                                            }
+                                        }
+                                        if (added)
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            pairs.Add(dists[0]);
+                                        }
+
+                                    }
+
+                                    //sum += StructFormer.GetDistance(backbone[j][0], backbone[j][1], backbone[j][2],
+                                    //                                backbone[j+1][0], backbone[j+1][1], backbone[j+1][2]);
+                                }
+
+                                //pairs.Clear();
+
+
+                                //for (int j = 0; j < backbone.Count - 1; j++)
+                                //{
+                                //    dists.Clear();
+
+                                //    for (int p = 0; p <= backbone.Count - 1; p++)
+                                //    {
+                                //        if (p == (j+1))
+                                //            pairs.Add(new double[] { Methods.GetDistance3D(backbone[j][0], backbone[j][1], backbone[j][2],
+                                //                          backbone[p][0], backbone[p][1], backbone[p][2]), j, p });
+                                //    }
+                                //}
+
+
+                                    foreach (var c in pairs)
+                                {
+                                    sum += c[0];
+                                }
+
+                                //brush thickness
+
+                                //var sChains = 0.0;
+
+                                //for (int p = 0; p < 239; p++)
+                                //{
+                                //    var schain = file.Skip(239 + p * 15).Take(15).ToList();
+
+                                //    sChains += Methods.GetGyrRadius(schain);
+                                //}
+
+                                //sChains /= 239;
+
+
+                                double[] row = new double[6];
+
+                                row[0] = Math.Round(endToEnd, 3);
+                                row[1] = Math.Round(Math.Pow(endToEnd, 2), 3);
+                                row[2] = Math.Round(sum, 3);
+                                row[3] = Math.Round(Methods.GetGyrRadius(mol), 3);
+
+                                obtainedData.Add(row);
+                            //}
                         }
-
-                        double[] row = new double[5];
-
-                        row[0] = Math.Round(endToEnd,3);
-                        row[1] = Math.Round(Math.Pow(endToEnd, 2), 3);
-                        row[2] = Math.Round(sum, 3);
-
-                        obtainedData.Add(row);
 
                         int barStep = (int)(filenames.Length / 100.0);
                         if (barStep == 0)
@@ -3377,53 +3795,61 @@ namespace MolConstructor
                         e.Result = new object[] { };
                     }
                 }
-                catch(Exception ex)
-            {
-                MessageBox.Show("Ошибка в файле №" + filenames[k] + ". Причина ошибки:\n" + ex.ToString(),
-                                "Ошибка!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                e.Result = null;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка в файле №" + filenames[k] + ". Причина ошибки:\n" + ex.ToString(),
+                                    "Ошибка!",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    e.Result = null;
+                }
             }
-}
-            if (filenames.Length > 2)
+            if (obtainedData.Count > 2 )
             {
                 // mean value and square deviations
                 var endSum = 0.0;
                 var endSqSum = 0.0;
                 var cntrSum = 0.0;
+                var gyrSum = 0.0;
                 var endError = 0.0;
                 var endSqError = 0.0;
                 var cntrError = 0.0;
+                var gyrError = 0.0;
 
                 for (int i = 0; i < obtainedData.Count; i++)
                 {
                     endSum += obtainedData[i][0];
                     endSqSum += obtainedData[i][1];
                     cntrSum += obtainedData[i][2];
+                    gyrSum += obtainedData[i][3];
                 }
 
                 endSum /= obtainedData.Count;
                 endSqSum /= obtainedData.Count;
                 cntrSum /= obtainedData.Count;
+                gyrSum /= obtainedData.Count;
 
                 for (int i = 0; i < obtainedData.Count; i++)
                 {
                     endError += Math.Pow(endSum - obtainedData[i][0], 2);
                     endSqError += Math.Pow(endSqSum - obtainedData[i][1], 2);
                     cntrError += Math.Pow(cntrSum - obtainedData[i][2], 2);
+                    gyrError += Math.Pow(gyrSum - obtainedData[i][3], 2);
                 }
 
                 endError = Math.Sqrt(endError / (obtainedData.Count - 1));
                 endSqError = Math.Sqrt(endSqError / (obtainedData.Count - 1));
                 cntrError = Math.Sqrt(cntrError / (obtainedData.Count - 1));
+                gyrError = Math.Sqrt(gyrError / (obtainedData.Count - 1));
 
-                obtainedData[0][3] = Math.Round(endSum, 3);
-                obtainedData[1][3] = Math.Round(endSqSum, 3);
-                obtainedData[2][3] = Math.Round(cntrSum, 3);
-                obtainedData[0][4] = Math.Round(endError, 3);
-                obtainedData[1][4] = Math.Round(endSqError, 3);
-                obtainedData[2][4] = Math.Round(cntrError, 3);
+                obtainedData[0][4] = Math.Round(endSum, 3);
+                obtainedData[1][4] = Math.Round(endSqSum, 3);
+                obtainedData[2][4] = Math.Round(cntrSum, 3);
+                obtainedData[3][4] = Math.Round(gyrSum, 3);
+                obtainedData[0][5] = Math.Round(endError, 3);
+                obtainedData[1][5] = Math.Round(endSqError, 3);
+                obtainedData[2][5] = Math.Round(cntrError, 3);
+                obtainedData[3][5] = Math.Round(gyrError, 3);
             }
 
             e.Result = new object[] { obtainedData, index };
@@ -3456,10 +3882,20 @@ namespace MolConstructor
                         dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                       c[2].ToString(), c[3].ToString(), 
                                                       c[4].ToString(), c[5].ToString(),
-                                                      c[6].ToString(), c[7].ToString());
+                                                      c[6].ToString(), c[7].ToString(),
+                                                      c[9].ToString(), c[10].ToString(), 
+                                                      c[11].ToString());
                     }
 
-                        else if (index == 3)
+                    else if (index == 1)
+                    {
+                        dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
+                                                      c[2].ToString(), c[3].ToString(),
+                                                      c[4].ToString(), c[5].ToString(),
+                                                      c[6].ToString(), c[7].ToString(), c[8].ToString());
+                    }
+
+                    else if (index == 3)
                         {
                             dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                      c[2].ToString(), c[3].ToString(),
@@ -3492,6 +3928,7 @@ namespace MolConstructor
                                                           c[2].ToString(), c[3].ToString(),
                                                           c[4].ToString(), c[5].ToString(),
                                                           c[6].ToString(), c[7].ToString(),
+                                                          //c[8].ToString(), 
                                                           blocksA, blocksB);
                             }
                             else
@@ -3499,7 +3936,8 @@ namespace MolConstructor
                                 dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                        c[2].ToString(), c[3].ToString(),
                                                        c[4].ToString(), c[5].ToString(),
-                                                       c[6].ToString(), c[7].ToString() /*c[8].ToString()*/);
+                                                       c[6].ToString(), c[7].ToString() 
+                                                      /* c[8].ToString()*/);
                             }
                         }
                         else if (index == 6)
@@ -3509,7 +3947,7 @@ namespace MolConstructor
                                 string blocksA = "";
                                 string blocksB = "";
 
-                                var segments = (c.Length - 7) / 2;
+                                var segments = (c.Length - 9) / 2;
 
                                 for (int i = 0; i < segments; i++)
                                 {
@@ -3519,16 +3957,16 @@ namespace MolConstructor
                                         blocksA += "-";
                                         blocksB += "-";
                                     }
-                                    blocksA += c[7 + i].ToString();
-                                    blocksB += c[7 + i + segments].ToString();
+                                    blocksA += c[9 + i].ToString();
+                                    blocksB += c[9 + i + segments].ToString();
                                 }
 
 
-                                dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
+                            dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                            0, c[2].ToString(), 0,
                                                           c[3].ToString(), 0,
-                                                          c[4].ToString(), c[5].ToString(),
-                                                          c[6].ToString(), blocksA, blocksB);
+                                                          c[7].ToString(), c[5].ToString(),
+                                                          c[4].ToString(), c[6].ToString(), c[8].ToString(), blocksA, blocksB);
 
                             }
                             else
@@ -3537,8 +3975,8 @@ namespace MolConstructor
                                                      c[c.Length - 3].ToString(),
                                                      c[2].ToString(), c[c.Length - 2].ToString(),
                                                      c[3].ToString(), c[c.Length - 1].ToString(),
-                                                     c[4].ToString(), c[5].ToString(),
-                                                     c[6].ToString(), c[7].ToString());
+                                                     c[7].ToString(), c[5].ToString(),
+                                                     c[4].ToString(), c[6].ToString(), c[8].ToString());
                             }
                         }
                         else if (index == 7)
@@ -3568,7 +4006,7 @@ namespace MolConstructor
                           var isDyn = (bool)args[15];
                         if (isDyn)
                         {
-                            dgvDataFromFolder.Rows.Add("", "", c[0].ToString(), c[1].ToString(), c[2].ToString());
+                            dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(), c[2].ToString(), c[3].ToString(), c[4].ToString(), c[5].ToString(), c[6].ToString(), c[7].ToString());
                         }
                         else
                         {
@@ -3584,7 +4022,13 @@ namespace MolConstructor
                         {
                             dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
                                                        c[2].ToString());
-                        }                      
+                        }
+                        else if (index == 14)
+                    {
+                            dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
+                                                       c[2].ToString(), c[3].ToString(),
+                                                       c[4].ToString(), c[5].ToString());
+                    }
                         else
                         {
                             dgvDataFromFolder.Rows.Add(c[0].ToString(), c[1].ToString(),
@@ -3628,6 +4072,8 @@ namespace MolConstructor
             {
                 return;
             }
+            
+            var pol = Methods.GetPolymers(file);
 
             for (int i = 0; i < k; i++)
             {
@@ -3647,7 +4093,7 @@ namespace MolConstructor
 
                 MolData.ShiftAllDouble(3, sizes, centerCoord, centerPoint, file);
 
-                double[] diam = Methods.GetDiameter(file);
+                double[] diam = Methods.GetDiameter(pol);
 
                 for (int j = 0; j <= 2; j++)
                 {

@@ -1,0 +1,16 @@
+Polymer Types:
+1
+2
+5
+6
+Solvent Types:
+3
+4
+7
+8
+Wall Types:
+9
+10
+Pairs:
+1 5
+2 6

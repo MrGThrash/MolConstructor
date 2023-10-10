@@ -156,8 +156,8 @@
             this.cmbTaskType.FormattingEnabled = true;
             this.cmbTaskType.Items.AddRange(new object[] {
             "movie-файл",
-            "центровка 3D",
-            "центровка 2D"});
+            "центровка 2D",
+            "центровка 3D"});
             this.cmbTaskType.Location = new System.Drawing.Point(23, 89);
             this.cmbTaskType.Name = "cmbTaskType";
             this.cmbTaskType.Size = new System.Drawing.Size(121, 24);

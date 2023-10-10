@@ -148,6 +148,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.chbIrregGraftG1 = new System.Windows.Forms.CheckBox();
             this.tbGraftLength_Substrate = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.tbGraftLength_ThirdGen = new System.Windows.Forms.TextBox();
@@ -340,7 +341,6 @@
             this.bgWorker_Lipid = new System.ComponentModel.BackgroundWorker();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.bgWorkerBrush = new System.ComponentModel.BackgroundWorker();
-            this.chbIrregGraftG1 = new System.Windows.Forms.CheckBox();
             this.gbOptions.SuspendLayout();
             this.gbFilmParams.SuspendLayout();
             this.gbHasWater_Page3.SuspendLayout();
@@ -368,7 +368,7 @@
             this.chbOnlySolv.AutoSize = true;
             this.chbOnlySolv.Location = new System.Drawing.Point(139, 285);
             this.chbOnlySolv.Name = "chbOnlySolv";
-            this.chbOnlySolv.Size = new System.Drawing.Size(138, 20);
+            this.chbOnlySolv.Size = new System.Drawing.Size(137, 20);
             this.chbOnlySolv.TabIndex = 41;
             this.chbOnlySolv.Text = "Только жидкости";
             this.chbOnlySolv.UseVisualStyleBackColor = true;
@@ -390,7 +390,7 @@
             this.label100.Enabled = false;
             this.label100.Location = new System.Drawing.Point(105, 133);
             this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(61, 32);
+            this.label100.Size = new System.Drawing.Size(60, 32);
             this.label100.TabIndex = 39;
             this.label100.Text = " Длина \r\nблока А";
             // 
@@ -400,7 +400,7 @@
             this.chbDiblockMatrix.Enabled = false;
             this.chbDiblockMatrix.Location = new System.Drawing.Point(13, 168);
             this.chbDiblockMatrix.Name = "chbDiblockMatrix";
-            this.chbDiblockMatrix.Size = new System.Drawing.Size(75, 20);
+            this.chbDiblockMatrix.Size = new System.Drawing.Size(74, 20);
             this.chbDiblockMatrix.TabIndex = 38;
             this.chbDiblockMatrix.Text = "Диблок";
             this.chbDiblockMatrix.UseVisualStyleBackColor = true;
@@ -422,7 +422,7 @@
             this.lblMatrixType.Enabled = false;
             this.lblMatrixType.Location = new System.Drawing.Point(101, 89);
             this.lblMatrixType.Name = "lblMatrixType";
-            this.lblMatrixType.Size = new System.Drawing.Size(77, 16);
+            this.lblMatrixType.Size = new System.Drawing.Size(76, 16);
             this.lblMatrixType.TabIndex = 35;
             this.lblMatrixType.Text = "Тип бидов:";
             // 
@@ -441,7 +441,7 @@
             this.lblMatrix.Enabled = false;
             this.lblMatrix.Location = new System.Drawing.Point(9, 89);
             this.lblMatrix.Name = "lblMatrix";
-            this.lblMatrix.Size = new System.Drawing.Size(91, 16);
+            this.lblMatrix.Size = new System.Drawing.Size(90, 16);
             this.lblMatrix.TabIndex = 33;
             this.lblMatrix.Text = "Длина цепи:";
             // 
@@ -461,7 +461,7 @@
             this.lblIsLazy.Enabled = false;
             this.lblIsLazy.Location = new System.Drawing.Point(24, 27);
             this.lblIsLazy.Name = "lblIsLazy";
-            this.lblIsLazy.Size = new System.Drawing.Size(137, 32);
+            this.lblIsLazy.Size = new System.Drawing.Size(136, 32);
             this.lblIsLazy.TabIndex = 31;
             this.lblIsLazy.Text = "Процент полимера\r\n  и частиц в смеси:";
             // 
@@ -470,7 +470,7 @@
             this.chbHasMatrix.AutoSize = true;
             this.chbHasMatrix.Location = new System.Drawing.Point(31, 6);
             this.chbHasMatrix.Name = "chbHasMatrix";
-            this.chbHasMatrix.Size = new System.Drawing.Size(121, 20);
+            this.chbHasMatrix.Size = new System.Drawing.Size(120, 20);
             this.chbHasMatrix.TabIndex = 30;
             this.chbHasMatrix.Text = "Матрикс есть";
             this.chbHasMatrix.UseVisualStyleBackColor = true;
@@ -514,7 +514,7 @@
             this.chbTwoOils.Enabled = false;
             this.chbTwoOils.Location = new System.Drawing.Point(16, 192);
             this.chbTwoOils.Name = "chbTwoOils";
-            this.chbTwoOils.Size = new System.Drawing.Size(151, 20);
+            this.chbTwoOils.Size = new System.Drawing.Size(150, 20);
             this.chbTwoOils.TabIndex = 33;
             this.chbTwoOils.Text = "Два растворителя";
             this.chbTwoOils.UseVisualStyleBackColor = true;
@@ -524,7 +524,7 @@
             this.chbDoubleSurf.AutoSize = true;
             this.chbDoubleSurf.Location = new System.Drawing.Point(16, 43);
             this.chbDoubleSurf.Name = "chbDoubleSurf";
-            this.chbDoubleSurf.Size = new System.Drawing.Size(173, 20);
+            this.chbDoubleSurf.Size = new System.Drawing.Size(172, 20);
             this.chbDoubleSurf.TabIndex = 32;
             this.chbDoubleSurf.Text = "Двойная поверхность";
             this.chbDoubleSurf.UseVisualStyleBackColor = true;
@@ -534,7 +534,7 @@
             this.chbCrossEnabled.AutoSize = true;
             this.chbCrossEnabled.Location = new System.Drawing.Point(16, 70);
             this.chbCrossEnabled.Name = "chbCrossEnabled";
-            this.chbCrossEnabled.Size = new System.Drawing.Size(185, 20);
+            this.chbCrossEnabled.Size = new System.Drawing.Size(184, 20);
             this.chbCrossEnabled.TabIndex = 31;
             this.chbCrossEnabled.Text = "Пересечение возможно";
             this.chbCrossEnabled.UseVisualStyleBackColor = true;
@@ -547,7 +547,7 @@
             this.chbSeparatedSolvents.Enabled = false;
             this.chbSeparatedSolvents.Location = new System.Drawing.Point(16, 119);
             this.chbSeparatedSolvents.Name = "chbSeparatedSolvents";
-            this.chbSeparatedSolvents.Size = new System.Drawing.Size(205, 20);
+            this.chbSeparatedSolvents.Size = new System.Drawing.Size(204, 20);
             this.chbSeparatedSolvents.TabIndex = 30;
             this.chbSeparatedSolvents.Text = "Растворители несмешаны";
             this.chbSeparatedSolvents.UseVisualStyleBackColor = true;
@@ -566,7 +566,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(30, 216);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(177, 32);
+            this.label18.Size = new System.Drawing.Size(176, 32);
             this.label18.TabIndex = 28;
             this.label18.Text = "Смещение относительно\r\n             границы:";
             // 
@@ -575,7 +575,7 @@
             this.chbRandomDistribution.AutoSize = true;
             this.chbRandomDistribution.Location = new System.Drawing.Point(16, 96);
             this.chbRandomDistribution.Name = "chbRandomDistribution";
-            this.chbRandomDistribution.Size = new System.Drawing.Size(214, 20);
+            this.chbRandomDistribution.Size = new System.Drawing.Size(213, 20);
             this.chbRandomDistribution.TabIndex = 25;
             this.chbRandomDistribution.Text = "Случайное распределение ";
             this.chbRandomDistribution.UseVisualStyleBackColor = true;
@@ -586,7 +586,7 @@
             this.chbAutofill.AutoSize = true;
             this.chbAutofill.Location = new System.Drawing.Point(16, 20);
             this.chbAutofill.Name = "chbAutofill";
-            this.chbAutofill.Size = new System.Drawing.Size(199, 20);
+            this.chbAutofill.Size = new System.Drawing.Size(198, 20);
             this.chbAutofill.TabIndex = 24;
             this.chbAutofill.Text = "Автозаполнение границы";
             this.chbAutofill.UseVisualStyleBackColor = true;
@@ -597,7 +597,7 @@
             this.chbIsHomoPol.AutoSize = true;
             this.chbIsHomoPol.Location = new System.Drawing.Point(16, 166);
             this.chbIsHomoPol.Name = "chbIsHomoPol";
-            this.chbIsHomoPol.Size = new System.Drawing.Size(117, 20);
+            this.chbIsHomoPol.Size = new System.Drawing.Size(116, 20);
             this.chbIsHomoPol.TabIndex = 27;
             this.chbIsHomoPol.Text = "Гомополимер";
             this.chbIsHomoPol.UseVisualStyleBackColor = true;
@@ -607,7 +607,7 @@
             this.chbHasWalls_Page1.AutoSize = true;
             this.chbHasWalls_Page1.Location = new System.Drawing.Point(16, 143);
             this.chbHasWalls_Page1.Name = "chbHasWalls_Page1";
-            this.chbHasWalls_Page1.Size = new System.Drawing.Size(75, 20);
+            this.chbHasWalls_Page1.Size = new System.Drawing.Size(74, 20);
             this.chbHasWalls_Page1.TabIndex = 26;
             this.chbHasWalls_Page1.Text = "Стенки";
             this.chbHasWalls_Page1.UseVisualStyleBackColor = true;
@@ -627,7 +627,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(14, 249);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(110, 32);
+            this.label17.Size = new System.Drawing.Size(109, 32);
             this.label17.TabIndex = 22;
             this.label17.Text = "Число молекул \r\n    на границе";
             // 
@@ -645,7 +645,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(14, 198);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 16);
+            this.label9.Size = new System.Drawing.Size(76, 16);
             this.label9.TabIndex = 20;
             this.label9.Text = "Плотность";
             // 
@@ -688,7 +688,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(291, 182);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 32);
+            this.label8.Size = new System.Drawing.Size(108, 32);
             this.label8.TabIndex = 16;
             this.label8.Text = "Расположение \r\n растворителя";
             // 
@@ -723,7 +723,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(206, 16);
+            this.label7.Size = new System.Drawing.Size(205, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "Укажите путь к файлу связей";
             this.label7.Visible = false;
@@ -734,7 +734,7 @@
             this.tbZsize_Page1.Name = "tbZsize_Page1";
             this.tbZsize_Page1.Size = new System.Drawing.Size(47, 23);
             this.tbZsize_Page1.TabIndex = 11;
-            this.tbZsize_Page1.Text = "60";
+            this.tbZsize_Page1.Text = "50";
             this.tbZsize_Page1.TextChanged += new System.EventHandler(this.TextBox_TextChangedFloat);
             // 
             // label6
@@ -742,7 +742,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(163, 159);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 16);
+            this.label6.Size = new System.Drawing.Size(14, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "Z";
             // 
@@ -760,7 +760,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(91, 159);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
+            this.label5.Size = new System.Drawing.Size(15, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Y";
             // 
@@ -778,7 +778,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(20, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 16);
+            this.label4.Size = new System.Drawing.Size(16, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "X";
             // 
@@ -787,7 +787,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 16);
+            this.label3.Size = new System.Drawing.Size(118, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Размеры ящика:";
             // 
@@ -796,7 +796,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(285, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 32);
+            this.label2.Size = new System.Drawing.Size(128, 32);
             this.label2.TabIndex = 4;
             this.label2.Text = "  Содержание \r\nрастворителя, % :";
             // 
@@ -823,7 +823,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 16);
+            this.label1.Size = new System.Drawing.Size(211, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите молекулу полимера";
             // 
@@ -905,7 +905,7 @@
             this.chbHasWalls_Page2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbHasWalls_Page2.Location = new System.Drawing.Point(343, 47);
             this.chbHasWalls_Page2.Name = "chbHasWalls_Page2";
-            this.chbHasWalls_Page2.Size = new System.Drawing.Size(75, 20);
+            this.chbHasWalls_Page2.Size = new System.Drawing.Size(74, 20);
             this.chbHasWalls_Page2.TabIndex = 42;
             this.chbHasWalls_Page2.Text = "Стенки";
             this.chbHasWalls_Page2.UseVisualStyleBackColor = true;
@@ -916,7 +916,7 @@
             this.chbAllMixed_Page2.AutoSize = true;
             this.chbAllMixed_Page2.Location = new System.Drawing.Point(388, 119);
             this.chbAllMixed_Page2.Name = "chbAllMixed_Page2";
-            this.chbAllMixed_Page2.Size = new System.Drawing.Size(70, 20);
+            this.chbAllMixed_Page2.Size = new System.Drawing.Size(69, 20);
             this.chbAllMixed_Page2.TabIndex = 41;
             this.chbAllMixed_Page2.Text = "Смесь";
             this.chbAllMixed_Page2.UseVisualStyleBackColor = true;
@@ -937,7 +937,7 @@
             this.label89.Enabled = false;
             this.label89.Location = new System.Drawing.Point(270, 179);
             this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(158, 16);
+            this.label89.Size = new System.Drawing.Size(157, 16);
             this.label89.TabIndex = 39;
             this.label89.Text = "Процент второго р-ля:";
             // 
@@ -946,7 +946,7 @@
             this.chbTwoSolvs_PageFilm.AutoSize = true;
             this.chbTwoSolvs_PageFilm.Location = new System.Drawing.Point(269, 152);
             this.chbTwoSolvs_PageFilm.Name = "chbTwoSolvs_PageFilm";
-            this.chbTwoSolvs_PageFilm.Size = new System.Drawing.Size(151, 20);
+            this.chbTwoSolvs_PageFilm.Size = new System.Drawing.Size(150, 20);
             this.chbTwoSolvs_PageFilm.TabIndex = 38;
             this.chbTwoSolvs_PageFilm.Text = "Два растворителя";
             this.chbTwoSolvs_PageFilm.UseVisualStyleBackColor = true;
@@ -958,7 +958,7 @@
             this.label76.Enabled = false;
             this.label76.Location = new System.Drawing.Point(14, 179);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(109, 48);
+            this.label76.Size = new System.Drawing.Size(108, 48);
             this.label76.TabIndex = 37;
             this.label76.Text = "Расположение \r\n слоя молекул\r\n    2-го типа:";
             // 
@@ -981,7 +981,7 @@
             this.chbMolsUnMixed.Enabled = false;
             this.chbMolsUnMixed.Location = new System.Drawing.Point(15, 152);
             this.chbMolsUnMixed.Name = "chbMolsUnMixed";
-            this.chbMolsUnMixed.Size = new System.Drawing.Size(179, 20);
+            this.chbMolsUnMixed.Size = new System.Drawing.Size(178, 20);
             this.chbMolsUnMixed.TabIndex = 35;
             this.chbMolsUnMixed.Text = "Молекулы несмешаны";
             this.chbMolsUnMixed.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -994,7 +994,7 @@
             this.label75.Enabled = false;
             this.label75.Location = new System.Drawing.Point(113, 84);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(125, 32);
+            this.label75.Size = new System.Drawing.Size(124, 32);
             this.label75.TabIndex = 34;
             this.label75.Text = "Процент молекул\r\n     2-го типа, % :";
             // 
@@ -1013,7 +1013,7 @@
             this.label74.AutoSize = true;
             this.label74.Location = new System.Drawing.Point(15, 82);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(102, 32);
+            this.label74.Size = new System.Drawing.Size(101, 32);
             this.label74.TabIndex = 32;
             this.label74.Text = "   Процент \r\nполимера, % :";
             // 
@@ -1040,7 +1040,7 @@
             this.label69.AutoSize = true;
             this.label69.Location = new System.Drawing.Point(6, 25);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(119, 16);
+            this.label69.Size = new System.Drawing.Size(118, 16);
             this.label69.TabIndex = 24;
             this.label69.Text = "Размеры ящика:";
             // 
@@ -1049,7 +1049,7 @@
             this.label65.AutoSize = true;
             this.label65.Location = new System.Drawing.Point(15, 48);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(17, 16);
+            this.label65.Size = new System.Drawing.Size(16, 16);
             this.label65.TabIndex = 25;
             this.label65.Text = "X";
             // 
@@ -1067,7 +1067,7 @@
             this.label64.AutoSize = true;
             this.label64.Location = new System.Drawing.Point(89, 48);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(16, 16);
+            this.label64.Size = new System.Drawing.Size(15, 16);
             this.label64.TabIndex = 27;
             this.label64.Text = "Y";
             // 
@@ -1085,7 +1085,7 @@
             this.label62.AutoSize = true;
             this.label62.Location = new System.Drawing.Point(259, 29);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(77, 16);
+            this.label62.Size = new System.Drawing.Size(76, 16);
             this.label62.TabIndex = 31;
             this.label62.Text = "Плотность";
             // 
@@ -1094,7 +1094,7 @@
             this.label63.AutoSize = true;
             this.label63.Location = new System.Drawing.Point(168, 48);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(15, 16);
+            this.label63.Size = new System.Drawing.Size(14, 16);
             this.label63.TabIndex = 29;
             this.label63.Text = "Z";
             // 
@@ -1112,7 +1112,7 @@
             this.label71.AutoSize = true;
             this.label71.Location = new System.Drawing.Point(238, 82);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(164, 32);
+            this.label71.Size = new System.Drawing.Size(163, 32);
             this.label71.TabIndex = 23;
             this.label71.Text = "Процент растворителя\r\n       над пленкой % :";
             // 
@@ -1131,7 +1131,7 @@
             this.label72.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label72.Location = new System.Drawing.Point(367, 58);
             this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(206, 16);
+            this.label72.Size = new System.Drawing.Size(205, 16);
             this.label72.TabIndex = 38;
             this.label72.Text = "Укажите путь к файлу связей";
             this.label72.Visible = false;
@@ -1163,7 +1163,7 @@
             this.label73.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label73.Location = new System.Drawing.Point(367, 10);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(241, 16);
+            this.label73.Size = new System.Drawing.Size(240, 16);
             this.label73.TabIndex = 35;
             this.label73.Text = "Выберите молекулу 2-го полимера";
             // 
@@ -1192,7 +1192,7 @@
             this.label57.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label57.Location = new System.Drawing.Point(12, 58);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(206, 16);
+            this.label57.Size = new System.Drawing.Size(205, 16);
             this.label57.TabIndex = 13;
             this.label57.Text = "Укажите путь к файлу связей";
             this.label57.Visible = false;
@@ -1224,7 +1224,7 @@
             this.label55.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label55.Location = new System.Drawing.Point(12, 10);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(241, 16);
+            this.label55.Size = new System.Drawing.Size(240, 16);
             this.label55.TabIndex = 4;
             this.label55.Text = "Выберите молекулу 1-го полимера";
             // 
@@ -1253,7 +1253,7 @@
             this.chbOneMolInDrop.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbOneMolInDrop.Location = new System.Drawing.Point(23, 117);
             this.chbOneMolInDrop.Name = "chbOneMolInDrop";
-            this.chbOneMolInDrop.Size = new System.Drawing.Size(131, 20);
+            this.chbOneMolInDrop.Size = new System.Drawing.Size(130, 20);
             this.chbOneMolInDrop.TabIndex = 103;
             this.chbOneMolInDrop.Text = "Одна молекула";
             this.chbOneMolInDrop.UseVisualStyleBackColor = true;
@@ -1309,7 +1309,7 @@
             this.chbToSubstrate_Page4.Enabled = false;
             this.chbToSubstrate_Page4.Location = new System.Drawing.Point(20, 76);
             this.chbToSubstrate_Page4.Name = "chbToSubstrate_Page4";
-            this.chbToSubstrate_Page4.Size = new System.Drawing.Size(176, 20);
+            this.chbToSubstrate_Page4.Size = new System.Drawing.Size(175, 20);
             this.chbToSubstrate_Page4.TabIndex = 105;
             this.chbToSubstrate_Page4.Text = "Притянуть к подложке";
             this.chbToSubstrate_Page4.UseVisualStyleBackColor = true;
@@ -1321,7 +1321,7 @@
             this.label87.Enabled = false;
             this.label87.Location = new System.Drawing.Point(20, 105);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(177, 16);
+            this.label87.Size = new System.Drawing.Size(176, 16);
             this.label87.TabIndex = 103;
             this.label87.Text = "Расстояние от подложки:";
             // 
@@ -1340,7 +1340,7 @@
             this.chbHasWalls_Page4.AutoSize = true;
             this.chbHasWalls_Page4.Location = new System.Drawing.Point(266, 44);
             this.chbHasWalls_Page4.Name = "chbHasWalls_Page4";
-            this.chbHasWalls_Page4.Size = new System.Drawing.Size(75, 20);
+            this.chbHasWalls_Page4.Size = new System.Drawing.Size(74, 20);
             this.chbHasWalls_Page4.TabIndex = 95;
             this.chbHasWalls_Page4.Text = "Стенки";
             this.chbHasWalls_Page4.UseVisualStyleBackColor = true;
@@ -1369,7 +1369,7 @@
             this.label86.AutoSize = true;
             this.label86.Location = new System.Drawing.Point(170, 44);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(15, 16);
+            this.label86.Size = new System.Drawing.Size(14, 16);
             this.label86.TabIndex = 97;
             this.label86.Text = "Z";
             // 
@@ -1387,7 +1387,7 @@
             this.label85.AutoSize = true;
             this.label85.Location = new System.Drawing.Point(91, 44);
             this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(16, 16);
+            this.label85.Size = new System.Drawing.Size(15, 16);
             this.label85.TabIndex = 95;
             this.label85.Text = "Y";
             // 
@@ -1396,7 +1396,7 @@
             this.label83.AutoSize = true;
             this.label83.Location = new System.Drawing.Point(8, 21);
             this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(119, 16);
+            this.label83.Size = new System.Drawing.Size(118, 16);
             this.label83.TabIndex = 92;
             this.label83.Text = "Размеры ящика:";
             // 
@@ -1405,7 +1405,7 @@
             this.label84.AutoSize = true;
             this.label84.Location = new System.Drawing.Point(17, 44);
             this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(17, 16);
+            this.label84.Size = new System.Drawing.Size(16, 16);
             this.label84.TabIndex = 93;
             this.label84.Text = "X";
             // 
@@ -1439,7 +1439,7 @@
             this.label82.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label82.Location = new System.Drawing.Point(288, 149);
             this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(171, 16);
+            this.label82.Size = new System.Drawing.Size(170, 16);
             this.label82.TabIndex = 91;
             this.label82.Text = "Тип бидов растворителя";
             // 
@@ -1449,7 +1449,7 @@
             this.chbFillWithSolvent.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbFillWithSolvent.Location = new System.Drawing.Point(408, 216);
             this.chbFillWithSolvent.Name = "chbFillWithSolvent";
-            this.chbFillWithSolvent.Size = new System.Drawing.Size(124, 20);
+            this.chbFillWithSolvent.Size = new System.Drawing.Size(123, 20);
             this.chbFillWithSolvent.TabIndex = 90;
             this.chbFillWithSolvent.Text = "Капля в ящике";
             this.chbFillWithSolvent.UseVisualStyleBackColor = true;
@@ -1471,7 +1471,7 @@
             this.label81.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label81.Location = new System.Drawing.Point(20, 197);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(191, 16);
+            this.label81.Size = new System.Drawing.Size(190, 16);
             this.label81.TabIndex = 88;
             this.label81.Text = "Процент полимера в капле";
             // 
@@ -1491,7 +1491,7 @@
             this.label80.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label80.Location = new System.Drawing.Point(471, 150);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(77, 16);
+            this.label80.Size = new System.Drawing.Size(76, 16);
             this.label80.TabIndex = 86;
             this.label80.Text = "Плотность";
             // 
@@ -1511,7 +1511,7 @@
             this.label79.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label79.Location = new System.Drawing.Point(22, 149);
             this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(99, 16);
+            this.label79.Size = new System.Drawing.Size(98, 16);
             this.label79.TabIndex = 22;
             this.label79.Text = "Радиус капли";
             // 
@@ -1550,7 +1550,7 @@
             this.label77.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label77.Location = new System.Drawing.Point(12, 58);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(206, 16);
+            this.label77.Size = new System.Drawing.Size(205, 16);
             this.label77.TabIndex = 18;
             this.label77.Text = "Укажите путь к файлу связей";
             this.label77.Visible = false;
@@ -1572,7 +1572,7 @@
             this.label78.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label78.Location = new System.Drawing.Point(12, 10);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(212, 16);
+            this.label78.Size = new System.Drawing.Size(211, 16);
             this.label78.TabIndex = 16;
             this.label78.Text = "Выберите молекулу полимера";
             // 
@@ -1642,6 +1642,17 @@
             this.tabPage11.TabIndex = 0;
             this.tabPage11.Text = "Арборесценты";
             // 
+            // chbIrregGraftG1
+            // 
+            this.chbIrregGraftG1.AutoSize = true;
+            this.chbIrregGraftG1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.chbIrregGraftG1.Location = new System.Drawing.Point(302, 141);
+            this.chbIrregGraftG1.Name = "chbIrregGraftG1";
+            this.chbIrregGraftG1.Size = new System.Drawing.Size(192, 20);
+            this.chbIrregGraftG1.TabIndex = 38;
+            this.chbIrregGraftG1.Text = "Нерегулярная пришивка";
+            this.chbIrregGraftG1.UseVisualStyleBackColor = true;
+            // 
             // tbGraftLength_Substrate
             // 
             this.tbGraftLength_Substrate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -1658,7 +1669,7 @@
             this.label51.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label51.Location = new System.Drawing.Point(15, 12);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(181, 16);
+            this.label51.Size = new System.Drawing.Size(180, 16);
             this.label51.TabIndex = 36;
             this.label51.Text = "Число бидов в субстрате:";
             // 
@@ -1695,7 +1706,7 @@
             this.chbAllDifferent.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbAllDifferent.Location = new System.Drawing.Point(18, 265);
             this.chbAllDifferent.Name = "chbAllDifferent";
-            this.chbAllDifferent.Size = new System.Drawing.Size(157, 36);
+            this.chbAllDifferent.Size = new System.Drawing.Size(156, 36);
             this.chbAllDifferent.TabIndex = 32;
             this.chbAllDifferent.Text = "Каждая генерация \r\n     своего типа";
             this.chbAllDifferent.UseVisualStyleBackColor = true;
@@ -1707,7 +1718,7 @@
             this.chbIrregGraftG2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIrregGraftG2.Location = new System.Drawing.Point(301, 168);
             this.chbIrregGraftG2.Name = "chbIrregGraftG2";
-            this.chbIrregGraftG2.Size = new System.Drawing.Size(193, 20);
+            this.chbIrregGraftG2.Size = new System.Drawing.Size(192, 20);
             this.chbIrregGraftG2.TabIndex = 31;
             this.chbIrregGraftG2.Text = "Нерегулярная пришивка";
             this.chbIrregGraftG2.UseVisualStyleBackColor = true;
@@ -1718,7 +1729,7 @@
             this.chbIrregGraftG3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIrregGraftG3.Location = new System.Drawing.Point(302, 197);
             this.chbIrregGraftG3.Name = "chbIrregGraftG3";
-            this.chbIrregGraftG3.Size = new System.Drawing.Size(193, 20);
+            this.chbIrregGraftG3.Size = new System.Drawing.Size(192, 20);
             this.chbIrregGraftG3.TabIndex = 30;
             this.chbIrregGraftG3.Text = "Нерегулярная пришивка";
             this.chbIrregGraftG3.UseVisualStyleBackColor = true;
@@ -1729,7 +1740,7 @@
             this.chbIrregGraftG4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIrregGraftG4.Location = new System.Drawing.Point(302, 227);
             this.chbIrregGraftG4.Name = "chbIrregGraftG4";
-            this.chbIrregGraftG4.Size = new System.Drawing.Size(193, 20);
+            this.chbIrregGraftG4.Size = new System.Drawing.Size(192, 20);
             this.chbIrregGraftG4.TabIndex = 29;
             this.chbIrregGraftG4.Text = "Нерегулярная пришивка";
             this.chbIrregGraftG4.UseVisualStyleBackColor = true;
@@ -1740,7 +1751,7 @@
             this.label19.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label19.Location = new System.Drawing.Point(15, 113);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(115, 16);
+            this.label19.Size = new System.Drawing.Size(114, 16);
             this.label19.TabIndex = 25;
             this.label19.Text = "0-ая генерация:";
             // 
@@ -1760,7 +1771,7 @@
             this.chbArbHasAngles.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbArbHasAngles.Location = new System.Drawing.Point(401, 42);
             this.chbArbHasAngles.Name = "chbArbHasAngles";
-            this.chbArbHasAngles.Size = new System.Drawing.Size(91, 20);
+            this.chbArbHasAngles.Size = new System.Drawing.Size(90, 20);
             this.chbArbHasAngles.TabIndex = 24;
             this.chbArbHasAngles.Text = "Углы есть";
             this.chbArbHasAngles.UseVisualStyleBackColor = true;
@@ -1782,7 +1793,7 @@
             this.label43.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label43.Location = new System.Drawing.Point(15, 70);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(185, 32);
+            this.label43.Size = new System.Drawing.Size(184, 32);
             this.label43.TabIndex = 0;
             this.label43.Text = "   Количество пришивок\r\nна 1 цепь  по генерациям:";
             // 
@@ -1793,7 +1804,7 @@
             this.label90.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label90.Location = new System.Drawing.Point(575, 206);
             this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(145, 16);
+            this.label90.Size = new System.Drawing.Size(144, 16);
             this.label90.TabIndex = 22;
             this.label90.Text = "Доля в пришивке, %:";
             // 
@@ -1803,7 +1814,7 @@
             this.label44.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label44.Location = new System.Drawing.Point(15, 141);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(115, 16);
+            this.label44.Size = new System.Drawing.Size(114, 16);
             this.label44.TabIndex = 1;
             this.label44.Text = "1-ая генерация:";
             // 
@@ -1813,7 +1824,7 @@
             this.chbIsDiblock.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIsDiblock.Location = new System.Drawing.Point(501, 228);
             this.chbIsDiblock.Name = "chbIsDiblock";
-            this.chbIsDiblock.Size = new System.Drawing.Size(75, 20);
+            this.chbIsDiblock.Size = new System.Drawing.Size(74, 20);
             this.chbIsDiblock.TabIndex = 21;
             this.chbIsDiblock.Text = "Диблок";
             this.chbIsDiblock.UseVisualStyleBackColor = true;
@@ -1825,7 +1836,7 @@
             this.label45.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label45.Location = new System.Drawing.Point(17, 169);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(115, 16);
+            this.label45.Size = new System.Drawing.Size(114, 16);
             this.label45.TabIndex = 2;
             this.label45.Text = "2-ая генерация:";
             // 
@@ -1835,7 +1846,7 @@
             this.label52.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label52.Location = new System.Drawing.Point(539, 72);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(161, 32);
+            this.label52.Size = new System.Drawing.Size(160, 32);
             this.label52.TabIndex = 20;
             this.label52.Text = " Определить долю по \r\nзаданным генерациям";
             // 
@@ -1845,7 +1856,7 @@
             this.label46.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label46.Location = new System.Drawing.Point(17, 198);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(115, 16);
+            this.label46.Size = new System.Drawing.Size(114, 16);
             this.label46.TabIndex = 3;
             this.label46.Text = "3-ая генерация:";
             // 
@@ -1866,7 +1877,7 @@
             this.label47.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label47.Location = new System.Drawing.Point(17, 228);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(115, 16);
+            this.label47.Size = new System.Drawing.Size(114, 16);
             this.label47.TabIndex = 4;
             this.label47.Text = "4-ая генерация:";
             // 
@@ -1945,7 +1956,7 @@
             this.label50.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label50.Location = new System.Drawing.Point(206, 70);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(105, 32);
+            this.label50.Size = new System.Drawing.Size(104, 32);
             this.label50.TabIndex = 13;
             this.label50.Text = "Число бидов в \r\n   пришивке:";
             // 
@@ -1955,7 +1966,7 @@
             this.label48.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label48.Location = new System.Drawing.Point(534, 144);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(101, 16);
+            this.label48.Size = new System.Drawing.Size(100, 16);
             this.label48.TabIndex = 10;
             this.label48.Text = "Доля сорта B:";
             // 
@@ -1965,7 +1976,7 @@
             this.label49.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label49.Location = new System.Drawing.Point(526, 12);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(198, 32);
+            this.label49.Size = new System.Drawing.Size(197, 32);
             this.label49.TabIndex = 12;
             this.label49.Text = "Автоматически определить \r\n     наибольшую долю ";
             // 
@@ -2027,7 +2038,7 @@
             this.label88.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label88.Location = new System.Drawing.Point(245, 233);
             this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(110, 16);
+            this.label88.Size = new System.Drawing.Size(109, 16);
             this.label88.TabIndex = 18;
             this.label88.Text = "Число молекул:";
             // 
@@ -2037,7 +2048,7 @@
             this.chbGenManyCombs.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbGenManyCombs.Location = new System.Drawing.Point(18, 254);
             this.chbGenManyCombs.Name = "chbGenManyCombs";
-            this.chbGenManyCombs.Size = new System.Drawing.Size(213, 20);
+            this.chbGenManyCombs.Size = new System.Drawing.Size(212, 20);
             this.chbGenManyCombs.TabIndex = 17;
             this.chbGenManyCombs.Text = "Создать несколько молекул";
             this.chbGenManyCombs.UseVisualStyleBackColor = true;
@@ -2049,7 +2060,7 @@
             this.chbIsRandom.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIsRandom.Location = new System.Drawing.Point(369, 150);
             this.chbIsRandom.Name = "chbIsRandom";
-            this.chbIsRandom.Size = new System.Drawing.Size(210, 20);
+            this.chbIsRandom.Size = new System.Drawing.Size(209, 20);
             this.chbIsRandom.TabIndex = 16;
             this.chbIsRandom.Text = "Случайное распределение";
             this.chbIsRandom.UseVisualStyleBackColor = true;
@@ -2083,7 +2094,7 @@
             this.lblMatya2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblMatya2.Location = new System.Drawing.Point(14, 173);
             this.lblMatya2.Name = "lblMatya2";
-            this.lblMatya2.Size = new System.Drawing.Size(138, 32);
+            this.lblMatya2.Size = new System.Drawing.Size(137, 32);
             this.lblMatya2.TabIndex = 13;
             this.lblMatya2.Text = "   Доля блока B \r\n по числу цепей, %:";
             // 
@@ -2094,19 +2105,18 @@
             this.lblMatya1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblMatya1.Location = new System.Drawing.Point(13, 112);
             this.lblMatya1.Name = "lblMatya1";
-            this.lblMatya1.Size = new System.Drawing.Size(175, 32);
+            this.lblMatya1.Size = new System.Drawing.Size(174, 32);
             this.lblMatya1.TabIndex = 12;
             this.lblMatya1.Text = "Доля блока B от блока A \r\n        по длине цепи, %:";
             // 
             // chbIndBB
             // 
             this.chbIndBB.AutoSize = true;
-            this.chbIndBB.Enabled = false;
             this.chbIndBB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIndBB.Location = new System.Drawing.Point(358, 60);
             this.chbIndBB.Name = "chbIndBB";
             this.chbIndBB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chbIndBB.Size = new System.Drawing.Size(187, 20);
+            this.chbIndBB.Size = new System.Drawing.Size(186, 20);
             this.chbIndBB.TabIndex = 11;
             this.chbIndBB.Text = "Backbone независимый";
             this.chbIndBB.UseVisualStyleBackColor = true;
@@ -2129,7 +2139,7 @@
             this.lblDbFrac.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblDbFrac.Location = new System.Drawing.Point(366, 5);
             this.lblDbFrac.Name = "lblDbFrac";
-            this.lblDbFrac.Size = new System.Drawing.Size(118, 16);
+            this.lblDbFrac.Size = new System.Drawing.Size(117, 16);
             this.lblDbFrac.TabIndex = 9;
             this.lblDbFrac.Text = "Доля блока B, %:";
             // 
@@ -2139,7 +2149,7 @@
             this.chbIsDoubleGraft.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbIsDoubleGraft.Location = new System.Drawing.Point(173, 60);
             this.chbIsDoubleGraft.Name = "chbIsDoubleGraft";
-            this.chbIsDoubleGraft.Size = new System.Drawing.Size(156, 20);
+            this.chbIsDoubleGraft.Size = new System.Drawing.Size(155, 20);
             this.chbIsDoubleGraft.TabIndex = 8;
             this.chbIsDoubleGraft.Text = "Двойная пришивка";
             this.chbIsDoubleGraft.UseVisualStyleBackColor = true;
@@ -2150,7 +2160,7 @@
             this.label104.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label104.Location = new System.Drawing.Point(13, 60);
             this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(158, 16);
+            this.label104.Size = new System.Drawing.Size(157, 16);
             this.label104.TabIndex = 7;
             this.label104.Text = "Длина боковых цепей:";
             // 
@@ -2180,7 +2190,7 @@
             this.label103.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label103.Location = new System.Drawing.Point(205, 125);
             this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(171, 16);
+            this.label103.Size = new System.Drawing.Size(170, 16);
             this.label103.TabIndex = 4;
             this.label103.Text = "Плотность пришивки, %:";
             // 
@@ -2205,7 +2215,7 @@
             this.label102.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label102.Location = new System.Drawing.Point(170, 7);
             this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(138, 16);
+            this.label102.Size = new System.Drawing.Size(137, 16);
             this.label102.TabIndex = 2;
             this.label102.Text = "Тип боковых цепей:";
             // 
@@ -2215,7 +2225,7 @@
             this.label101.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label101.Location = new System.Drawing.Point(14, 7);
             this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(137, 16);
+            this.label101.Size = new System.Drawing.Size(136, 16);
             this.label101.TabIndex = 1;
             this.label101.Text = "Длина backbone\'а:";
             // 
@@ -2262,7 +2272,7 @@
             this.label70.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label70.Location = new System.Drawing.Point(430, 129);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(144, 32);
+            this.label70.Size = new System.Drawing.Size(143, 32);
             this.label70.TabIndex = 149;
             this.label70.Text = "Длина прививаемой\r\n            цепи:";
             // 
@@ -2282,7 +2292,7 @@
             this.chbFuncWithChains.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbFuncWithChains.Location = new System.Drawing.Point(300, 164);
             this.chbFuncWithChains.Name = "chbFuncWithChains";
-            this.chbFuncWithChains.Size = new System.Drawing.Size(119, 20);
+            this.chbFuncWithChains.Size = new System.Drawing.Size(118, 20);
             this.chbFuncWithChains.TabIndex = 147;
             this.chbFuncWithChains.Text = "Привить цепи";
             this.chbFuncWithChains.UseVisualStyleBackColor = true;
@@ -2294,7 +2304,7 @@
             this.chbBoundExisting.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbBoundExisting.Location = new System.Drawing.Point(25, 287);
             this.chbBoundExisting.Name = "chbBoundExisting";
-            this.chbBoundExisting.Size = new System.Drawing.Size(137, 20);
+            this.chbBoundExisting.Size = new System.Drawing.Size(136, 20);
             this.chbBoundExisting.TabIndex = 146;
             this.chbBoundExisting.Text = "Связать готовые";
             this.chbBoundExisting.UseVisualStyleBackColor = true;
@@ -2314,7 +2324,7 @@
             this.label32.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label32.Location = new System.Drawing.Point(22, 207);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(96, 32);
+            this.label32.Size = new System.Drawing.Size(95, 32);
             this.label32.TabIndex = 144;
             this.label32.Text = "Доля функц. \r\n   бидов, %";
             // 
@@ -2324,7 +2334,7 @@
             this.label31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label31.Location = new System.Drawing.Point(157, 129);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(125, 32);
+            this.label31.Size = new System.Drawing.Size(124, 32);
             this.label31.TabIndex = 143;
             this.label31.Text = "Тип прививаемых\r\n          бидов:";
             // 
@@ -2350,7 +2360,7 @@
             this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label30.Location = new System.Drawing.Point(15, 129);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(136, 32);
+            this.label30.Size = new System.Drawing.Size(135, 32);
             this.label30.TabIndex = 140;
             this.label30.Text = "Тип функицонализ.\r\n          бидов:";
             // 
@@ -2380,7 +2390,7 @@
             this.label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label28.Location = new System.Drawing.Point(15, 66);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(210, 16);
+            this.label28.Size = new System.Drawing.Size(209, 16);
             this.label28.TabIndex = 133;
             this.label28.Text = "Укажите путь к файлу связей:";
             this.label28.Visible = false;
@@ -2402,7 +2412,7 @@
             this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label29.Location = new System.Drawing.Point(15, 18);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(205, 16);
+            this.label29.Size = new System.Drawing.Size(204, 16);
             this.label29.TabIndex = 131;
             this.label29.Text = "Выберите файл c молекулой:";
             // 
@@ -2553,7 +2563,7 @@
             this.label14.Enabled = false;
             this.label14.Location = new System.Drawing.Point(53, 151);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 16);
+            this.label14.Size = new System.Drawing.Size(77, 16);
             this.label14.TabIndex = 37;
             this.label14.Text = "Результат:";
             // 
@@ -2571,7 +2581,7 @@
             this.label109.Enabled = false;
             this.label109.Location = new System.Drawing.Point(28, 90);
             this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(117, 32);
+            this.label109.Size = new System.Drawing.Size(116, 32);
             this.label109.TabIndex = 35;
             this.label109.Text = "Доля субстрата\r\n   в масле, %:";
             // 
@@ -2591,7 +2601,7 @@
             this.label108.Enabled = false;
             this.label108.Location = new System.Drawing.Point(23, 29);
             this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(145, 32);
+            this.label108.Size = new System.Drawing.Size(144, 32);
             this.label108.TabIndex = 33;
             this.label108.Text = "Доля катал./субстр.\r\n в водной фазе, %:";
             // 
@@ -2610,7 +2620,7 @@
             this.chbHasCatalysis.AutoSize = true;
             this.chbHasCatalysis.Location = new System.Drawing.Point(31, 6);
             this.chbHasCatalysis.Name = "chbHasCatalysis";
-            this.chbHasCatalysis.Size = new System.Drawing.Size(81, 20);
+            this.chbHasCatalysis.Size = new System.Drawing.Size(80, 20);
             this.chbHasCatalysis.TabIndex = 31;
             this.chbHasCatalysis.Text = "Катализ";
             this.chbHasCatalysis.UseVisualStyleBackColor = true;
@@ -2621,7 +2631,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(20, 316);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(169, 16);
+            this.label10.Size = new System.Drawing.Size(168, 16);
             this.label10.TabIndex = 42;
             this.label10.Text = "Дополнительные опции:";
             // 
@@ -2657,7 +2667,7 @@
             this.chbNonLinear1_Page2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbNonLinear1_Page2.Location = new System.Drawing.Point(15, 116);
             this.chbNonLinear1_Page2.Name = "chbNonLinear1_Page2";
-            this.chbNonLinear1_Page2.Size = new System.Drawing.Size(175, 20);
+            this.chbNonLinear1_Page2.Size = new System.Drawing.Size(174, 20);
             this.chbNonLinear1_Page2.TabIndex = 42;
             this.chbNonLinear1_Page2.Text = "Нелинейная молекула";
             this.chbNonLinear1_Page2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -2694,7 +2704,7 @@
             this.label56.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label56.Location = new System.Drawing.Point(367, 58);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(206, 16);
+            this.label56.Size = new System.Drawing.Size(205, 16);
             this.label56.TabIndex = 56;
             this.label56.Text = "Укажите путь к файлу связей";
             this.label56.Visible = false;
@@ -2726,7 +2736,7 @@
             this.label58.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label58.Location = new System.Drawing.Point(367, 10);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(236, 16);
+            this.label58.Size = new System.Drawing.Size(235, 16);
             this.label58.TabIndex = 53;
             this.label58.Text = "Выберите молекулу наночастицы";
             // 
@@ -2789,7 +2799,7 @@
             this.label60.AutoSize = true;
             this.label60.Location = new System.Drawing.Point(125, 85);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(108, 16);
+            this.label60.Size = new System.Drawing.Size(107, 16);
             this.label60.TabIndex = 50;
             this.label60.Text = "Анкерный бид:";
             // 
@@ -2818,7 +2828,7 @@
             this.label36.Enabled = false;
             this.label36.Location = new System.Drawing.Point(323, 108);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(95, 64);
+            this.label36.Size = new System.Drawing.Size(94, 64);
             this.label36.TabIndex = 47;
             this.label36.Text = "     Число\r\nосаждаемых\r\nнаночастиц/\r\nмикрогелей:";
             // 
@@ -2838,7 +2848,7 @@
             this.label37.Enabled = false;
             this.label37.Location = new System.Drawing.Point(331, 207);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(95, 64);
+            this.label37.Size = new System.Drawing.Size(94, 64);
             this.label37.TabIndex = 46;
             this.label37.Text = "  Позиция \r\nнаночастиц/\r\nмикрогелей \r\n   по оси Z :";
             // 
@@ -2847,7 +2857,7 @@
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(358, 49);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(60, 16);
+            this.label59.Size = new System.Drawing.Size(59, 16);
             this.label59.TabIndex = 44;
             this.label59.Text = "Стенки:";
             // 
@@ -2879,7 +2889,7 @@
             this.label35.Enabled = false;
             this.label35.Location = new System.Drawing.Point(167, 232);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(158, 16);
+            this.label35.Size = new System.Drawing.Size(157, 16);
             this.label35.TabIndex = 39;
             this.label35.Text = "Процент второго р-ля:";
             // 
@@ -2888,7 +2898,7 @@
             this.chbTwoSolvs_PagePlanBrush.AutoSize = true;
             this.chbTwoSolvs_PagePlanBrush.Location = new System.Drawing.Point(18, 251);
             this.chbTwoSolvs_PagePlanBrush.Name = "chbTwoSolvs_PagePlanBrush";
-            this.chbTwoSolvs_PagePlanBrush.Size = new System.Drawing.Size(151, 20);
+            this.chbTwoSolvs_PagePlanBrush.Size = new System.Drawing.Size(150, 20);
             this.chbTwoSolvs_PagePlanBrush.TabIndex = 38;
             this.chbTwoSolvs_PagePlanBrush.Text = "Два растворителя";
             this.chbTwoSolvs_PagePlanBrush.UseVisualStyleBackColor = true;
@@ -2899,7 +2909,7 @@
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(26, 82);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(81, 32);
+            this.label38.Size = new System.Drawing.Size(80, 32);
             this.label38.TabIndex = 32;
             this.label38.Text = "Плотность \r\nпришивки:";
             // 
@@ -2926,7 +2936,7 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(6, 25);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(119, 16);
+            this.label39.Size = new System.Drawing.Size(118, 16);
             this.label39.TabIndex = 24;
             this.label39.Text = "Размеры ящика:";
             // 
@@ -2935,7 +2945,7 @@
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(15, 48);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(17, 16);
+            this.label40.Size = new System.Drawing.Size(16, 16);
             this.label40.TabIndex = 25;
             this.label40.Text = "X";
             // 
@@ -2953,7 +2963,7 @@
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(89, 48);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(16, 16);
+            this.label41.Size = new System.Drawing.Size(15, 16);
             this.label41.TabIndex = 27;
             this.label41.Text = "Y";
             // 
@@ -2971,7 +2981,7 @@
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(259, 29);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(77, 16);
+            this.label42.Size = new System.Drawing.Size(76, 16);
             this.label42.TabIndex = 31;
             this.label42.Text = "Плотность";
             // 
@@ -2980,7 +2990,7 @@
             this.label53.AutoSize = true;
             this.label53.Location = new System.Drawing.Point(168, 48);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(15, 16);
+            this.label53.Size = new System.Drawing.Size(14, 16);
             this.label53.TabIndex = 29;
             this.label53.Text = "Z";
             // 
@@ -2998,7 +3008,7 @@
             this.label54.AutoSize = true;
             this.label54.Location = new System.Drawing.Point(15, 163);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(164, 32);
+            this.label54.Size = new System.Drawing.Size(163, 32);
             this.label54.TabIndex = 23;
             this.label54.Text = "Процент растворителя\r\n       над пленкой % :";
             // 
@@ -3059,7 +3069,7 @@
             this.label33.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label33.Location = new System.Drawing.Point(12, 10);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(212, 16);
+            this.label33.Size = new System.Drawing.Size(211, 16);
             this.label33.TabIndex = 16;
             this.label33.Text = "Выберите молекулу пришивки";
             // 
@@ -3090,7 +3100,7 @@
             this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label34.Location = new System.Drawing.Point(12, 58);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(206, 16);
+            this.label34.Size = new System.Drawing.Size(205, 16);
             this.label34.TabIndex = 19;
             this.label34.Text = "Укажите путь к файлу связей";
             this.label34.Visible = false;
@@ -3133,7 +3143,7 @@
             this.chbOutsideDrop.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbOutsideDrop.Location = new System.Drawing.Point(268, 216);
             this.chbOutsideDrop.Name = "chbOutsideDrop";
-            this.chbOutsideDrop.Size = new System.Drawing.Size(94, 20);
+            this.chbOutsideDrop.Size = new System.Drawing.Size(93, 20);
             this.chbOutsideDrop.TabIndex = 107;
             this.chbOutsideDrop.Text = "Вне капли";
             this.chbOutsideDrop.UseVisualStyleBackColor = true;
@@ -3144,7 +3154,7 @@
             this.chbInUnits.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbInUnits.Location = new System.Drawing.Point(138, 216);
             this.chbInUnits.Name = "chbInUnits";
-            this.chbInUnits.Size = new System.Drawing.Size(104, 20);
+            this.chbInUnits.Size = new System.Drawing.Size(103, 20);
             this.chbInUnits.TabIndex = 106;
             this.chbInUnits.Text = "В единицах";
             this.chbInUnits.UseVisualStyleBackColor = true;
@@ -3155,7 +3165,7 @@
             this.chbInPercents.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbInPercents.Location = new System.Drawing.Point(136, 165);
             this.chbInPercents.Name = "chbInPercents";
-            this.chbInPercents.Size = new System.Drawing.Size(112, 20);
+            this.chbInPercents.Size = new System.Drawing.Size(111, 20);
             this.chbInPercents.TabIndex = 105;
             this.chbInPercents.Text = "В процентах";
             this.chbInPercents.UseVisualStyleBackColor = true;
@@ -3166,7 +3176,7 @@
             this.chbNonLinear_Page4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.chbNonLinear_Page4.Location = new System.Drawing.Point(175, 117);
             this.chbNonLinear_Page4.Name = "chbNonLinear_Page4";
-            this.chbNonLinear_Page4.Size = new System.Drawing.Size(175, 20);
+            this.chbNonLinear_Page4.Size = new System.Drawing.Size(174, 20);
             this.chbNonLinear_Page4.TabIndex = 104;
             this.chbNonLinear_Page4.Text = "Нелинейная молекула";
             this.chbNonLinear_Page4.UseVisualStyleBackColor = true;
@@ -3237,7 +3247,7 @@
             this.chbLipidTwoLiqs.AutoSize = true;
             this.chbLipidTwoLiqs.Location = new System.Drawing.Point(130, 159);
             this.chbLipidTwoLiqs.Name = "chbLipidTwoLiqs";
-            this.chbLipidTwoLiqs.Size = new System.Drawing.Size(120, 20);
+            this.chbLipidTwoLiqs.Size = new System.Drawing.Size(119, 20);
             this.chbLipidTwoLiqs.TabIndex = 47;
             this.chbLipidTwoLiqs.Text = "Две жидкости";
             this.chbLipidTwoLiqs.UseVisualStyleBackColor = true;
@@ -3247,7 +3257,7 @@
             this.lblLigand.AutoSize = true;
             this.lblLigand.Location = new System.Drawing.Point(413, 159);
             this.lblLigand.Name = "lblLigand";
-            this.lblLigand.Size = new System.Drawing.Size(112, 16);
+            this.lblLigand.Size = new System.Drawing.Size(111, 16);
             this.lblLigand.TabIndex = 46;
             this.lblLigand.Text = "Доля лиганд, %:";
             this.lblLigand.Visible = false;
@@ -3267,7 +3277,7 @@
             this.chbHasLigands.AutoSize = true;
             this.chbHasLigands.Location = new System.Drawing.Point(289, 180);
             this.chbHasLigands.Name = "chbHasLigands";
-            this.chbHasLigands.Size = new System.Drawing.Size(115, 20);
+            this.chbHasLigands.Size = new System.Drawing.Size(114, 20);
             this.chbHasLigands.TabIndex = 44;
             this.chbHasLigands.Text = "Есть лиганды";
             this.chbHasLigands.UseVisualStyleBackColor = true;
@@ -3290,7 +3300,7 @@
             this.chbHasWalls_Page5.AutoSize = true;
             this.chbHasWalls_Page5.Location = new System.Drawing.Point(343, 47);
             this.chbHasWalls_Page5.Name = "chbHasWalls_Page5";
-            this.chbHasWalls_Page5.Size = new System.Drawing.Size(75, 20);
+            this.chbHasWalls_Page5.Size = new System.Drawing.Size(74, 20);
             this.chbHasWalls_Page5.TabIndex = 42;
             this.chbHasWalls_Page5.Text = "Стенки";
             this.chbHasWalls_Page5.UseVisualStyleBackColor = true;
@@ -3301,7 +3311,7 @@
             this.chbLayerReady.AutoSize = true;
             this.chbLayerReady.Location = new System.Drawing.Point(130, 119);
             this.chbLayerReady.Name = "chbLayerReady";
-            this.chbLayerReady.Size = new System.Drawing.Size(142, 20);
+            this.chbLayerReady.Size = new System.Drawing.Size(141, 20);
             this.chbLayerReady.TabIndex = 41;
             this.chbLayerReady.Text = "Бислой уже готов";
             this.chbLayerReady.UseVisualStyleBackColor = true;
@@ -3323,7 +3333,7 @@
             this.label16.Enabled = false;
             this.label16.Location = new System.Drawing.Point(12, 233);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 64);
+            this.label16.Size = new System.Drawing.Size(94, 64);
             this.label16.TabIndex = 39;
             this.label16.Text = "     Число\r\nосаждаемых\r\nнаночастиц/\r\nмикрогелей:";
             // 
@@ -3332,7 +3342,7 @@
             this.label112.AutoSize = true;
             this.label112.Location = new System.Drawing.Point(288, 82);
             this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(116, 32);
+            this.label112.Size = new System.Drawing.Size(115, 32);
             this.label112.TabIndex = 37;
             this.label112.Text = "Распределение \r\n    липидов:";
             // 
@@ -3354,7 +3364,7 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(6, 98);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(105, 16);
+            this.label21.Size = new System.Drawing.Size(104, 16);
             this.label21.TabIndex = 32;
             this.label21.Text = "Число липидов";
             // 
@@ -3372,7 +3382,7 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(405, 80);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(117, 32);
+            this.label20.Size = new System.Drawing.Size(116, 32);
             this.label20.TabIndex = 34;
             this.label20.Text = "Позиция бислоя \r\n     по оси Z :";
             // 
@@ -3399,7 +3409,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(6, 25);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(119, 16);
+            this.label22.Size = new System.Drawing.Size(118, 16);
             this.label22.TabIndex = 24;
             this.label22.Text = "Размеры ящика:";
             // 
@@ -3408,7 +3418,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(15, 48);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(17, 16);
+            this.label23.Size = new System.Drawing.Size(16, 16);
             this.label23.TabIndex = 25;
             this.label23.Text = "X";
             // 
@@ -3436,7 +3446,7 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(89, 48);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(16, 16);
+            this.label24.Size = new System.Drawing.Size(15, 16);
             this.label24.TabIndex = 27;
             this.label24.Text = "Y";
             // 
@@ -3446,7 +3456,7 @@
             this.label27.Enabled = false;
             this.label27.Location = new System.Drawing.Point(323, 233);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(95, 64);
+            this.label27.Size = new System.Drawing.Size(94, 64);
             this.label27.TabIndex = 23;
             this.label27.Text = "  Позиция \r\nнаночастиц/\r\nмикрогелей \r\n   по оси Z :";
             // 
@@ -3464,7 +3474,7 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(259, 29);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(77, 16);
+            this.label25.Size = new System.Drawing.Size(76, 16);
             this.label25.TabIndex = 31;
             this.label25.Text = "Плотность";
             // 
@@ -3473,7 +3483,7 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(168, 48);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(15, 16);
+            this.label26.Size = new System.Drawing.Size(14, 16);
             this.label26.TabIndex = 29;
             this.label26.Text = "Z";
             // 
@@ -3535,7 +3545,7 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label11.Location = new System.Drawing.Point(12, 10);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(193, 16);
+            this.label11.Size = new System.Drawing.Size(192, 16);
             this.label11.TabIndex = 41;
             this.label11.Text = "Выберите молекулу липида";
             // 
@@ -3545,7 +3555,7 @@
             this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label12.Location = new System.Drawing.Point(367, 58);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(206, 16);
+            this.label12.Size = new System.Drawing.Size(205, 16);
             this.label12.TabIndex = 50;
             this.label12.Text = "Укажите путь к файлу связей";
             this.label12.Visible = false;
@@ -3598,7 +3608,7 @@
             this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label13.Location = new System.Drawing.Point(12, 58);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(206, 16);
+            this.label13.Size = new System.Drawing.Size(205, 16);
             this.label13.TabIndex = 44;
             this.label13.Text = "Укажите путь к файлу связей";
             this.label13.Visible = false;
@@ -3609,7 +3619,7 @@
             this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label15.Location = new System.Drawing.Point(367, 10);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(242, 16);
+            this.label15.Size = new System.Drawing.Size(241, 16);
             this.label15.TabIndex = 47;
             this.label15.Text = "Выберите наночастицу/микрогель";
             // 
@@ -3673,7 +3683,7 @@
             this.label61.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label61.Location = new System.Drawing.Point(184, 409);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(15, 16);
+            this.label61.Size = new System.Drawing.Size(14, 16);
             this.label61.TabIndex = 152;
             this.label61.Text = "Z";
             // 
@@ -3691,7 +3701,7 @@
             this.label66.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label66.Location = new System.Drawing.Point(105, 409);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(16, 16);
+            this.label66.Size = new System.Drawing.Size(15, 16);
             this.label66.TabIndex = 150;
             this.label66.Text = "Y";
             // 
@@ -3701,7 +3711,7 @@
             this.label68.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label68.Location = new System.Drawing.Point(31, 409);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(17, 16);
+            this.label68.Size = new System.Drawing.Size(16, 16);
             this.label68.TabIndex = 148;
             this.label68.Text = "X";
             // 
@@ -3711,7 +3721,7 @@
             this.label67.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label67.Location = new System.Drawing.Point(22, 386);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(119, 16);
+            this.label67.Size = new System.Drawing.Size(118, 16);
             this.label67.TabIndex = 147;
             this.label67.Text = "Размеры ящика:";
             // 
@@ -3743,17 +3753,6 @@
             // 
             this.bgWorkerBrush.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerBrush_DoWork);
             this.bgWorkerBrush.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerBrush_RunWorkerCompleted);
-            // 
-            // chbIrregGraftG1
-            // 
-            this.chbIrregGraftG1.AutoSize = true;
-            this.chbIrregGraftG1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chbIrregGraftG1.Location = new System.Drawing.Point(302, 141);
-            this.chbIrregGraftG1.Name = "chbIrregGraftG1";
-            this.chbIrregGraftG1.Size = new System.Drawing.Size(193, 20);
-            this.chbIrregGraftG1.TabIndex = 38;
-            this.chbIrregGraftG1.Text = "Нерегулярная пришивка";
-            this.chbIrregGraftG1.UseVisualStyleBackColor = true;
             // 
             // ConstructControl
             // 

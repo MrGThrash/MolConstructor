@@ -75,24 +75,26 @@ namespace MolConstructor.UserControls
                 pBar.Value = 0;
                 pBar.Visible = true;
 
+                double[] shifts = new double[3];
+                if (chbWithShift.Checked)
+                {
+                    shifts[0] = replaceValue(tbShiftX.Text);
+                    shifts[1] = replaceValue(tbShiftY.Text);
+                    shifts[2] = replaceValue(tbShiftZ.Text);
+                }
+
 
                 if (cmbTaskType.SelectedIndex == 0)
                 {
                     double trimValue = replaceValue(tbTrimPerc.Text);
-                    double[] shifts = new double[3];
-                    if (chbWithShift.Checked)
-                    {
-                        shifts[0] = replaceValue(tbShiftX.Text);
-                        shifts[1] = replaceValue(tbShiftY.Text);
-                        shifts[2] = replaceValue(tbShiftZ.Text);
-                    }
+                   
 
                     bgWorker.RunWorkerAsync(new object[]{chbHasWalls_Page1.Checked,tbDirectoryPath.Text,tbMovieOutName.Text,
                                                      cmbFormat_Page1.SelectedItem,shifts,chbTrim.Checked,trimValue,files});
                 }
                 else
                 {
-                    bgWorkerCenter.RunWorkerAsync(new object[] { cmbFormat_Page1.SelectedItem, cmbTaskType.SelectedIndex, files });
+                    bgWorkerCenter.RunWorkerAsync(new object[] { cmbFormat_Page1.SelectedItem, cmbTaskType.SelectedIndex, shifts, files });
                 }
             }
         }
@@ -185,11 +187,12 @@ namespace MolConstructor.UserControls
             object[] objects = (object[])e.Argument;
             string format = (string)objects[0];
             int centerType = (int)objects[1];
-            string[] files = (string[])objects[2];
+            double[] shifts = (double[])objects[2];
+            string[] files = (string[])objects[3];
 
             bool withZCenter = true;
 
-            if (centerType == 2)
+            if (centerType == 1)
             {
                 withZCenter = false;
             }
@@ -216,11 +219,11 @@ namespace MolConstructor.UserControls
                     //bil = file.Where(x => x[0] >= 0 && x[0] <= 30 && x[1] >= 0 && x[1] >= 30).ToList();
 
                     //var cm = Methods.GetAxCenterMass(bil, 2);
-                    var cm = 50.0;
+                    //var cm = 50.0;
 
                     doAutoCenter(withZCenter, 5, sizes, centerPoint, file);
 
-                    var strct = MolData.ShiftAll(false, 0, false, 3, sizes, new double[] { 0, 0, 50-cm }, centerPoint, file);
+                    var strct = MolData.ShiftAll(false, 0, false, 3, sizes, new double[] { shifts[0], shifts[1], shifts[2] }, centerPoint, file);
 
                     if (format == "xyzr")
                     {
@@ -282,7 +285,7 @@ namespace MolConstructor.UserControls
 
         private void cmbTaskType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var isMovie = (cmbTaskType.SelectedIndex < 1) ? true : false;
+            var isMovie = (cmbTaskType.SelectedIndex <= 1) ? true : false;
 
             chbWithShift.Enabled = isMovie;
             gbShiftValues.Enabled = isMovie;
@@ -331,7 +334,22 @@ namespace MolConstructor.UserControls
 
             for (int i = 0; i < k; i++)
             {
-                double[] centerCoord = Methods.CenterStructure(centerPoint, file);
+                var fileCent = new List<double[]>();
+
+                var polTypes = FileWorker.GetTableTypes("Polymer");
+
+                foreach (var c in file)
+                {
+                    foreach (var p in polTypes)
+                    {
+                        if (c[3].Equals(p))
+                        {
+                            fileCent.Add(c);
+                        }
+                    }
+                }
+                
+                double[] centerCoord = Methods.CenterStructureInit(sizes,centerPoint, fileCent);
 
                 if (Math.Abs(centerCoord[0]) < 0.5 && Math.Abs(centerCoord[1]) < 0.5 && Math.Abs(centerCoord[2]) < 0.5)
                 {
@@ -347,14 +365,14 @@ namespace MolConstructor.UserControls
 
                 MolData.ShiftAllDouble(3, sizes, centerCoord, centerPoint, file);
 
-                double[] diam = Methods.GetDiameter(file);
+                double[] diam = Methods.GetDiameter(fileCent);
 
                 for (int j = 0; j <= 2; j++)
                 {
                     if (Math.Abs(diam[j] - sizes[j]) <= 2)
                     {
                         var shifts = new double[3];
-                        shifts[j] = -Methods.CenterAxis_Type2(false, j, sizes[j], centerPoint[j], file);
+                        shifts[j] = -Methods.CenterAxis_Type2(false, j, sizes[j], centerPoint[j], fileCent);
 
                         if (j == 2 && !withZCenter)
                         {

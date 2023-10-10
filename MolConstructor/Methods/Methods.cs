@@ -79,7 +79,7 @@ namespace MolConstructor
 
 
 
-        public static double GetHydroDiameter(List<double[]> data)
+        public static double GetGyrRadius(List<double[]> data)
         {
             return Math.Round(Math.Sqrt(GetAxInertSquareRadius(data, 0) + GetAxInertSquareRadius(data, 1) + GetAxInertSquareRadius(data, 2)), 3);
         }
@@ -117,20 +117,16 @@ namespace MolConstructor
 
         public static double GetAxDiameter(List<MolData> data, int axNum)
         {
-            var pol = data.Where(x => x.AtomType == 1.00 ||
-                              x.AtomType == 1.01 ||
-                              x.AtomType == 1.04 ||
-                              x.AtomType == 1.05).ToList();
 
-            double diam = pol.Max(x => x.XCoord) - pol.Min(x => x.XCoord);
+            double diam = data.Max(x => x.XCoord) - data.Min(x => x.XCoord);
 
             if (axNum == 1)
             {
-                diam = pol.Max(x => x.YCoord) - pol.Min(x => x.YCoord);
+                diam = data.Max(x => x.YCoord) - data.Min(x => x.YCoord);
             }
             if (axNum == 2)
             {
-                diam = pol.Max(x => x.ZCoord) - pol.Min(x => x.ZCoord);
+                diam = data.Max(x => x.ZCoord) - data.Min(x => x.ZCoord);
             }
             if (diam == 0) { diam = 0.5; }
 
@@ -139,13 +135,9 @@ namespace MolConstructor
 
         public static double GetAxDiameter(List<double[]> data, int axNum)
         {
-            var pol = data.Where(x => x[3] == 1.00 ||
-                             x[3] == 1.01 ||
-                             x[3] == 1.04 ||
-                             x[3] == 1.05).ToList();
 
-            double diam = pol.Max(x => x[axNum]) - pol.Min(x => x[axNum]);
-
+            double diam = data.Max(x => x[axNum]) - data.Min(x => x[axNum]);
+           
             if (diam == 0) { diam = 0.5; }
 
             return diam;
@@ -178,20 +170,12 @@ namespace MolConstructor
         {
             double ax = 0;
 
-            var pol = data.Where(x => x[3] == 1.00 ||
-                             x[3] == 1.01 ||
-                             x[3] == 1.04 ||
-                             x[3] == 1.05).ToList();
-
-            //var pol = data.Where(x => x[3] == 1.00 ||
-            //                    x[3] == 1.05).ToList();
-
-            foreach (var c in pol)
+            foreach (var c in data)
             {
                 ax += c[axNum];
             }
 
-            return ax / pol.Count;
+            return ax / data.Count;
         }
 
         public static double[] CenterStructure(double[] centerPoint, List<double[]> data)
@@ -204,19 +188,56 @@ namespace MolConstructor
 
         public static double[] CenterStructureInit(double[] sizes, double[] centerPoint, List<double[]> data)
         {
-            double[] centerMass = GetCenterMass(data);
+
+            double[] centerMass = GetCenterMassWithPBC(sizes, data);
             for (int i = 0; i < 2; ++i)
                 centerMass[i] = Math.Round(sizes[i] - centerPoint[i] - centerMass[i], 2);
             centerMass[2] = 0.0;
             return centerMass;
         }
 
-        public static double[] GetCenterMassWithPBC(double[] axises, List<double[]> data)
+        public static double[] GetCenterMassWithPBC(double[] sizes, List<double[]> data)
         {
-            double[] numArray = new double[3];
-            for (int axInd = 0; axInd <= 2; ++axInd)
-                numArray[axInd] = CenterAxis_Type2(true, axInd, axises[axInd], 0.0, data);
-            return numArray;
+            double[] centerMass = new double[3];
+            //for (int axInd = 0; axInd <= 2; ++axInd)
+            //    numArray[axInd] = CenterAxis_Type2(true, axInd, axises[axInd], 0.0, data);
+            var tetasX = new double[2];
+            var tetasY = new double[2];
+            var tetasZ = new double[2];
+
+            for (int p = 0; p < data.Count; p++)
+            {
+                var tetaX = data[p][0] / sizes[0] * 2 * Math.PI;
+                var tetaY = data[p][1] / sizes[1] * 2 * Math.PI;
+                var tetaZ = data[p][2] / sizes[2] * 2 * Math.PI;
+
+                tetasX[0] += Math.Cos(tetaX);
+                tetasX[1] += Math.Sin(tetaX);
+
+                tetasY[0] += Math.Cos(tetaY);
+                tetasY[1] += Math.Sin(tetaY);
+
+                tetasZ[0] += Math.Cos(tetaZ);
+                tetasZ[1] += Math.Sin(tetaZ);
+            }
+
+            tetasX[0] /= data.Count;
+            tetasX[1] /= data.Count;
+            tetasY[0] /= data.Count;
+            tetasY[1] /= data.Count;
+            tetasZ[0] /= data.Count;
+            tetasZ[1] /= data.Count;
+
+            var meantetaX = Math.Atan2(-tetasX[1], -tetasX[0]) + Math.PI;
+            var meantetaY = Math.Atan2(-tetasY[1], -tetasY[0]) + Math.PI;
+            var meantetaZ = Math.Atan2(-tetasZ[1], -tetasZ[0]) + Math.PI;
+
+            var cmX = sizes[0] * meantetaX / (2 * Math.PI);
+            var cmY = sizes[1] * meantetaY / (2 * Math.PI);
+            var cmZ = sizes[2] * meantetaZ / (2 * Math.PI);
+
+            centerMass = new double[] { cmX, cmY, cmZ };
+            return centerMass;
         }
 
         // Centering procedure based on the PBC
@@ -283,6 +304,27 @@ namespace MolConstructor
             }
 
             return centerMass[axInd];
+        }
+
+        public static double GetDistance3DwithPBC(double[] sizes, double xOne, double yOne, double zOne, double xTwo, double yTwo, double zTwo)
+        {
+            var distX = Math.Abs(xOne - xTwo);
+            var distY = Math.Abs(yOne - yTwo);
+            var distZ = Math.Abs(zOne - zTwo);
+
+            if (distX> sizes[0]/2.0)
+            {
+                distX -= sizes[0];
+            }
+            if (distY > sizes[1] / 2.0)
+            {
+                distY -= sizes[1];
+            }
+            if (distZ > sizes[2] / 2.0)
+            {
+                distZ -= sizes[2];
+            }
+            return Math.Round(Math.Sqrt(Math.Pow(distX, 2.0) + Math.Pow(distY, 2.0) + Math.Pow(distZ, 2.0)), 3);
         }
 
         public static double GetDistance3D(double xOne, double yOne, double zOne, double xTwo, double yTwo, double zTwo)
@@ -401,6 +443,40 @@ namespace MolConstructor
             psi6 = Math.Sqrt(Math.Pow(psiReal / particles, 2) + Math.Pow(psiImp / particles, 2));
 
             return psi6;
+        }
+
+        public static List<double[]> GetPolymers(List<double[]> data)
+        {
+            var polymerTypes = FileWorker.GetTableTypes("Polymer");
+
+            var pol = new List<double[]>();
+
+            foreach (var c in data)
+            {
+                if (polymerTypes.Contains(c[3]))
+                {
+                    pol.Add(c);
+                }
+            }
+
+            return pol;
+        }
+
+        public static List<MolData> GetPolymers(List<MolData> data)
+        {
+            var polymerTypes = FileWorker.GetTableTypes("Polymer");
+
+            var pol = new List<MolData>();
+
+            foreach (var c in data)
+            {
+                if (polymerTypes.Contains(c.AtomType))
+                {
+                    pol.Add(c);
+                }
+            }
+
+            return pol;
         }
 
         // calculated Radial Distribution function. 
@@ -822,7 +898,7 @@ namespace MolConstructor
 
                         currBead = mol.First(x => x.Index == placedBeads[placedBeads.Count - 1]);
 
-                        AddNonLinMol_Recurcion(molIndex, direction, rnd, placedBeads, currBead, mol, system);
+                        AddNonLinMol_Recurcion(molIndex, direction, borders, rnd, placedBeads, currBead, mol, system);
                     }
                 }
             }

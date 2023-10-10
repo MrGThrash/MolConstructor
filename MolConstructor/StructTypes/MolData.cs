@@ -142,15 +142,28 @@ namespace MolConstructor
         public static int CalcBonds(List<int[]> bonds, List<MolData> list)
         {
             int types = 1;
-            foreach (int[] bond in bonds)
+
+            if (bonds.Count == 0)
             {
-                int bondType = FileWorker.GetBondType(new double[2]
+                return types;
+            }
+
+            if (bonds[0].Length == 3)
+            {
+                types = bonds.Max(k => k[2]);
+            }
+            else
+            {
+                foreach (int[] bond in bonds)
                 {
+                    int bondType = FileWorker.GetBondType(new double[2]
+                    {
           list[bond[0] - 1].AtomType,
           list[bond[1] - 1].AtomType
-                });
-                if (bondType > types)
-                    types = bondType;
+                    });
+                    if (bondType > types)
+                        types = bondType;
+                }
             }
             return types;
         }
@@ -256,20 +269,19 @@ namespace MolConstructor
             return numArray;
         }
 
-        public static List<int[]> MultiplyBonds(int molAmount, List<int[]> initBonds)
+        public static List<int[]> MultiplyBonds(int molAmount, int beadsInMol, List<int[]> initBonds)
         {
             if ((uint)molAmount > 0U)
             {
-                return MultiplyBonds(0, molAmount, initBonds, null);
+                return MultiplyBonds(0, molAmount, beadsInMol, initBonds, null);
             }
             return new List<int[]>();
         }
 
-        public static List<int[]> MultiplyBonds(int matrixChainLength, int molAmount, List<int[]> initBonds, List<MolData> system)
+        public static List<int[]> MultiplyBonds(int matrixChainLength, int molAmount, int beadsInMol, List<int[]> initBonds, List<MolData> system)
         {
             var totalBonds = new List<int[]>();
-            int beadsInMol = 0;
-
+            
             foreach (var bond in initBonds)
             {
                 if (bond[0] > beadsInMol)
@@ -330,15 +342,15 @@ namespace MolConstructor
             return totalBonds;
         }
 
-        public static List<int[]> MultiplyAngles(int molAmount, List<int[]> initAngles)
+        public static List<int[]> MultiplyAngles(int molAmount, int beadsInMol, List<int[]> initAngles)
         {
-            return MultiplyAngles(0, molAmount, 0.0, initAngles, null);
+            return MultiplyAngles(0, molAmount, beadsInMol, 0.0, initAngles, null);
         }
 
-        public static List<int[]> MultiplyAngles(int matrixChainLength, int molAmount, double molType, List<int[]> initAngles, List<MolData> system)
+        public static List<int[]> MultiplyAngles(int matrixChainLength, int molAmount, int beadsInMol, double molType, List<int[]> initAngles, List<MolData> system)
         {
             List<int[]> totalAngles = new List<int[]>();
-            int beadsInMol = 0;
+       
             foreach (var angle in initAngles)
             {
                 if (angle[0] > beadsInMol)
@@ -483,10 +495,16 @@ namespace MolConstructor
             }
             if (onlyPolymer)
             {
-                system = system.Where(x => x.AtomType.Equals(1.00) ||
-                                           x.AtomType.Equals(1.01) ||
-                                           x.AtomType.Equals(1.04) ||
-                                           x.AtomType.Equals(1.09)).ToList();
+                var polTypes = FileWorker.GetTableTypes("Polymer");
+
+                foreach (var c in system)
+                {
+                    if (!polTypes.Contains(c.AtomType))
+                    {
+                        c.AtomType = 0.0;
+                    }
+                }
+                system = system.Where(x => x.AtomType >= 1.00).ToList();
             }
 
             if (hasWalls)

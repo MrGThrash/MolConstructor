@@ -472,10 +472,10 @@ namespace MolConstructor
             AddOneGraft(0, 0, 0, 0, 45.0, 0, 1.00);
 
             //For Papadakis
-            foreach (var c in molecule)
-            {
-                c.AtomType = 1.04;
-            }
+           // foreach (var c in molecule)
+            //{
+             //   c.AtomType = 1.04;
+            //}
 
             // Main cycle for 
             for (int i = 0; i <= 4; i++)
@@ -621,7 +621,7 @@ namespace MolConstructor
                 }
             }
 
-            // Recolor (robin)
+            //Recolor(robin)
             //{
             //    foreach (var c in molecule)
             //    {
@@ -645,7 +645,7 @@ namespace MolConstructor
             //    {
             //        if (c.Bonds.Count > 2)
             //        {
-            //            c.AtomType = 1.01;
+            //            c.AtomType = 1.06;
             //        }
             //    }
             //}
@@ -654,6 +654,10 @@ namespace MolConstructor
         private void AddGens(int chainNum, int genNum, int graftAmount)
         {
             var positions = CalcPositions(genNum, graftAmount);
+
+            //positions.Clear();
+            //positions.Add(new double[] { 301, 90.0, 0.0 });
+            //positions.Add(new double[] { 301,-90.0, 0.0 });
 
             int beads = molecule.Count;
 
@@ -739,45 +743,100 @@ namespace MolConstructor
 
 
 
-            // For Robin
-            //if (chainLength >= 39 && chainLength <= 45)
+            // For Robin anf Jonas
+            //if (chainLength >= 44 && chainLength <= 57)
             //{
-            //    positions = new List<double[]> { new double[] { 8, 90.0, 0.0 },
-            //                               new double[] { 16, 90.0, 0.0 },
-            //                               new double[] { 25, 90.0, 0.0 },
-            //                                new double[] { 33, 90.0, 0.0 } };
+            //    positions = new List<double[]> { new double[] { 7, 90.0, 0.0 },
+            //                               new double[] { 15, 90.0, 0.0 },
+            //                               new double[] { 23, 90.0, 0.0 },
+            //                               new double[] { 31, 90.0, 0.0 },
+            //                               new double[] { 39, 90.0, 0.0 }};
 
-            //    if (chainLength == 39)
-            //    {
-            //        positions[0][0] = 8;
-            //        positions[1][0] = 16;
-            //        positions[2][0] = 24;
-            //        positions[3][0] = 32;
-            //    }
-
-            //    if (chainLength == 41)
-            //    {
-            //        positions[0][0] = 9;
-            //        positions[1][0] = 17;
-            //        positions[2][0] = 25;
-            //        positions[3][0] = 33;
-            //    }
-            //    if (chainLength == 42)
-            //    {
-            //        positions[0][0] = 10;
-            //        positions[1][0] = 18;
-            //        positions[2][0] = 26;
-            //        positions[3][0] = 34;
-            //    }
-
-            //    if (chainLength == 44)
+            //    if (chainLength == 53)
             //    {
             //        positions[0][0] = 9;
             //        positions[1][0] = 18;
             //        positions[2][0] = 27;
             //        positions[3][0] = 36;
+            //        positions[4][0] = 45;
             //    }
 
+            //    if (chainLength == 49)
+            //    {
+            //        positions[0][0] = 9;
+            //        positions[1][0] = 17;
+            //        positions[2][0] = 25;
+            //        positions[3][0] = 33;
+            //        positions[4][0] = 41;
+            //    }
+
+            //    if (chainLength == 50)
+            //    {
+            //        positions[0][0] = 9;
+            //        positions[1][0] = 17;
+            //        positions[2][0] = 26;
+            //        positions[3][0] = 34;
+            //        positions[4][0] = 42;
+            //    }
+            //    if (chainLength == 51)
+            //    {
+            //        positions[0][0] = 11;
+            //        positions[1][0] = 21;
+            //        positions[2][0] = 31;
+            //        positions[3][0] = 41;
+            //        //positions[4][0] = 43;
+
+            //        positions.RemoveAt(4);
+            //    }
+
+            //    if (chainLength == 44)
+            //    {
+            //        positions[0][0] = 8;
+            //        positions[1][0] = 15;
+            //        positions[2][0] = 23;
+            //        positions[3][0] = 30;
+            //        positions[4][0] = 38;
+            //    }
+            //    if (chainLength == 46)
+            //    {
+            //        positions[0][0] = 8;
+            //        positions[1][0] = 16;
+            //        positions[2][0] = 24;
+            //        positions[3][0] = 32;
+            //        positions[4][0] = 40;
+            //    }
+
+            //    if (chainLength == 57)
+            //    {
+            //        positions[0][0] = 9;
+            //        positions[1][0] = 17;
+            //        positions[2][0] = 25;
+            //        positions[3][0] = 33;
+            //        positions[4][0] = 41;
+            //        positions.Add(new double[] { 49, 90.0, 0.0 });
+            //    }
+
+            //    return positions;
+            //}
+
+            //if (chainLength == 40)
+            //{
+            //    positions.Add(new double[] { 9, 90.0, 0.0 });
+            //    positions.Add(new double[] { 17, 90.0, 0.0 });
+            //    positions.Add(new double[] { 25, 90.0, 0.0 });
+            //    positions.Add(new double[] { 33, 90.0, 0.0 });
+
+            //    return positions;
+            //}
+
+            //if (chainLength == 67)
+            //{
+            //    positions = new List<double[]> { new double[] { 9, 90.0, 0.0 },
+            //                               new double[] { 19, 90.0, 0.0 },
+            //                               new double[] { 29, 90.0, 0.0 },
+            //                                new double[] { 39, 90.0, 0.0 },
+            //                                new double[] { 49, 90.0, 0.0 },
+            //                                new double[] { 59, 90.0, 0.0 }};
             //    return positions;
             //}
 
@@ -788,25 +847,6 @@ namespace MolConstructor
             //                               new double[] { 24, 90.0, 0.0 },
             //                                new double[] { 31, 90.0, 0.0 },
             //                                new double[] { 39, 90.0, 0.0 }};
-
-            //if (chainLength == 46)
-            //{
-            //    positions[0][0] = 8;
-            //    positions[1][0] = 16;
-            //    positions[2][0] = 24;
-            //    positions[3][0] = 32;
-            //}
-
-            //    if (chainLength == 50)
-            //    {
-            //        positions[0][0] = 9;
-            //        positions[1][0] = 17;
-            //        positions[2][0] = 26;
-            //        positions[3][0] = 34;
-            //        positions[4][0] = 43;
-            //    }
-
-
             //    return positions;
             //}
 
@@ -1598,6 +1638,11 @@ namespace MolConstructor
                     double beadZCoord = molecule[prevMolBeads + coef * j].ZCoord;
                     double type = 1.01;
 
+                    if (sideChainType != 3 || (sideChainType == 3 && blockBfrac < 0.5))
+                    {
+                        type = 1.0;
+                    }
+
 
                     if (!isIndBB)
                     {
@@ -1605,11 +1650,6 @@ namespace MolConstructor
                     }
                     else
                     {
-
-                        if (blockBfrac < 0.5)
-                        {
-                            type = 1.0;
-                        }
 
                         if (sideChainType == 3)
                         {
@@ -1645,7 +1685,14 @@ namespace MolConstructor
                             bonds.Add(new int[] { prevMolBeads * (chainNum - 1) + coef * j + 1, sChainInd });
                         }
 
-                        molecule.Add(new MolData(type, molecule.Count + 1, k + 1, xCoord, yCoord, beadZCoord));
+                        if (sideChainType == 2 && i > (int)(sideChainLength*(1-dbFrac)))
+                        {
+                            molecule.Add(new MolData(1.01, molecule.Count + 1, k + 1, xCoord, yCoord, beadZCoord));
+                        }
+                        else
+                        {
+                            molecule.Add(new MolData(type, molecule.Count + 1, k + 1, xCoord, yCoord, beadZCoord));
+                        }
 
                         if (sideChainType == 3)
                         {
@@ -1665,9 +1712,7 @@ namespace MolConstructor
                                 }
                         }
                     }
-
-
-                    // diblock
+                    
                 }
             }
         }

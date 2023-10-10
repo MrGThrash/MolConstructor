@@ -87,6 +87,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -587,7 +589,9 @@
             this.Column2,
             this.Column3,
             this.Column5,
-            this.Column4});
+            this.Column4,
+            this.Column6,
+            this.Column7});
             this.dgvDataFromFolder.Location = new System.Drawing.Point(13, 244);
             this.dgvDataFromFolder.Name = "dgvDataFromFolder";
             this.dgvDataFromFolder.Size = new System.Drawing.Size(723, 307);
@@ -657,6 +661,16 @@
             // 
             this.Column4.HeaderText = "Пустая колонка";
             this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Пустая колонка";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Пустая колонка";
+            this.Column7.Name = "Column7";
             // 
             // ep
             // 
@@ -887,5 +901,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }

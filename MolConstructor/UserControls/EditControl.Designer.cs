@@ -125,12 +125,22 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbRecolorType = new System.Windows.Forms.ComboBox();
+            this.gbRecolorEnsemble = new System.Windows.Forms.GroupBox();
+            this.gbRecolorType = new System.Windows.Forms.GroupBox();
+            this.tbTypeAfterRecolor = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tbTypeBeforeRecolor = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.tControlEdit.SuspendLayout();
             this.tabPage13.SuspendLayout();
             this.gbShift.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbPageDrop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
+            this.gbRecolorEnsemble.SuspendLayout();
+            this.gbRecolorType.SuspendLayout();
             this.SuspendLayout();
             // 
             // tControlEdit
@@ -768,14 +778,16 @@
             // tbPageDrop
             // 
             this.tbPageDrop.BackColor = System.Drawing.SystemColors.Control;
+            this.tbPageDrop.Controls.Add(this.gbRecolorType);
+            this.tbPageDrop.Controls.Add(this.gbRecolorEnsemble);
+            this.tbPageDrop.Controls.Add(this.cmbRecolorType);
+            this.tbPageDrop.Controls.Add(this.label15);
             this.tbPageDrop.Controls.Add(this.btnClearRecolor);
             this.tbPageDrop.Controls.Add(this.label9);
             this.tbPageDrop.Controls.Add(this.tbDensity_Page2);
             this.tbPageDrop.Controls.Add(this.btnChooseInitAngles_Page2);
             this.tbPageDrop.Controls.Add(this.tbAnglesPath_Page2);
             this.tbPageDrop.Controls.Add(this.label8);
-            this.tbPageDrop.Controls.Add(this.label7);
-            this.tbPageDrop.Controls.Add(this.chbIsDb);
             this.tbPageDrop.Controls.Add(this.tbZ_Page2);
             this.tbPageDrop.Controls.Add(this.label96);
             this.tbPageDrop.Controls.Add(this.tbY_Page2);
@@ -783,16 +795,6 @@
             this.tbPageDrop.Controls.Add(this.tbX_Page2);
             this.tbPageDrop.Controls.Add(this.label98);
             this.tbPageDrop.Controls.Add(this.label99);
-            this.tbPageDrop.Controls.Add(this.tbLinMolLenght_Page8_2);
-            this.tbPageDrop.Controls.Add(this.label95);
-            this.tbPageDrop.Controls.Add(this.chbLeftOnlyPolymer_2);
-            this.tbPageDrop.Controls.Add(this.chbAllDiff);
-            this.tbPageDrop.Controls.Add(this.cmbNonLinPlace);
-            this.tbPageDrop.Controls.Add(this.label94);
-            this.tbPageDrop.Controls.Add(this.tbNonLinLength);
-            this.tbPageDrop.Controls.Add(this.label93);
-            this.tbPageDrop.Controls.Add(this.tbNonLinMolAmount);
-            this.tbPageDrop.Controls.Add(this.label92);
             this.tbPageDrop.Controls.Add(this.tbBondsPath_Page2);
             this.tbPageDrop.Controls.Add(this.label91);
             this.tbPageDrop.Controls.Add(this.btnChooseBonds_Page2);
@@ -866,7 +868,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 351);
+            this.label7.Location = new System.Drawing.Point(17, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(141, 16);
             this.label7.TabIndex = 142;
@@ -875,7 +877,7 @@
             // chbIsDb
             // 
             this.chbIsDb.AutoSize = true;
-            this.chbIsDb.Location = new System.Drawing.Point(24, 385);
+            this.chbIsDb.Location = new System.Drawing.Point(20, 205);
             this.chbIsDb.Name = "chbIsDb";
             this.chbIsDb.Size = new System.Drawing.Size(75, 20);
             this.chbIsDb.TabIndex = 141;
@@ -941,7 +943,7 @@
             // 
             // tbLinMolLenght_Page8_2
             // 
-            this.tbLinMolLenght_Page8_2.Location = new System.Drawing.Point(24, 303);
+            this.tbLinMolLenght_Page8_2.Location = new System.Drawing.Point(21, 129);
             this.tbLinMolLenght_Page8_2.Name = "tbLinMolLenght_Page8_2";
             this.tbLinMolLenght_Page8_2.Size = new System.Drawing.Size(100, 23);
             this.tbLinMolLenght_Page8_2.TabIndex = 133;
@@ -951,7 +953,7 @@
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(20, 270);
+            this.label95.Location = new System.Drawing.Point(15, 110);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(144, 16);
             this.label95.TabIndex = 132;
@@ -960,7 +962,7 @@
             // chbLeftOnlyPolymer_2
             // 
             this.chbLeftOnlyPolymer_2.AutoSize = true;
-            this.chbLeftOnlyPolymer_2.Location = new System.Drawing.Point(24, 446);
+            this.chbLeftOnlyPolymer_2.Location = new System.Drawing.Point(20, 266);
             this.chbLeftOnlyPolymer_2.Name = "chbLeftOnlyPolymer_2";
             this.chbLeftOnlyPolymer_2.Size = new System.Drawing.Size(139, 36);
             this.chbLeftOnlyPolymer_2.TabIndex = 131;
@@ -970,7 +972,7 @@
             // chbAllDiff
             // 
             this.chbAllDiff.AutoSize = true;
-            this.chbAllDiff.Location = new System.Drawing.Point(24, 420);
+            this.chbAllDiff.Location = new System.Drawing.Point(20, 240);
             this.chbAllDiff.Name = "chbAllDiff";
             this.chbAllDiff.Size = new System.Drawing.Size(154, 20);
             this.chbAllDiff.TabIndex = 130;
@@ -984,7 +986,7 @@
             this.cmbNonLinPlace.Items.AddRange(new object[] {
             "Первыми",
             "Вторыми"});
-            this.cmbNonLinPlace.Location = new System.Drawing.Point(462, 222);
+            this.cmbNonLinPlace.Location = new System.Drawing.Point(225, 129);
             this.cmbNonLinPlace.Name = "cmbNonLinPlace";
             this.cmbNonLinPlace.Size = new System.Drawing.Size(102, 24);
             this.cmbNonLinPlace.TabIndex = 129;
@@ -992,7 +994,7 @@
             // label94
             // 
             this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(449, 203);
+            this.label94.Location = new System.Drawing.Point(214, 110);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(129, 16);
             this.label94.TabIndex = 128;
@@ -1000,7 +1002,7 @@
             // 
             // tbNonLinLength
             // 
-            this.tbNonLinLength.Location = new System.Drawing.Point(230, 222);
+            this.tbNonLinLength.Location = new System.Drawing.Point(227, 48);
             this.tbNonLinLength.Name = "tbNonLinLength";
             this.tbNonLinLength.Size = new System.Drawing.Size(100, 23);
             this.tbNonLinLength.TabIndex = 127;
@@ -1009,7 +1011,7 @@
             // label93
             // 
             this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(207, 203);
+            this.label93.Location = new System.Drawing.Point(204, 29);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(205, 16);
             this.label93.TabIndex = 126;
@@ -1017,7 +1019,7 @@
             // 
             // tbNonLinMolAmount
             // 
-            this.tbNonLinMolAmount.Location = new System.Drawing.Point(24, 222);
+            this.tbNonLinMolAmount.Location = new System.Drawing.Point(21, 48);
             this.tbNonLinMolAmount.Name = "tbNonLinMolAmount";
             this.tbNonLinMolAmount.Size = new System.Drawing.Size(106, 23);
             this.tbNonLinMolAmount.TabIndex = 125;
@@ -1026,7 +1028,7 @@
             // label92
             // 
             this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(20, 203);
+            this.label92.Location = new System.Drawing.Point(17, 29);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(157, 16);
             this.label92.TabIndex = 122;
@@ -1112,6 +1114,98 @@
             // 
             this.ep.ContainerControl = this;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(21, 216);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(119, 16);
+            this.label15.TabIndex = 149;
+            this.label15.Text = "Тип перекраски:";
+            // 
+            // cmbRecolorType
+            // 
+            this.cmbRecolorType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRecolorType.FormattingEnabled = true;
+            this.cmbRecolorType.Items.AddRange(new object[] {
+            "По типу частиц",
+            "Ансамбль молекул"});
+            this.cmbRecolorType.Location = new System.Drawing.Point(153, 213);
+            this.cmbRecolorType.Name = "cmbRecolorType";
+            this.cmbRecolorType.Size = new System.Drawing.Size(142, 24);
+            this.cmbRecolorType.TabIndex = 150;
+            this.cmbRecolorType.SelectedIndexChanged += new System.EventHandler(this.cmbRecolorType_SelectedIndexChanged);
+            // 
+            // gbRecolorEnsemble
+            // 
+            this.gbRecolorEnsemble.Controls.Add(this.tbNonLinLength);
+            this.gbRecolorEnsemble.Controls.Add(this.label92);
+            this.gbRecolorEnsemble.Controls.Add(this.tbNonLinMolAmount);
+            this.gbRecolorEnsemble.Controls.Add(this.label93);
+            this.gbRecolorEnsemble.Controls.Add(this.label94);
+            this.gbRecolorEnsemble.Controls.Add(this.cmbNonLinPlace);
+            this.gbRecolorEnsemble.Controls.Add(this.chbAllDiff);
+            this.gbRecolorEnsemble.Controls.Add(this.chbLeftOnlyPolymer_2);
+            this.gbRecolorEnsemble.Controls.Add(this.label95);
+            this.gbRecolorEnsemble.Controls.Add(this.label7);
+            this.gbRecolorEnsemble.Controls.Add(this.tbLinMolLenght_Page8_2);
+            this.gbRecolorEnsemble.Controls.Add(this.chbIsDb);
+            this.gbRecolorEnsemble.Enabled = false;
+            this.gbRecolorEnsemble.Location = new System.Drawing.Point(15, 261);
+            this.gbRecolorEnsemble.Name = "gbRecolorEnsemble";
+            this.gbRecolorEnsemble.Size = new System.Drawing.Size(413, 305);
+            this.gbRecolorEnsemble.TabIndex = 151;
+            this.gbRecolorEnsemble.TabStop = false;
+            this.gbRecolorEnsemble.Text = "Ансамбль молекул";
+            // 
+            // gbRecolorType
+            // 
+            this.gbRecolorType.Controls.Add(this.tbTypeAfterRecolor);
+            this.gbRecolorType.Controls.Add(this.tbTypeBeforeRecolor);
+            this.gbRecolorType.Controls.Add(this.label16);
+            this.gbRecolorType.Controls.Add(this.label17);
+            this.gbRecolorType.Enabled = false;
+            this.gbRecolorType.Location = new System.Drawing.Point(434, 261);
+            this.gbRecolorType.Name = "gbRecolorType";
+            this.gbRecolorType.Size = new System.Drawing.Size(265, 198);
+            this.gbRecolorType.TabIndex = 152;
+            this.gbRecolorType.TabStop = false;
+            this.gbRecolorType.Text = "По типу частиц";
+            // 
+            // tbTypeAfterRecolor
+            // 
+            this.tbTypeAfterRecolor.Location = new System.Drawing.Point(84, 129);
+            this.tbTypeAfterRecolor.Name = "tbTypeAfterRecolor";
+            this.tbTypeAfterRecolor.Size = new System.Drawing.Size(100, 23);
+            this.tbTypeAfterRecolor.TabIndex = 131;
+            this.tbTypeAfterRecolor.Text = "2";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 29);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(139, 16);
+            this.label16.TabIndex = 128;
+            this.label16.Text = "Тип до перекраски:";
+            // 
+            // tbTypeBeforeRecolor
+            // 
+            this.tbTypeBeforeRecolor.Location = new System.Drawing.Point(84, 48);
+            this.tbTypeBeforeRecolor.Name = "tbTypeBeforeRecolor";
+            this.tbTypeBeforeRecolor.Size = new System.Drawing.Size(100, 23);
+            this.tbTypeBeforeRecolor.TabIndex = 129;
+            this.tbTypeBeforeRecolor.Text = "1";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 110);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(162, 16);
+            this.label17.TabIndex = 130;
+            this.label17.Text = "Тип после перекраски:";
+            // 
             // EditControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1133,6 +1227,10 @@
             this.tbPageDrop.ResumeLayout(false);
             this.tbPageDrop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
+            this.gbRecolorEnsemble.ResumeLayout(false);
+            this.gbRecolorEnsemble.PerformLayout();
+            this.gbRecolorType.ResumeLayout(false);
+            this.gbRecolorType.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1235,5 +1333,13 @@
         private System.Windows.Forms.CheckBox chbCreateAngles;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbAngleType;
+        private System.Windows.Forms.ComboBox cmbRecolorType;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox gbRecolorEnsemble;
+        private System.Windows.Forms.GroupBox gbRecolorType;
+        private System.Windows.Forms.TextBox tbTypeAfterRecolor;
+        private System.Windows.Forms.TextBox tbTypeBeforeRecolor;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }

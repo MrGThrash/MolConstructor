@@ -23,6 +23,7 @@ namespace MolConstructor
         private List<double[]> InputColorData = new List<double[]>();
         private List<int[]> InputColorBonds = new List<int[]>();
         private List<int[]> InputColorAngles = new List<int[]>();
+        private double[] CenterPoint_Recolor = new double[3];
         private List<MolData> RecoloredComposition = new List<MolData>();
 
         public EditControl()
@@ -182,77 +183,159 @@ namespace MolConstructor
             //    }
             //}
 
-                // For Robin
-                //    {
-                //        double xSize = replaceValue(tbX_Page1.Text);
-                //        double ySize = replaceValue(tbY_Page1.Text);
-                //        double zSize = replaceValue(tbZ_Page1.Text);
 
-                //        int maxNum = (int)xSize * (int)ySize * (int)zSize * 3;
+            // For Robin
+            //    {
+            //        double xSize = replaceValue(tbX_Page1.Text);
+            //        double ySize = replaceValue(tbY_Page1.Text);
+            //        double zSize = replaceValue(tbZ_Page1.Text);
 
-                //        int watercount = (maxNum-EditedComposition.Count)/ 2;
-                //        int molInd = EditedComposition.Max(x => x.MolIndex);
+            //        int maxNum = (int)xSize * (int)ySize * (int)zSize * 3;
 
-                //        Random rnd = new Random();
-                //        Random rndDec = new Random();
-                //        int counter = 0;
-                //        do
-                //        {
+            //        int watercount = (maxNum-EditedComposition.Count)/ 2;
+            //        int molInd = EditedComposition.Max(x => x.MolIndex);
 
-                //            double xCoord = (double)rnd.Next(0, (int)xSize - 1) + rndDec.NextDouble();
-                //            double yCoord = (double)rnd.Next(0, (int)ySize - 1) + rndDec.NextDouble();
-                //            double zCoord = (double)rnd.Next(0, 75) + rndDec.NextDouble();
+            //        Random rnd = new Random();
+            //        Random rndDec = new Random();
+            //        int counter = 0;
+            //        do
+            //        {
 
-                //                molInd++;
-                //                counter++;
-                //                EditedComposition.Add(new MolData(1.03, EditedComposition.Count + 1, molInd, xCoord, yCoord, zCoord));
+            //            double xCoord = (double)rnd.Next(0, (int)xSize - 1) + rndDec.NextDouble();
+            //            double yCoord = (double)rnd.Next(0, (int)ySize - 1) + rndDec.NextDouble();
+            //            double zCoord = (double)rnd.Next(0, 75) + rndDec.NextDouble();
 
-                //        }
-                //        while (counter < watercount);
+            //                molInd++;
+            //                counter++;
+            //                EditedComposition.Add(new MolData(1.03, EditedComposition.Count + 1, molInd, xCoord, yCoord, zCoord));
 
-
-                //    counter = 0;
-                //    do
-                //    {
-                //            double xCoord = (double)rnd.Next(1, (int)xSize - 1) + rndDec.NextDouble();
-                //            double yCoord = (double)rnd.Next(1, (int)ySize - 1) + rndDec.NextDouble();
-                //            double zCoord = (double)rnd.Next(105, 179) + rndDec.NextDouble();
+            //        }
+            //        while (counter < watercount);
 
 
-                //            if (true)
-                //        {
-                //            molInd++;
-                //            counter++;
-                //            EditedComposition.Add(new MolData(1.02, EditedComposition.Count + 1, molInd, xCoord , yCoord , zCoord ));
-                //        }
+            //    counter = 0;
+            //    do
+            //    {
+            //            double xCoord = (double)rnd.Next(1, (int)xSize - 1) + rndDec.NextDouble();
+            //            double yCoord = (double)rnd.Next(1, (int)ySize - 1) + rndDec.NextDouble();
+            //            double zCoord = (double)rnd.Next(105, 179) + rndDec.NextDouble();
 
-                //    }
-                //    while (counter < watercount);
-                //}
 
-                //Gavrilov-Rudyak
-                // 1,4- regular monomers, 3 - initiator, the rest are the crosslinkers
-                //foreach (var c in EditedComposition)
+            //            if (true)
+            //        {
+            //            molInd++;
+            //            counter++;
+            //            EditedComposition.Add(new MolData(1.02, EditedComposition.Count + 1, molInd, xCoord , yCoord , zCoord ));
+            //        }
+
+            //    }
+            //    while (counter < watercount);
+            //}
+
+            //Gavrilov-Rudyak
+            // 1,4- regular monomers, 3 - initiator, the rest are the crosslinkers
+            //foreach (var c in EditedComposition)
+            //{
+            //    if (c.AtomType == 1.02)
+            //    {
+            //        c.AtomType = 1.00;
+            //    }
+            //    if (c.AtomType == 1.03)
+            //    {
+            //        c.AtomType = 1.00;
+            //    }
+            //    if (c.AtomType == 1.04)
+            //    {
+            //        c.AtomType = 1.01;
+            //    }
+            //    if (c.AtomType == 1.06)
+            //    {
+            //        c.AtomType = 1.01;
+            //    }
+            //}
+
+            // arb gels
+            {
+                //var crosslinkers = EditedComposition.Where(x => x.MolIndex > 36).ToList();
+                //for (int i = 37; i <= 4644; i++)
                 //{
-                //    if (c.AtomType == 1.02)
+                //    var mol = crosslinkers.Where(x => x.MolIndex == i).ToList();
+                //    int freeEnds = 0;
+
+                //    foreach (var c in mol)
                 //    {
-                //        c.AtomType = 1.00;
+                //        if (c.AtomType == 1.03)
+                //        {
+                //            c.Bonds = new List<int>();
+                //            foreach (var p in InitCutBonds)
+                //            {
+                //                if (p[0] == c.Index)
+                //                {
+                //                    c.Bonds.Add(p[1]);
+                //                }
+                //                if (p[1] == c.Index)
+                //                {
+                //                    c.Bonds.Add(p[0]);
+                //                }
+                //            }
+
+                //            if (c.Bonds.Count == 1)
+                //            {
+                //                freeEnds++;
+                //                c.AtomType = 1.05;
+                //            }
+                //        }
                 //    }
-                //    if (c.AtomType == 1.03)
+                //    if (freeEnds == 1)
                 //    {
-                //        c.AtomType = 1.00;
+                //        foreach (var c in mol)
+                //        {
+                //            if (c.AtomType == 1.03)
+                //                c.AtomType = 1.05;
+                //        }
                 //    }
-                //    if (c.AtomType == 1.04)
+
+                //    if (freeEnds == 2)
                 //    {
-                //        c.AtomType = 1.01;
+                //        foreach (var c in mol)
+                //        {
+                //            c.AtomType = 1.03;
+                //        }
                 //    }
-                //    if (c.AtomType == 1.06)
+                //    if (freeEnds == 0)
                 //    {
-                //        c.AtomType = 1.01;
+                //        var pair = new List<int>();
+                //        var ends = mol.Where(x => x.AtomType == 1.03).ToList();
+                //        foreach (var c in ends)
+                //        {
+
+                //            foreach (var p in c.Bonds)
+                //            {
+                //                if (EditedComposition[p - 1].AtomType != 1.02 && EditedComposition[p - 1].AtomType != 1.03)
+                //                {
+                //                    pair.Add(p);
+                //                }
+                //            }
+                //        }
+                //        if (EditedComposition[pair[0] - 1].MolIndex.Equals(EditedComposition[pair[1] - 1].MolIndex))
+                //        {
+                //            foreach (var c in ends)
+                //            {
+                //                c.AtomType = 1.06;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            foreach (var c in ends)
+                //            {
+                //                c.AtomType = 1.07;
+                //            }
+                //        }
                 //    }
                 //}
+            }
 
-                if (chbHighlightCrossLinks.Checked)
+            if (chbHighlightCrossLinks.Checked)
             {
                 var type = FileWorker.AtomTypes[Convert.ToInt32(tbHighlightType.Text)];
 
@@ -342,7 +425,18 @@ namespace MolConstructor
             if (chbCreateAngles.Checked)
             {
                 var type = FileWorker.AtomTypes[Convert.ToInt32(tbAngleType.Text)];
-                InitCutAngles = MolData.CreateAngles(type, EditedComposition, InitCutBonds);
+                if (InitCutAngles.Count == 0)
+                {
+                    InitCutAngles = MolData.CreateAngles(type, EditedComposition, InitCutBonds);
+                }
+                else
+                {
+                    var newAngles = MolData.CreateAngles(type, EditedComposition, InitCutBonds);
+                    foreach (var c in newAngles)
+                    {
+                        InitCutAngles.Add(c);
+                    }
+                }
             }
 
             if (chbMur.Checked)
@@ -426,6 +520,20 @@ namespace MolConstructor
 
         }
 
+        private void cmbRecolorType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbRecolorType.SelectedIndex == 1)
+            {
+                gbRecolorEnsemble.Enabled = true;
+                gbRecolorType.Enabled = false;
+            }
+            else
+            {
+                gbRecolorEnsemble.Enabled = false;
+                gbRecolorType.Enabled = true;
+            }
+        }
+
         #endregion
 
         #region Page 2 - Recolor
@@ -444,6 +552,11 @@ namespace MolConstructor
                     label8.Visible = (InputColorAngles.Count == 0);
                     tbAnglesPath_Page2.Visible = (InputColorAngles.Count == 0);
                 }
+
+            CenterPoint_Recolor = MolData.GetCenterPoint(new double[] {replaceValue(tbX_Page2.Text),
+                                                                    replaceValue(tbY_Page2.Text),
+                                                                    replaceValue(tbZ_Page2.Text)}, InputColorData);
+            cmbRecolorType.SelectedIndex = 0;
             btnRecolor.Enabled = true;
         }
 
@@ -482,17 +595,42 @@ namespace MolConstructor
 
         private void btnRecolor_Click(object sender, EventArgs e)
         {
-            int molOneAmount = Convert.ToInt32(tbNonLinMolAmount.Text);
-            int nonLinLength = Convert.ToInt32(tbNonLinLength.Text);
-            int linLength = Convert.ToInt32(tbLinMolLenght_Page8_2.Text);
-            int molTwoCount = 0;
-            if (linLength > 0)
+            if (cmbRecolorType.SelectedIndex == 1 && gbRecolorEnsemble.Enabled)
             {
-                molTwoCount = (InputColorData.Where<double[]>((x => x[3] <= 1.01)).Count() - molOneAmount * nonLinLength) / linLength;
+                int molOneAmount = Convert.ToInt32(tbNonLinMolAmount.Text);
+                int nonLinLength = Convert.ToInt32(tbNonLinLength.Text);
+                int linLength = Convert.ToInt32(tbLinMolLenght_Page8_2.Text);
+                int molTwoCount = 0;
+                if (linLength > 0)
+                {
+                    molTwoCount = (InputColorData.Where<double[]>((x => x[3] <= 1.01)).Count() - molOneAmount * nonLinLength) / linLength;
+                }
+
+                RecoloredComposition = StructFormer.Recolor(chbLeftOnlyPolymer_2.Checked, true, chbAllDiff.Checked, chbIsDb.Checked,
+                                                            cmbNonLinPlace.SelectedIndex, nonLinLength, molOneAmount, linLength, molTwoCount, InputColorData);
+            }
+            else
+            {
+                double recolorType = FileWorker.AtomTypes[(int)replaceValue(tbTypeBeforeRecolor.Text)];
+                double afterRecolor = FileWorker.AtomTypes[(int)replaceValue(tbTypeAfterRecolor.Text)];
+
+                RecoloredComposition = MolData.ShiftAll(false, 0, false, replaceValue(tbDensity_Page2.Text),
+                                                        new double[] {replaceValue(tbX_Page2.Text),
+                                                                      replaceValue(tbY_Page2.Text),
+                                                                      replaceValue(tbZ_Page2.Text)},
+                                                        new double[3] {0.0, 0.0, 0.0},
+                                                  CenterPoint_Recolor, InputColorData);
+
+
+           foreach (var c in RecoloredComposition)
+                {
+                    if (c.AtomType == recolorType)
+                    {
+                        c.AtomType = afterRecolor;
+                    }
+                }
             }
 
-            RecoloredComposition = StructFormer.Recolor(chbLeftOnlyPolymer_2.Checked, true, chbAllDiff.Checked, chbIsDb.Checked, 
-                                                        cmbNonLinPlace.SelectedIndex, nonLinLength, molOneAmount, linLength, molTwoCount, InputColorData);
             btnSaveStruct_Page2.Enabled = true;
         }
 
@@ -763,8 +901,9 @@ namespace MolConstructor
 
 
 
+
+
         #endregion
 
-     
-    }
+         }
 }

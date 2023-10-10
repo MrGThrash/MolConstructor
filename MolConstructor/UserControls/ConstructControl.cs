@@ -233,17 +233,17 @@ namespace MolConstructor
                 int molcount = Convert.ToInt32(tbMolCount.Text);
                 if (chbDoubleSurf.Checked) { molcount *= 2; }
 
-                TotalBonds = MolData.MultiplyBonds(molcount, InitBonds);
+                TotalBonds = MolData.MultiplyBonds(molcount, InputData.Count, InitBonds);
 
                 if ((uint)InitAngles.Count > 0U)
                 {
-                    TotalAngles = MolData.MultiplyAngles(Convert.ToInt32(tbMolCount.Text), InitAngles);
+                    TotalAngles = MolData.MultiplyAngles(Convert.ToInt32(tbMolCount.Text), InputData.Count, InitAngles);
                 }
 
                 if (chbHasMatrix.Checked)
                 {
-                    TotalBonds = MolData.MultiplyBonds(Convert.ToInt32(tbMatrixChainLength.Text), Convert.ToInt32(tbMolCount.Text), InitBonds, MolComposition);
-                    TotalAngles = MolData.MultiplyAngles(Convert.ToInt32(tbMolCount.Text), InitAngles);
+                    TotalBonds = MolData.MultiplyBonds(Convert.ToInt32(tbMatrixChainLength.Text), Convert.ToInt32(tbMatrixChainLength.Text), Convert.ToInt32(tbMolCount.Text), InitBonds, MolComposition);
+                    //TotalAngles = MolData.MultiplyAngles(Convert.ToInt32(tbMolCount.Text), Convert.ToInt32(tbMatrixChainLength.Text), InitAngles);
                 }
 
                 btnSaveStruct_Page1.Enabled = true;
@@ -982,7 +982,6 @@ namespace MolConstructor
         {
             if (cmbSideChainsType.SelectedIndex != 2)
             {
-                chbIndBB.Enabled = false;
                 lblMatya1.Enabled = false;
                 lblMatya2.Enabled = false;
                 tbGraftBlength.Enabled = false;
@@ -990,7 +989,6 @@ namespace MolConstructor
             }
             else
             {
-                chbIndBB.Enabled = true;
                 lblMatya1.Enabled = true;
                 lblMatya2.Enabled = true;
                 tbGraftBlength.Enabled = true;
